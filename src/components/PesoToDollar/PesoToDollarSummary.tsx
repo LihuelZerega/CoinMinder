@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import DollarOfficial from "./SubComps/Cards/DollarOfficial";
 import DollarBlue from "./SubComps/Cards/DollarBlue";
 import DollarRetail from "./SubComps/Cards/DollarRetail";
@@ -12,14 +13,20 @@ function PesoToDollarSummary() {
       </section>
       <section className="border-b pb-12 space-y-6">
         <div className="flex flex-col sm:flex-row gap-8">
-          <div className="rounded-md w-1/3 bg-red-500">
-            <DollarOfficial />
+          <div className="rounded-md w-1/3 border p-4">
+            <Link href="/pesotodollar/dollaroffcial">
+              <DollarOfficial />
+            </Link>
           </div>
-          <div className="rounded-md w-1/3 bg-red-500">
-            <DollarBlue />
+          <div className="rounded-md w-1/3 border p-4">
+            <Link href="/">
+              <DollarBlue />
+            </Link>
           </div>
-          <div className="rounded-md w-1/3 bg-red-500">
-            <DollarRetail />
+          <div className="rounded-md w-1/3 border p-4">
+            <Link href="/">
+              <DollarRetail />
+            </Link>
           </div>
         </div>
         <div className="flex flex-col sm:flex-row gap-8">
