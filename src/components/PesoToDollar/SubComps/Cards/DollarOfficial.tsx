@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { CiDollar } from "react-icons/ci";
+import { Spinner } from "@nextui-org/react";
 
 interface BCRAData {
   d: string;
@@ -17,7 +17,9 @@ function DollarOfficial() {
   useEffect(() => {
     const fetchDataFromBackend = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/bcra-usdof");
+        const response = await axios.get(
+          "http://localhost:5000/api/bcra-usdof"
+        );
         setDollarData(response.data);
         setLoading(false);
       } catch (error) {
@@ -51,35 +53,41 @@ function DollarOfficial() {
 
   return (
     <div>
-      <div>
-        <div className=" py-4 px-3 rounded-md hover:bg-gray-50">
-          <div className="flex flex-row items-center justify-between">
-            <div className="flex flex-row items-center w-1/3">
-              <p className="font-semibold">Dollar Official</p>
-            </div>
+      {loading ? (
+        <div className="flex items-center justify-center">
+          <Spinner />
+        </div>
+      ) : (
+        <div>
+          <div className=" py-4 px-3 rounded-md hover:bg-gray-50">
+            <div className="flex flex-row items-center justify-between">
+              <div className="flex flex-row items-center w-1/3">
+                <p className="font-semibold">Dollar Official</p>
+              </div>
 
-            <div className="w-1/3 lg:ml-3 2xl:ml-0">
-              <p>${lastValue}</p>
-            </div>
+              <div className="w-1/3 lg:ml-3 2xl:ml-0">
+                <p>${lastValue}</p>
+              </div>
 
-            <div className="flex flex-row items-center justify-center w-1/3">
-              {difference !== null && (
-                <p
-                  style={{
-                    color: isPositive
-                      ? "green"
-                      : isPositive === false
-                      ? "red"
-                      : "black",
-                  }}
-                >
-                  {difference.toFixed(2)}%
-                </p>
-              )}
+              <div className="flex flex-row items-center justify-center w-1/3">
+                {difference !== null && (
+                  <p
+                    style={{
+                      color: isPositive
+                        ? "green"
+                        : isPositive === false
+                        ? "red"
+                        : "black",
+                    }}
+                  >
+                    {difference.toFixed(2)}%
+                  </p>
+                )}
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

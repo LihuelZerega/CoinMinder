@@ -20,9 +20,7 @@ import { AcmeLogo } from "./AcmeLogo";
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
-  const menuItems = [
-    "Profile",
-  ];
+  const menuItems = ["Profile"];
 
   return (
     <Navbar isBordered isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen}>
@@ -34,15 +32,19 @@ export default function App() {
 
       <NavbarContent className="sm:hidden pr-3" justify="center">
         <NavbarBrand>
-          <AcmeLogo />
-          <p className="font-bold text-inherit">CoinMinder</p>
+          <Link href="/">
+            <AcmeLogo />
+            <p className="font-bold text-inherit">CoinMinder</p>
+          </Link>
         </NavbarBrand>
       </NavbarContent>
 
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarBrand>
-          <AcmeLogo />
-          <p className="font-bold text-inherit">CoinMinder</p>
+          <Link href="/">
+            <AcmeLogo />
+            <p className="font-bold text-inherit">CoinMinder</p>
+          </Link>
         </NavbarBrand>
         <Dropdown>
           <NavbarItem>

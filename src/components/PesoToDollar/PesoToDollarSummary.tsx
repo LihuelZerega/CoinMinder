@@ -19,12 +19,12 @@ function PesoToDollarSummary() {
             </Link>
           </div>
           <div className="rounded-md w-1/3 border p-4">
-            <Link href="/">
+            <Link href="/pesotodollar/dollarblue">
               <DollarBlue />
             </Link>
           </div>
           <div className="rounded-md w-1/3 border p-4">
-            <Link href="/">
+            <Link href="/pesotodollar/dollarretail">
               <DollarRetail />
             </Link>
           </div>
