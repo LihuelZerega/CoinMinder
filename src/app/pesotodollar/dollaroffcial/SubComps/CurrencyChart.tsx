@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Chart from "chart.js/auto";
 import axios from "axios";
+import { Spinner } from "@nextui-org/react";
 
 interface DailyData {
   d: string;
@@ -14,6 +15,7 @@ interface MonthlyAverage {
 
 const CurrencyChart: React.FC = () => {
   const [monthlyAverages, setMonthlyAverages] = useState<MonthlyAverage[]>([]);
+  const [loading, setLoading] = useState(true);
   const chartRef = useRef<Chart>();
 
   useEffect(() => {
@@ -40,14 +42,15 @@ const CurrencyChart: React.FC = () => {
         });
 
         setMonthlyAverages(averages);
+        setLoading(false);
       } catch (error) {
         console.error("Error fetching daily data:", error);
+        setLoading(false);
       }
     };
 
     fetchData();
   }, []);
-  
 
   useEffect(() => {
     if (monthlyAverages.length > 0) {
@@ -122,7 +125,21 @@ const CurrencyChart: React.FC = () => {
     }
   }, [monthlyAverages]);
 
-  return <canvas id="currencyChart" width={800} height={400} />;
+  return (
+    <div style={{ position: 'relative' }}>
+      {loading && (
+        <div style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)'
+        }}>
+          <Spinner />
+        </div>
+      )}
+      <canvas id="currencyChart" width={800} height={400} />
+    </div>
+  );
 };
 
 export default CurrencyChart;
