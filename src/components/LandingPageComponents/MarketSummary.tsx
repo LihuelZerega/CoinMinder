@@ -12,7 +12,7 @@ function MarketSummary() {
       <section className="grid grid-cols-1 sm:grid-cols-3 gap-8 border-b pb-12">
         <div className="rounded-md"><Top5Crypto /></div>
         <div className="rounded-md"><Top5GlobalCoins /></div>
-        <div className="rounded-md"><PesoToDollarResume /></div>
+        {/* <div className="rounded-md"><PesoToDollarResume /></div> */}
       </section>
     </div>
   );
