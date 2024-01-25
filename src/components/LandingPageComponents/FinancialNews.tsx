@@ -26,7 +26,7 @@ function FinancialNews() {
 
         const articlesToShow =
           articlesWithImages.length > 0
-            ? articlesWithImages.slice(0, 4)
+            ? articlesWithImages.slice(0, 3)
             : [defaultArticle];
 
         setNewsData(articlesToShow);
@@ -50,7 +50,7 @@ function FinancialNews() {
       <section>
         <h1 className="py-6 font-semibold text-2xl">Financial News</h1>
       </section>
-      <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2">
+      <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
         {newsData.map((article) => (
           <div key={article.title} className="border p-4 rounded-md">
             <a href={article.url} target="_blank" rel="noopener noreferrer">

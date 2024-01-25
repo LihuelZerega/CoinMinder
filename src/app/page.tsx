@@ -3,6 +3,7 @@ import { NextUIProvider } from "@nextui-org/react";
 import NavBarConrtrollerMenu from "@/components/NavBarControllerMenu";
 import MarketSummary from "@/components/LandingPageComponents/MarketSummary";
 import FinancialNews from "@/components/LandingPageComponents/FinancialNews";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
         <FinancialNews />
         <MarketSummary />
       </main>
+      <Footer />
     </NextUIProvider>
   );
 }

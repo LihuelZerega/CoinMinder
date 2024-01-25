@@ -21,26 +21,22 @@ function StockPrices() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const apiKey = "AU14324B8OVPZ6AD";
+        const apiKey = 'd1d4e1e9f5mshf6ab8f0e7a5a24fp11cba8jsn2c9e9123071d';
 
         const requests = stockData.map(async (stock) => {
-          try {
-            const response = await axios.get(
-              `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${stock.symbol}&apikey=${apiKey}`
-            );
-
-            const rawPrice = response.data["Global Quote"]?.["05. price"];
-            const price = rawPrice ? parseFloat(rawPrice) : null;
-
-            if (isNaN(price!)) {
-              throw new Error(`Invalid price for ${stock.name}`);
+          const response = await axios.get(
+            `https://yahoo-finance127.p.rapidapi.com/price/${stock.symbol}`,
+            {
+              headers: {
+                'X-RapidAPI-Key': apiKey,
+                'X-RapidAPI-Host': 'yahoo-finance127.p.rapidapi.com',
+              },
             }
+          );
 
-            return { ...stock, price };
-          } catch (error) {
-            console.error(`Error fetching data for ${stock.name}:`, error);
-            return { ...stock, price: null };
-          }
+          const price = response.data?.price || null;
+
+          return { ...stock, price };
         });
 
         const updatedStockData = await Promise.all(requests);
