@@ -18,13 +18,13 @@ const HeroSection = () => {
         className="flex flex-col items-center xl:items-start justify-center xl:w-1/2"
       >
         <div className="flex flex-col lg:flex-row xl:flex-col items-center justify-center xl:items-start font-semibold space-x-0 lg:space-x-3 xl:space-x-0">
-          <h1 className="text-5xl lg:text-4xl xl:text-6xl 2xl:text-7xl text-[#fcd535]">
+          <h1 className="text-4xl lg:text-4xl xl:text-6xl 2xl:text-7xl text-[#fcd535]">
             Real-time data
           </h1>{" "}
-          <h1 className="text-5xl lg:text-4xl xl:text-6xl 2xl:text-7xl text-[#181818]">
+          <h1 className="text-4xl lg:text-4xl xl:text-6xl 2xl:text-7xl text-[#181818]">
             to boost your
           </h1>{" "}
-          <h1 className="text-5xl lg:text-4xl xl:text-6xl 2xl:text-7xl text-[#fcd535]">
+          <h1 className="text-4xl lg:text-4xl xl:text-6xl 2xl:text-7xl text-[#fcd535]">
             investments
           </h1>
         </div>

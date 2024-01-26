@@ -6,6 +6,9 @@ import MarketSummary from "@/components/LandingPageComponents/SubComps/MarketSum
 import FinancialNews from "@/components/LandingPageComponents/SubComps/FinancialNews";
 import LogoClouds from "@/components/LandingPageComponents/SubComps/LogoClouds";
 import Footer from "@/components/Footer";
+import LastestFinancialNews from "@/components/LandingPageComponents/SubComps/LastestFinancialNews";
+import RealStockPrices from "@/components/LandingPageComponents/SubComps/RealStockPrices";
+import RealCryptoPrices from "@/components/LandingPageComponents/SubComps/RealCryptoPrices";
 
 export default function Home() {
   return (
@@ -36,6 +39,11 @@ export default function Home() {
               <MarketSummary />
             </div>
           </section> */}
+          <section className="mb-16 pb-16 border-b-1">
+            <LastestFinancialNews />
+            <RealStockPrices />
+            <RealCryptoPrices />
+          </section>
         </main>
 
         <div
