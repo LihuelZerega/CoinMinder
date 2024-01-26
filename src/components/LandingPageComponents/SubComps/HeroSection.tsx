@@ -4,7 +4,7 @@ import HeroSectionImage from "@/images/handy-money-characters-banknote-and-coin_
 
 function HeroSection() {
   return (
-    <div className="flex flex-col xl:flex-row select-none py-24">
+    <div className="flex flex-col xl:flex-row select-none py-32">
       <section className="flex flex-col items-center xl:items-start justify-center xl:w-1/2">
 
         <div className="flex flex-col lg:flex-row xl:flex-col items-center justify-center xl:items-start font-semibold space-x-0 lg:space-x-3 xl:space-x-0">

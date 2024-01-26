@@ -4,6 +4,6 @@ import Logo from "@/images/handy-coin.png"
 
 export const AcmeLogo = () => (
   <div>
-    <Image src={Logo} width={42} height={42} alt="Logo" className="mr-2"/>
+    <Image src={Logo} width={32} height={32} alt="Logo" className="mr-1"/>
   </div>
 );
