@@ -1,8 +1,7 @@
 import React from "react";
 import Top5Crypto from "@/components/Crypto/Top5Crypto";
-import IndexPrices from "../GlobalCoins/IndexPrices";
-import PesoToDollarResume from "./SubComps/PesoToDollarResume";
-import StockPrices from "../GlobalCoins/StockPrices";
+import IndexPrices from "../../GlobalCoins/IndexPrices";
+import StockPrices from "../../GlobalCoins/StockPrices";
 
 function MarketSummary() {
   return (
@@ -14,7 +13,6 @@ function MarketSummary() {
         <div className="rounded-md"><Top5Crypto /></div>
         <div className="rounded-md"><IndexPrices /></div>
         <div className="rounded-md"><StockPrices /></div>
-        {/* <div className="rounded-md"><PesoToDollarResume /></div> */}
       </section>
     </div>
   );

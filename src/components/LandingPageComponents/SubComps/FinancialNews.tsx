@@ -26,7 +26,7 @@ function FinancialNews() {
 
         const articlesToShow =
           articlesWithImages.length > 0
-            ? articlesWithImages.slice(0, 3)
+            ? articlesWithImages.slice(0, 6)
             : [defaultArticle];
 
         setNewsData(articlesToShow);
