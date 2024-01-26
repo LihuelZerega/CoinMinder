@@ -1,3 +1,4 @@
+"use client"
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Link from "next/link";
@@ -16,25 +17,20 @@ function IndexPrices() {
     { symbol: "^FTSE", name: "FTSE 100", price: null },
     { symbol: "^N225", name: "Nikkei 225", price: null },
     { symbol: "^STOXX50E", name: "Euro Stoxx 50", price: null },
-  ]);  
+  ]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const apiKey = "AU14324B8OVPZ6AD";
+        const apiKey = "tu_api_key_de_finnhub";
 
         const requests = indexData.map(async (index) => {
           try {
             const response = await axios.get(
-              `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${index.symbol}&apikey=${apiKey}`
+              `https://finnhub.io/api/v1/quote?symbol=${index.symbol}&token=${apiKey}`
             );
 
-            const rawPrice = response.data["Global Quote"]?.["05. price"];
-            const price = rawPrice ? parseFloat(rawPrice) : null;
-
-            if (isNaN(price!)) {
-              throw new Error(`Invalid price for ${index.name}`);
-            }
+            const price = response.data.c !== undefined ? response.data.c : null;
 
             return { ...index, price };
           } catch (error) {

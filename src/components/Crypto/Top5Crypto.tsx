@@ -42,13 +42,12 @@ function Top5Crypto() {
   return (
     <div className="border p-4 rounded-md">
       <div className="flex flex-row justify-between text-xs text-gray-400">
-        <h1 className="hover:text-gray-500 cursor-pointer">
-        Featured Crypto
-        </h1>
+        <h1 className="hover:text-gray-500 cursor-pointer">Featured Crypto</h1>
         <Link href="/">
           <h1 className="hover:text-gray-500 cursor-pointer">See More →</h1>
         </Link>
       </div>
+
       <div className="">
         {cryptoData.map((crypto) => (
           <div
@@ -73,7 +72,9 @@ function Top5Crypto() {
                 <p
                   className={getChangeColor(crypto.price_change_percentage_24h)}
                 >
-                  {crypto.price_change_percentage_24h.toFixed(2)}%
+                  {crypto.price_change_percentage_24h > 0
+                    ? `+${crypto.price_change_percentage_24h.toFixed(2)}%`
+                    : `${crypto.price_change_percentage_24h.toFixed(2)}%`}
                 </p>
               </div>
             </div>

@@ -1,57 +1,60 @@
-"use client";
+"use client"
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import React, { useState, useEffect } from "react";
 
-interface StockData {
-  "01. symbol": string;
-  "05. price": string;
-  "09. change": string;
-  "10. change percent": string;
+interface QuoteData {
+  c: number; // Current price
+  d: number; // Change
+  dp: number; // Percent change
+  h: number; // High price of the day
+  l: number; // Low price of the day
+  o: number; // Open price of the day
+  pc: number; // Previous close price
 }
 
-const StockDataComponent: React.FC = () => {
-  const [stocksData, setStocksData] = useState<StockData[]>([]);
+function StockQuote() {
+  const [quoteData, setQuoteData] = useState<QuoteData | null>(null);
+  const symbol = "TSLA"; // Symbol for Tesla
 
   useEffect(() => {
-    const fetchStockData = async () => {
+    const fetchQuoteData = async () => {
       try {
-        const apiKey = "AU14324B8OVPZ6AD";
-        const symbols = ["AAPL", "GOOGL", "MSFT", "AMZN", "TSLA", "FB"];
+        const apiKey = "cmpuqdhr01ql684rolagcmpuqdhr01ql684rolb0";
+        const response = await axios.get(
+          `https://finnhub.io/api/v1/quote?symbol=${symbol}&token=${apiKey}`
+        );
 
-        const promises = symbols.map(async (symbol) => {
-          const response = await axios.get(
-            `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=${apiKey}`
-          );
-          return response.data["Global Quote"] as StockData;
-        });
-
-        const stocksData = await Promise.all(promises);
-        setStocksData(stocksData);
+        setQuoteData(response.data);
       } catch (error) {
-        console.error("Error fetching stock data:", error);
+        console.error(`Error fetching quote data for ${symbol}:`, error);
       }
     };
 
-    fetchStockData();
+    fetchQuoteData();
   }, []);
 
   return (
-    <div>
-      {stocksData.length > 0 ? (
-        stocksData.map((stockData, index) => (
-          <div key={index}>
-            <h2>{stockData["01. symbol"]}</h2>
-            <p>Price: {stockData["05. price"]}</p>
-            <p>Change: {stockData["09. change"]}</p>
-            <p>Percent Change: {stockData["10. change percent"]}</p>
-            <hr />
-          </div>
-        ))
+    <div className="border p-4 rounded-md">
+      <h1 className="text-lg font-semibold mb-3">{symbol} Quote</h1>
+      {quoteData ? (
+        <div>
+          <p>Current Price: ${quoteData.c.toFixed(2)}</p>
+          {quoteData.d !== null && (
+            <p>Change: ${quoteData.d.toFixed(2)}</p>
+          )}
+          {quoteData.dp !== null && (
+            <p>Percent Change: {quoteData.dp.toFixed(2)}%</p>
+          )}
+          <p>High Price of the Day: ${quoteData.h.toFixed(2)}</p>
+          <p>Low Price of the Day: ${quoteData.l.toFixed(2)}</p>
+          <p>Open Price of the Day: ${quoteData.o.toFixed(2)}</p>
+          <p>Previous Close Price: ${quoteData.pc.toFixed(2)}</p>
+        </div>
       ) : (
-        <p>Loading stock data...</p>
+        <p>Loading quote data...</p>
       )}
     </div>
   );
-};
+}
 
-export default StockDataComponent;
+export default StockQuote;
