@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import {
   Navbar,
@@ -7,120 +6,92 @@ import {
   NavbarItem,
   Link,
   Button,
-  DropdownItem,
-  DropdownTrigger,
-  Dropdown,
-  DropdownMenu,
-  NavbarMenuToggle,
   NavbarMenu,
   NavbarMenuItem,
+  NavbarMenuToggle,
 } from "@nextui-org/react";
 import { AcmeLogo } from "./AcmeLogo";
 
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
-  const menuItems = ["Profile"];
+  const menuItems = [
+    "Profile",
+    "Dashboard",
+    "Activity",
+    "Analytics",
+    "System",
+    "Deployments",
+    "My Settings",
+    "Team Settings",
+    "Help & Feedback",
+    "Log Out",
+  ];
 
   return (
-    <Navbar isBordered isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen}>
-      <NavbarContent className="sm:hidden" justify="start">
+    <Navbar onMenuOpenChange={setIsMenuOpen} maxWidth="2xl">
+      <NavbarContent>
         <NavbarMenuToggle
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+          className="sm:hidden"
         />
-      </NavbarContent>
-
-      <NavbarContent className="sm:hidden pr-3" justify="center">
         <NavbarBrand>
-          <Link href="/">
-            <AcmeLogo />
-            <p className="font-bold text-inherit">CoinMinder</p>
-          </Link>
+          <AcmeLogo />
+          <p className="font-bold text-[#fcd535]">COIN MINDER</p>
         </NavbarBrand>
       </NavbarContent>
 
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
-        <NavbarBrand>
-          <Link href="/">
-            <AcmeLogo />
-            <p className="font-bold text-inherit">CoinMinder</p>
-          </Link>
-        </NavbarBrand>
-        <Dropdown>
-          <NavbarItem>
-            <DropdownTrigger>
-              <Button
-                disableRipple
-                className="p-0 bg-transparent data-[hover=true]:bg-transparent"
-                radius="sm"
-                variant="light"
-              >
-                Cryptocurrencies
-              </Button>
-            </DropdownTrigger>
-          </NavbarItem>
-          <DropdownMenu
-            aria-label="ACME features"
-            className="w-[340px]"
-            itemClasses={{
-              base: "gap-4",
-            }}
-          >
-            <DropdownItem
-              key="Coins"
-              href="/crypto/coins"
-              description="ACME scales apps to meet user demand, automagically, based on load."
-            >
-              Coins
-            </DropdownItem>
-
-            <DropdownItem
-              key="Categories"
-              href="/crypto/categories"
-              description="Real-time metrics to debug issues. Slow query added? We’ll show you exactly where."
-            >
-              Categories
-            </DropdownItem>
-            <DropdownItem
-              key="Exchanges"
-              href="/crypto/exchanges"
-              description="ACME runs on ACME, join us and others serving requests at web scale."
-            >
-              Exchanges
-            </DropdownItem>
-            <DropdownItem
-              key="NFTS"
-              href="/crypto/nfts"
-              description="Applications stay on the grid with high availability and high uptime guarantees."
-            >
-              NFTS
-            </DropdownItem>
-          </DropdownMenu>
-        </Dropdown>
         <NavbarItem>
-          <Link color="foreground" href="/globalcoins">
-            Global Currencies
+          <Link color="foreground" href="/news">
+            News
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link color="foreground" href="/pesotodollar">
-            ARS to USD
+          <Link color="foreground" href="/indexs">
+            Indexs
+          </Link>
+        </NavbarItem>
+        <NavbarItem>
+          <Link color="foreground" href="/stocks">
+            Stocks
+          </Link>
+        </NavbarItem>
+        <NavbarItem>
+          <Link color="foreground" href="/crypto">
+            Cryptocurrencies
           </Link>
         </NavbarItem>
       </NavbarContent>
-
+      <NavbarContent justify="end">
+        <NavbarItem className="hidden lg:flex">
+          <Link className="text-[#181818]" href="/login">
+            Login
+          </Link>
+        </NavbarItem>
+        <NavbarItem>
+          <Button
+            as={Link}
+            className="bg-[#fcd535] hover:bg-[#e5c333] text-[#181818]"
+            href="/singup"
+            variant="flat"
+          >
+            Sign Up
+          </Button>
+        </NavbarItem>
+      </NavbarContent>
       <NavbarMenu>
         {menuItems.map((item, index) => (
           <NavbarMenuItem key={`${item}-${index}`}>
             <Link
-              className="w-full"
               color={
                 index === 2
-                  ? "warning"
+                  ? "primary"
                   : index === menuItems.length - 1
                   ? "danger"
                   : "foreground"
               }
+              className="w-full"
               href="#"
               size="lg"
             >

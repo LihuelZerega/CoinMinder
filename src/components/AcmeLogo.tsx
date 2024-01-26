@@ -1,8 +1,9 @@
+import Image from "next/image";
 import React from "react";
-import { TbCoinBitcoin } from "react-icons/tb";
+import Logo from "@/images/handy-coin.png"
 
 export const AcmeLogo = () => (
   <div>
-    <TbCoinBitcoin className="text-2xl mr-1"/>
+    <Image src={Logo} width={42} height={42} alt="Logo" className="mr-2"/>
   </div>
 );
