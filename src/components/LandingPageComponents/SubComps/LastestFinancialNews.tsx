@@ -21,9 +21,9 @@ const LatestFinancialNews = () => {
         initial="hidden"
         animate="visible"
         variants={containerVariants}
-        className="hidden md:block w-full lg:w-1/2 mb-8 lg:mb-0"
+        className="hidden lg:block w-full lg:w-1/2 mb-8 lg:mb-0"
       >
-        <motion.div variants={itemVariants} className="flex flex-col items-center justify-center">
+        <motion.div variants={itemVariants} className="flex flex-col items-center justify-center lg:justify-start lg:items-start xl:justify-start xl:items-start  ">
           <Image src={IphoneImageExample} alt="Iphone Mockup" />
         </motion.div>
       </motion.section>
