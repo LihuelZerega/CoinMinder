@@ -28,8 +28,8 @@ function FinancialExplorer() {
         </div>
       </section>
 
-      <section className="flex flex-col md:flex-row gap-8">
-        <div className="w-1/3">
+      <section className="flex flex-col lg:flex-row gap-8">
+        <div className="lg:w-1/3">
           <div className="flex flex-col items-start justify-between border-1 p-6 rounded-md h-full">
             <div>
               <h1 className="text-2xl font-semibold tracking-tight sm:text-4xl text-[#38bdf8]">
@@ -52,7 +52,7 @@ function FinancialExplorer() {
           </div>
         </div>
 
-        <div className="w-1/3">
+        <div className="lg:w-1/3">
           <div className="flex flex-col items-start justify-between border-1 p-6 rounded-md h-full">
             <div>
               <h1 className="text-2xl font-semibold tracking-tight sm:text-4xl text-[#38bdf8]">
@@ -75,7 +75,7 @@ function FinancialExplorer() {
           </div>
         </div>
 
-        <div className="w-1/3">
+        <div className="lg:w-1/3">
           <div className="flex flex-col items-start justify-between border-1 p-6 rounded-md h-full">
             <div>
               <h1 className="text-2xl font-semibold tracking-tight sm:text-4xl text-[#38bdf8]">

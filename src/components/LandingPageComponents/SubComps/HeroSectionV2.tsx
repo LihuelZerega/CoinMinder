@@ -14,6 +14,15 @@ const navigation = [
 
 export default function Example() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const controls = useAnimation();
+
+  const animateContent = async () => {
+    await controls.start({ opacity: 1, y: 0 });
+  };
+
+  useEffect(() => {
+    animateContent();
+  }, []);
 
   return (
     <div className="bg-white">
@@ -23,7 +32,7 @@ export default function Example() {
           aria-label="Global"
         >
           <div className="flex lg:flex-1">
-            <a href="#" className="-m-1.5 p-1.5">
+            <a href="/" className="-m-1.5 p-1.5">
               <span className="sr-only">Bull Swap</span>
               <img
                 className="h-8 w-auto"
@@ -103,7 +112,7 @@ export default function Example() {
                 </div>
                 <div className="py-6">
                   <a
-                    href="#"
+                    href="/login"
                     className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                   >
                     Log in
@@ -129,15 +138,6 @@ export default function Example() {
           />
         </div>
         <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
-          {/* <div className="hidden sm:mb-8 sm:flex sm:justify-center">
-            <div className="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
-              Announcing our next round of funding.{" "}
-              <a href="#" className="font-semibold text-[#38bdf8]">
-                <span className="absolute inset-0" aria-hidden="true" />
-                Read more <span aria-hidden="true">&rarr;</span>
-              </a>
-            </div>
-          </div> */}
           <div className="text-center">
             <h1 className="text-4xl font-bold tracking-tight sm:text-6xl text-[#38bdf8]">
               Real-time data to boost your investments

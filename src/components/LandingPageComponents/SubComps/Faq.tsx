@@ -23,11 +23,11 @@ export default function App() {
   return (
     <div className="flex flex-col items-center justify-center mb-12 max-w-8xl">
       <div className="mx-auto max-w-8xl px-6 lg:px-8">
-        <h2 className="text-center text-2xl font-semibold leading-8 text-gray-900 mb-10">
+        <h2 className="text-center text-2xl font-semibold leading-8 text-gray-600 mb-10">
           Unlocking Financial Wisdom: Your FAQ Guide
         </h2>
       </div>
-      <Accordion selectionMode="multiple">
+      <Accordion selectionMode="multiple" className="text-gray-500">
         <AccordionItem
           key="1"
           aria-label="What type of financial information can I find on this platform?"
