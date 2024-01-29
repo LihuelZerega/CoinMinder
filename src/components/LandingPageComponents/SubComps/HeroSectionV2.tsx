@@ -1,4 +1,6 @@
+"use client";
 import { useState } from "react";
+import { motion, useAnimation } from "framer-motion";
 import { Dialog } from "@headlessui/react";
 import { HiBars3 } from "react-icons/hi2";
 import { HiOutlineXMark } from "react-icons/hi2";
@@ -14,15 +16,30 @@ const navigation = [
 
 export default function Example() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const controls = useAnimation();
 
-  const animateContent = async () => {
-    await controls.start({ opacity: 1, y: 0 });
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { duration: 1, ease: "easeInOut" } },
   };
 
-  useEffect(() => {
-    animateContent();
-  }, []);
+  const titleVariants = {
+    hidden: { opacity: 0, y: -50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, delay: 0.5 } },
+  };
+
+  const textVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, delay: 0.8 } },
+  };
+
+  const buttonVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: { duration: 0.8, delay: 1.2 },
+    },
+  };
 
   return (
     <div className="bg-white">
@@ -137,18 +154,32 @@ export default function Example() {
             }}
           />
         </div>
-        <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56"
+        >
           <div className="text-center">
-            <h1 className="text-4xl font-bold tracking-tight sm:text-6xl text-[#38bdf8]">
+            <motion.h1
+              variants={titleVariants}
+              className="text-4xl font-bold tracking-tight sm:text-6xl text-[#38bdf8]"
+            >
               Real-time data to boost your investments
-            </h1>
-            <p className="pt-6 text-lg leading-8 text-gray-600">
+            </motion.h1>
+            <motion.p
+              variants={textVariants}
+              className="pt-6 text-lg leading-8 text-gray-600"
+            >
               Offer you real-time data to enhance your investment experience.
               From current stock prices to indices and cryptocurrencies, our
               platform is designed to provide you with the most recent and
               accurate information.
-            </p>
-            <div className="mt-10 flex items-center justify-center gap-x-6">
+            </motion.p>
+            <motion.div
+              variants={buttonVariants}
+              className="mt-10 flex items-center justify-center gap-x-6"
+            >
               <a
                 href="#"
                 className="rounded-md bg-[#38bdf8] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#35aee3] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#38bdf8]"
@@ -161,9 +192,9 @@ export default function Example() {
               >
                 Learn more <span aria-hidden="true">→</span>
               </a>
-            </div>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
         <div
           className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
           aria-hidden="true"
