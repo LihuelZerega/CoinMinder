@@ -9,14 +9,14 @@ function Highlights() {
     <div>
       <CryptoStats />
       <div className="flex flex-row">
-        <section className="w-1/3 gap-8">
+        <section className="w-1/3">
           <MarketCap />
           <VolumeH />
         </section>
-        <section className="w-1/3"></section>
         <section className="w-1/3">
           <Trending />
         </section>
+        <section className="w-1/3">asdf</section>
       </div>
     </div>
   );
