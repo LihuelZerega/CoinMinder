@@ -1,8 +1,10 @@
 "use client";
 import React from "react";
 import NavBar from "../NavBar";
-import CryptoPricesTable from "@/components/Crypto/CryptoPricesTable"
+import CryptoPricesTable from "@/components/Crypto/CryptoPricesTable";
 import Footer from "@/components/Footer";
+import Link from "next/link";
+import Highlights from "./Highlights";
 
 function Crypto() {
   return (
@@ -12,9 +14,24 @@ function Crypto() {
         <section className="border-b-1 pb-12 mb-12">
           <h1 className="mb-4 text-lg font-extralight">Crypto</h1>
           <h1 className="font-medium text-4xl">Today's Crypto Prices</h1>
+          <h1 className="py-2 font-medium text-sm text-gray-400">
+            Information provided by{" "}
+            <span>
+              {" "}
+              <Link
+                className="cursor-pointer hover:text-gray-500"
+                href="https://www.coingecko.com/"
+              >
+                "CoinGecko.com"
+              </Link>
+            </span>
+          </h1>
+        </section>
+        <section className="border-b-1 pb-12 mb-12">
+          <Highlights />
         </section>
         <section className="mb-12">
-          <CryptoPricesTable />
+          {/* <CryptoPricesTable /> */}
         </section>
       </main>
       <Footer />

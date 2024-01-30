@@ -8,8 +8,9 @@ import {
   TableRow,
   TableCell,
   Spinner,
-  Tooltip,
-  Button,
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
 } from "@nextui-org/react";
 import { FaInfoCircle } from "react-icons/fa";
 import Image from "next/image";
@@ -39,7 +40,7 @@ export default function CryptoPricesTable() {
           {
             params: {
               vs_currency: "usd",
-              ids: "bitcoin, ethereum",
+              ids: "bitcoin,ethereum,ripple,cardano,polkadot,binancecoin,litecoin,chainlink,stellar,usd-coin,polkadot,uniswap",
             },
           }
         );
@@ -73,7 +74,6 @@ export default function CryptoPricesTable() {
       classNames={{
         table: "min-h-[400px]",
       }}
-      className="border rounded-md"
       shadow="none"
     >
       <TableHeader>
@@ -90,53 +90,103 @@ export default function CryptoPricesTable() {
         <TableColumn key="market_cap">
           <div className="flex flex-row items-center space-x-2">
             <h1> Market Cap (USD) </h1>
-            <Tooltip content="I am a tooltip" placement="bottom-end">
-              <button>
-                <FaInfoCircle />{" "}
-              </button>
-            </Tooltip>
+            <Popover placement="bottom-end" showArrow={true}>
+              <PopoverTrigger>
+                <button>
+                  <FaInfoCircle />{" "}
+                </button>
+              </PopoverTrigger>
+              <PopoverContent>
+                <div className="px-1 py-2">
+                  <div className="text-tiny font-medium text-gray-400 space-y-1">
+                    <h1>
+                      The total market value of a cryptocurrency's circulating
+                      supply.
+                    </h1>
+                    <h1>
+                      It is analogous to the free-float capitalization in the
+                      stock market.
+                    </h1>
+                    <h1>Market Cap = Current Price x Circulating Supply.</h1>
+                  </div>
+                </div>
+              </PopoverContent>
+            </Popover>
           </div>
         </TableColumn>
         <TableColumn key="total_volume">
           <div className="flex flex-row items-center space-x-2">
             <h1> Total Volume</h1>
-            <Tooltip content="I am a tooltip" placement="bottom-end">
-              <button>
-                <FaInfoCircle />{" "}
-              </button>
-            </Tooltip>
+            <Popover placement="bottom-end" showArrow={true}>
+              <PopoverTrigger>
+                <button>
+                  <FaInfoCircle />{" "}
+                </button>
+              </PopoverTrigger>
+              <PopoverContent>
+                <div className="px-1 py-2">
+                  <div className="text-tiny font-medium text-gray-400 space-y-1">
+                    <h1>A measure of the amount of cryptocurrency</h1>
+                    <h1>that has been traded in all of history.</h1>
+                  </div>
+                </div>
+              </PopoverContent>
+            </Popover>
           </div>
         </TableColumn>
         <TableColumn key="circulating_supply">
           <div className="flex flex-row items-center space-x-2">
             <h1> Circulating Supply</h1>
-            <Tooltip content="I am a tooltip" placement="bottom-end">
-              <button>
-                <FaInfoCircle />{" "}
-              </button>
-            </Tooltip>
+            <Popover placement="bottom-end" showArrow={true}>
+              <PopoverTrigger>
+                <button>
+                  <FaInfoCircle />{" "}
+                </button>
+              </PopoverTrigger>
+              <PopoverContent>
+                <div className="px-1 py-2">
+                  <div className="text-tiny font-medium text-gray-400 space-y-1">
+                    <h1>The amount of coins that are circulating in the</h1>
+                    <h1>market and are in public hands. It is analogous to</h1>
+                    <h1>the flowing shares in the stock market.</h1>
+                  </div>
+                </div>
+              </PopoverContent>
+            </Popover>
           </div>
         </TableColumn>
       </TableHeader>
 
       <TableBody
+        className="py-4"
         items={cryptoData}
         isLoading={isLoading}
-        loadingContent={<Spinner/>}
+        loadingContent={<Spinner />}
       >
         {(item) => (
           <TableRow
             key={item.name}
-            className="bg-transparent hover:bg-gray-100 cursor-pointer border-b-1 py-6"
+            className="bg-transparent hover:bg-gray-100 cursor-pointer border-b-1"
           >
             <TableCell>
               {" "}
               <Image src={item.image} width={30} height={30} alt={item.image} />
             </TableCell>
-            <TableCell className="font-semibold text-gray-950">{item.name} <h1 className="text-sm text-gray-600">({item.symbol.toUpperCase()})</h1></TableCell>
-            <TableCell className="font-semibold text-gray-950">${item.current_price.toFixed(2)}</TableCell>
-            <TableCell className="font-semibold text-gray-950">${item.low_24h.toFixed(2)}</TableCell>
-            <TableCell className="font-semibold text-gray-950">${item.high_24h.toFixed(2)}</TableCell>
+            <TableCell className="font-semibold text-gray-950">
+              {item.name}{" "}
+              <h1 className="text-sm text-gray-600">
+                ({item.symbol.toUpperCase()})
+              </h1>
+            </TableCell>
+            <TableCell className="font-semibold text-gray-950">
+              ${item.current_price.toFixed(2)}
+            </TableCell>
+            <TableCell className="font-semibold text-gray-950">
+              ${item.low_24h.toFixed(2)}
+            </TableCell>
+            <TableCell className="font-semibold text-gray-950">
+              ${item.high_24h.toFixed(2)}
+            </TableCell>
             <TableCell
               className={
                 item.price_change_percentage_24h > 0
@@ -148,8 +198,12 @@ export default function CryptoPricesTable() {
                 ? `+${item.price_change_percentage_24h.toFixed(2)}%`
                 : `${item.price_change_percentage_24h.toFixed(2)}%`}
             </TableCell>
-            <TableCell className="font-semibold text-gray-950">{formatMarketCap(item.market_cap)}</TableCell>
-            <TableCell className="font-semibold text-gray-950">{formatTotalVolume(item.total_volume)}</TableCell>
+            <TableCell className="font-semibold text-gray-950">
+              {formatMarketCap(item.market_cap)}
+            </TableCell>
+            <TableCell className="font-semibold text-gray-950">
+              {formatTotalVolume(item.total_volume)}
+            </TableCell>
             <TableCell className="font-semibold text-gray-950">
               {formatCirculatingSupply(
                 item.circulating_supply,
