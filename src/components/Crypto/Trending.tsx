@@ -63,7 +63,7 @@ function Trending() {
   }, []);
 
   return (
-    <div className="border rounded-md p-4 font-semibold">
+    <div className="w-full border rounded-md p-4 font-semibold">
       <div className="flex flex-row items-center justify-between">
         <div className="flex flex-row items-center space-x-1">
           <Image

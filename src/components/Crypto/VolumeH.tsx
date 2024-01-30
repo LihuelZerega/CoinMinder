@@ -33,7 +33,7 @@ function VolumeH() {
   };
 
   return (
-    <div className="mt-4 border rounded-md p-4 font-semibold">
+    <div className="border rounded-md p-4 font-semibold">
       <div className="flex flex-row items-center justify-between">
         <div>
           <p className="text-xl">${volumeH?.toLocaleString()}</p>

@@ -54,13 +54,11 @@ function LarguestGainers() {
             })
           );
 
-          // Ordenamos las monedas por el cambio porcentual en las últimas 24 horas de forma descendente
           detailedCoins.sort(
             (a, b) =>
               b.price_change_percentage_24h - a.price_change_percentage_24h
           );
 
-          // Tomamos las tres monedas con el mayor cambio porcentual
           const top3Coins = detailedCoins.slice(0, 3);
 
           setTrendingCoins(top3Coins);
@@ -74,7 +72,7 @@ function LarguestGainers() {
   }, []);
 
   return (
-    <div className="border rounded-md p-4 font-semibold">
+    <div className="w-full border rounded-md p-4 font-semibold">
       <div className="flex flex-row items-center justify-between">
         <div className="flex flex-row items-center space-x-1">
           <Image

@@ -1,10 +1,10 @@
 "use client";
 import React from "react";
 import NavBar from "../NavBar";
-import CryptoPricesTable from "@/components/Crypto/CryptoPricesTable";
 import Footer from "@/components/Footer";
 import Link from "next/link";
 import Highlights from "./Highlights";
+import CryptoTabs from "./CryptoTabs";
 
 function Crypto() {
   return (
@@ -31,7 +31,7 @@ function Crypto() {
           <Highlights />
         </section>
         <section className="mb-12">
-          {/* <CryptoPricesTable /> */}
+          <CryptoTabs />
         </section>
       </main>
       <Footer />
