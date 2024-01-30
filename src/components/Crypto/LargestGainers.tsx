@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Image from "next/image";
-import TrendingIcon from "@/images/TrendingIcon.png";
+import RocketIcon from "@/images/RocketIcon.png";
 
 interface TrendingCoin {
   id: string;
@@ -13,9 +13,10 @@ interface DetailedTrendingCoin extends TrendingCoin {
   symbol: string;
   current_price: number;
   price_change_percentage_24h: number;
+  market_cap: number;
 }
 
-function Trending() {
+function LarguestGainers() {
   const [trendingCoins, setTrendingCoins] = useState<DetailedTrendingCoin[]>(
     []
   );
@@ -48,11 +49,21 @@ function Trending() {
                 current_price: coinDetails.data.market_data.current_price.usd,
                 price_change_percentage_24h:
                   coinDetails.data.market_data.price_change_percentage_24h,
+                market_cap: coinDetails.data.market_data.marketcap.usd,
               };
             })
           );
 
-          setTrendingCoins(detailedCoins);
+          // Ordenamos las monedas por el cambio porcentual en las últimas 24 horas de forma descendente
+          detailedCoins.sort(
+            (a, b) =>
+              b.price_change_percentage_24h - a.price_change_percentage_24h
+          );
+
+          // Tomamos las tres monedas con el mayor cambio porcentual
+          const top3Coins = detailedCoins.slice(0, 3);
+
+          setTrendingCoins(top3Coins);
         }
       } catch (error) {
         console.error("Error fetching trending coins:", error);
@@ -67,24 +78,33 @@ function Trending() {
       <div className="flex flex-row items-center justify-between">
         <div className="flex flex-row items-center space-x-1">
           <Image
-            src={TrendingIcon}
+            src={RocketIcon}
             width={18}
             height={18}
-            alt={"TrendingIcon"}
+            alt={"RocketIcon"}
           />
-          <h2 className="text-gray-400 hover:text-gray-500 text-xs font-semibold cursor-pointer">Coins Trending</h2>
+          <h2 className="text-gray-400 hover:text-gray-500 text-xs font-semibold cursor-pointer">
+            Largest Gainers
+          </h2>
         </div>
-        <h2 className="text-gray-400 hover:text-gray-500 text-xs font-semibold cursor-pointer">See More →</h2>
+        <h2 className="text-gray-400 hover:text-gray-500 text-xs font-semibold cursor-pointer">
+          See More →
+        </h2>
       </div>
 
       <ul className="flex flex-row">
         {trendingCoins.map((coin) => (
           <li key={coin.id}>
             <div className="flex flex-col items-center space-y-2">
-              <Image src={coin.image} width={30} height={30} alt={coin.name} />
+              <Image
+                src={coin.image}
+                width={30}
+                height={30}
+                alt={coin.name}
+              />
               <div>{coin.name}</div>
               <div>{coin.symbol}</div>
-              <div>${coin.current_price.toFixed(2)}</div>
+              <div>${coin.market_cap.toLocaleString()}</div>
               <div
                 style={{
                   color: coin.price_change_percentage_24h > 0 ? "green" : "red",
@@ -101,4 +121,4 @@ function Trending() {
   );
 }
 
-export default Trending;
+export default LarguestGainers;

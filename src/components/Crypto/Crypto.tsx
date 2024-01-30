@@ -31,7 +31,7 @@ function Crypto() {
           <Highlights />
         </section>
         <section className="mb-12">
-          <CryptoPricesTable />
+          {/* <CryptoPricesTable /> */}
         </section>
       </main>
       <Footer />

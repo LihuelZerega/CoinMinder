@@ -40,7 +40,7 @@ export default function CryptoPricesTable() {
           {
             params: {
               vs_currency: "usd",
-              ids: "bitcoin,ethereum,ripple,cardano,polkadot,binancecoin,litecoin,chainlink,stellar,usd-coin,polkadot,uniswap",
+              ids: "bitcoin,ethereum,ripple,cardano,polkadot",
             },
           }
         );

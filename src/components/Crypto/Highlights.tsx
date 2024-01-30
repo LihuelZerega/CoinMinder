@@ -3,6 +3,7 @@ import MarketCap from "./MarketCap";
 import VolumeH from "./VolumeH";
 import Trending from "./Trending";
 import CryptoStats from "./CryptoStats";
+import LargestGainers from "@/components/Crypto/LargestGainers";
 
 function Highlights() {
   return (
@@ -16,7 +17,9 @@ function Highlights() {
         <section className="w-1/3">
           <Trending />
         </section>
-        <section className="w-1/3">asdf</section>
+        <section className="w-1/3">
+          <LargestGainers />
+        </section>
       </div>
     </div>
   );
