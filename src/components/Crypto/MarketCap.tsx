@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { FiTrendingUp, FiTrendingDown } from 'react-icons/fi';
 
 interface MarketCapData {
-  market_cap_change_percentage_24h_usd: number;
-  market_cap_usd: number;
+  market_cap_change_percentage_24h_usd?: number;
+  market_cap_usd?: number;
 }
 
 function MarketCap() {
@@ -32,14 +33,37 @@ function MarketCap() {
     fetchMarketCapData();
   }, []);
 
+  const getChangeColor = (percentage?: number) => {
+    return percentage !== undefined && percentage > 0 ? 'green' : percentage !== undefined && percentage < 0 ? 'red' : 'black';
+  };
+
+  const getChangeSymbol = (percentage?: number) => {
+    return percentage !== undefined && percentage > 0 ? '▲' : percentage !== undefined && percentage < 0 ? '▼' : '';
+  };
+
+  const TrendingIcon = () => {
+    if (marketCapData?.market_cap_change_percentage_24h_usd === undefined) {
+      return null;
+    }
+
+    if (marketCapData.market_cap_change_percentage_24h_usd > 0) {
+      return <FiTrendingUp style={{ color: 'green' }} />;
+    } else if (marketCapData.market_cap_change_percentage_24h_usd < 0) {
+      return <FiTrendingDown style={{ color: 'red' }} />;
+    }
+
+    return null;
+  };
+
   return (
     <div>
       <h2>Market Cap</h2>
       {marketCapData && (
         <div>
-          <p>Market Cap: ${marketCapData.market_cap_usd.toLocaleString()}</p>
-          <p>
-            Change (24h): {marketCapData.market_cap_change_percentage_24h_usd.toFixed(2)}%
+          <p>Market Cap: ${marketCapData.market_cap_usd?.toLocaleString()}</p>
+          <p style={{ color: getChangeColor(marketCapData.market_cap_change_percentage_24h_usd) }}>
+            Change (24h): <TrendingIcon />
+            {Math.abs(marketCapData.market_cap_change_percentage_24h_usd!).toFixed(2)}%
           </p>
         </div>
       )}
