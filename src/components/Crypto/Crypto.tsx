@@ -13,7 +13,7 @@ function Crypto() {
       <main className="mx-auto max-w-7xl px-6 py-6 lg:px-8 mt-32 mb-24">
         <section className="border-b-1 pb-12 mb-6">
           <h1 className="mb-4 text-lg font-extralight">Crypto</h1>
-          <h1 className="font-medium text-4xl">Today&apos;s Crypto Prices</h1>
+          <h1 className="font-medium text-4xl">Todays Crypto Prices</h1>
           <h1 className="py-2 font-medium text-sm text-gray-400">
             Information provided by{" "}
             <span>
