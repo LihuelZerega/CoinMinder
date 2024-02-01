@@ -100,7 +100,7 @@ export default function CryptoPricesTable() {
                 <div className="px-1 py-2">
                   <div className="text-tiny font-medium text-gray-400 space-y-1">
                     <h1>
-                      The total market value of a cryptocurrency's circulating
+                      The total market value of a cryptocurrencys circulating
                       supply.
                     </h1>
                     <h1>
