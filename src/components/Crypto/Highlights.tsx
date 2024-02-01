@@ -10,11 +10,9 @@ function Highlights() {
     <div>
       <CryptoStats />
       <div className="flex flex-row gap-8">
-        <section className="flex flex-col gap-8 w-1/3">
+        <section className="w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
           <MarketCap />
           <VolumeH />
-        </section>
-        <section className="flex flex-row gap-8 w-2/3">
           <Trending />
           <LargestGainers />
         </section>

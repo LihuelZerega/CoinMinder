@@ -17,6 +17,7 @@ interface DetailedTrendingCoin extends TrendingCoin {
 }
 
 function LarguestGainers() {
+  const [error, setError] = useState<Error | null>(null);
   const [trendingCoins, setTrendingCoins] = useState<DetailedTrendingCoin[]>(
     []
   );
@@ -64,7 +65,8 @@ function LarguestGainers() {
           setTrendingCoins(top3Coins);
         }
       } catch (error) {
-        console.error("Error fetching trending coins:", error);
+        console.error("Error fetching Larguest Gainers:", error);
+        setError(error as Error);
       }
     };
 
@@ -75,12 +77,7 @@ function LarguestGainers() {
     <div className="w-full border rounded-md p-4 font-semibold">
       <div className="flex flex-row items-center justify-between">
         <div className="flex flex-row items-center space-x-1">
-          <Image
-            src={RocketIcon}
-            width={18}
-            height={18}
-            alt={"RocketIcon"}
-          />
+          <Image src={RocketIcon} width={18} height={18} alt={"RocketIcon"} />
           <h2 className="text-gray-400 hover:text-gray-500 text-xs font-semibold cursor-pointer">
             Largest Gainers
           </h2>
@@ -94,12 +91,7 @@ function LarguestGainers() {
         {trendingCoins.map((coin) => (
           <li key={coin.id}>
             <div className="flex flex-col items-center space-y-2">
-              <Image
-                src={coin.image}
-                width={30}
-                height={30}
-                alt={coin.name}
-              />
+              <Image src={coin.image} width={30} height={30} alt={coin.name} />
               <div>{coin.name}</div>
               <div>{coin.symbol}</div>
               <div>${coin.market_cap.toLocaleString()}</div>
@@ -115,6 +107,11 @@ function LarguestGainers() {
           </li>
         ))}
       </ul>
+      {error && (
+        <div className="text-red-500 text-sm text-center">
+          Error fetching data: {error.message}
+        </div>
+      )}
     </div>
   );
 }

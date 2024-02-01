@@ -16,7 +16,7 @@ function FinancialExplorer() {
             </p>
           </div>
           <div>
-            <Link href="/financial-news">
+            <Link href="/news">
               <button className="flex flex-row items-center rounded-md bg-[#38bdf8] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#35aee3] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#38bdf8]">
                 Learn More
                 <span className="ml-1">
@@ -40,7 +40,7 @@ function FinancialExplorer() {
               </p>
             </div>
             <div>
-              <Link href="/market-indices">
+              <Link href="/indexs">
                 <button className="flex flex-row items-center rounded-md bg-[#38bdf8] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#35aee3] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#38bdf8]">
                   View Information
                   <span className="ml-1">
@@ -63,7 +63,7 @@ function FinancialExplorer() {
               </p>
             </div>
             <div>
-              <Link href="/stock-information">
+              <Link href="/stocks">
                 <button className="flex flex-row items-center rounded-md bg-[#38bdf8] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#35aee3] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#38bdf8]">
                   View Information
                   <span className="ml-1">
@@ -86,7 +86,7 @@ function FinancialExplorer() {
               </p>
             </div>
             <div>
-              <Link href="/crypto-insights">
+              <Link href="/crypto">
                 <button className="flex flex-row items-center rounded-md bg-[#38bdf8] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#35aee3] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#38bdf8]">
                   View Information
                   <span className="ml-1">

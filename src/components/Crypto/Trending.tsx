@@ -19,6 +19,7 @@ function Trending() {
   const [trendingCoins, setTrendingCoins] = useState<DetailedTrendingCoin[]>(
     []
   );
+  const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
     const fetchTrendingCoins = async () => {
@@ -56,6 +57,7 @@ function Trending() {
         }
       } catch (error) {
         console.error("Error fetching trending coins:", error);
+        setError(error as Error);
       }
     };
 
@@ -72,9 +74,13 @@ function Trending() {
             height={18}
             alt={"TrendingIcon"}
           />
-          <h2 className="text-gray-400 hover:text-gray-500 text-xs font-semibold cursor-pointer">Coins Trending</h2>
+          <h2 className="text-gray-400 hover:text-gray-500 text-xs font-semibold cursor-pointer">
+            Coins Trending
+          </h2>
         </div>
-        <h2 className="text-gray-400 hover:text-gray-500 text-xs font-semibold cursor-pointer">See More →</h2>
+        <h2 className="text-gray-400 hover:text-gray-500 text-xs font-semibold cursor-pointer">
+          See More →
+        </h2>
       </div>
 
       <ul className="flex flex-row">
@@ -97,6 +103,11 @@ function Trending() {
           </li>
         ))}
       </ul>
+      {error && (
+        <div className="text-red-500 text-sm text-center">
+          Error fetching data: {error.message}
+        </div>
+      )}
     </div>
   );
 }

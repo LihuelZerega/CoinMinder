@@ -8,6 +8,7 @@ interface MarketCapData {
 }
 
 function MarketCap() {
+  const [error, setError] = useState<Error | null>(null);
   const [marketCapData, setMarketCapData] = useState<MarketCapData | null>(
     null
   );
@@ -30,6 +31,7 @@ function MarketCap() {
         }
       } catch (error) {
         console.error("Error fetching market cap data:", error);
+        setError(error as Error);
       }
     };
 
@@ -67,10 +69,10 @@ function MarketCap() {
   };
 
   return (
-    <div className="border rounded-md p-4 font-semibold">
+    <div className="w-full border rounded-md p-4 font-semibold">
       {marketCapData && (
         <div className="flex flex-row items-center justify-between">
-          <div >
+          <div>
             <p className="text-xl">
               ${marketCapData.market_cap_usd?.toLocaleString()}
             </p>
@@ -83,7 +85,9 @@ function MarketCap() {
                   ),
                 }}
               >
-                {getChangeSymbol(marketCapData.market_cap_change_percentage_24h_usd)}
+                {getChangeSymbol(
+                  marketCapData.market_cap_change_percentage_24h_usd
+                )}
                 {Math.abs(
                   marketCapData.market_cap_change_percentage_24h_usd!
                 ).toFixed(2)}
@@ -94,6 +98,11 @@ function MarketCap() {
           <div className="text-6xl">
             <TrendingIcon />
           </div>
+        </div>
+      )}
+      {error && (
+        <div className="text-red-500 text-sm text-center">
+          Error fetching data: {error.message}
         </div>
       )}
     </div>

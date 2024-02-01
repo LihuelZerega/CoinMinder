@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 function CryptoStats() {
   const [cryptoStats, setCryptoStats] = useState({
@@ -14,7 +14,7 @@ function CryptoStats() {
     const fetchCryptoStats = async () => {
       try {
         const response = await axios.get(
-          'https://api.coingecko.com/api/v3/global'
+          "https://api.coingecko.com/api/v3/global"
         );
 
         if (response.data && response.data.data) {
@@ -29,7 +29,7 @@ function CryptoStats() {
           setCryptoStats(data);
         }
       } catch (error) {
-        console.error('Error fetching crypto stats:', error);
+        console.error("Error fetching crypto stats:", error);
       }
     };
 
@@ -37,24 +37,24 @@ function CryptoStats() {
   }, []);
 
   return (
-    <div className="mb-6 flex flex-row items-center justify-between">
-      <div className="flex flex-row items-center space-x-2 font-semibold">
-        <h2 className="text-gray-400 text-sm">Active Cryptocurrencies:</h2>
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 mb-6">
+      <div className="flex flex-row items-center space-x-2 font-semibold bg-gray-100 p-4 rounded-md">
+        <h2 className="text-gray-400 text-sm">Active Currencies:</h2>
         <p className="text-md">{cryptoStats.activeCryptocurrencies}</p>
       </div>
-      <div className="flex flex-row items-center space-x-2 font-semibold">
+      <div className="flex flex-row items-center space-x-2 font-semibold bg-gray-100 p-4 rounded-md">
         <h2 className="text-gray-400 text-sm">Upcoming ICOs:</h2>
         <p className="text-md">{cryptoStats.upcomingICOs}</p>
       </div>
-      <div className="flex flex-row items-center space-x-2 font-semibold">
+      <div className="flex flex-row items-center space-x-2 font-semibold bg-gray-100 p-4 rounded-md">
         <h2 className="text-gray-400 text-sm">Ongoing ICOs:</h2>
         <p className="text-md">{cryptoStats.ongoingICOs}</p>
       </div>
-      <div className="flex flex-row items-center space-x-2 font-semibold">
+      <div className="flex flex-row items-center space-x-2 font-semibold bg-gray-100 p-4 rounded-md">
         <h2 className="text-gray-400 text-sm">Ended ICOs:</h2>
         <p className="text-md">{cryptoStats.endedICOs}</p>
       </div>
-      <div className="flex flex-row items-center space-x-2 font-semibold">
+      <div className="flex flex-row items-center space-x-2 font-semibold bg-gray-100 p-4 rounded-md">
         <h2 className="text-gray-400 text-sm">Markets:</h2>
         <p className="text-md">{cryptoStats.markets}</p>
       </div>

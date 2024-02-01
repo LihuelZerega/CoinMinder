@@ -4,6 +4,7 @@ import { FiTrendingUp, FiTrendingDown } from "react-icons/fi";
 
 function VolumeH() {
   const [volumeH, setH24Volume] = useState<number | undefined>(0);
+  const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
     const fetch24hVolume = async () => {
@@ -14,6 +15,7 @@ function VolumeH() {
         setH24Volume(response.data.data.total_volume.usd);
       } catch (error) {
         console.error("Error fetching 24h volume:", error);
+        setError(error as Error);
       }
     };
 
@@ -33,7 +35,7 @@ function VolumeH() {
   };
 
   return (
-    <div className="border rounded-md p-4 font-semibold">
+    <div className="w-full border rounded-md p-4 font-semibold">
       <div className="flex flex-row items-center justify-between">
         <div>
           <p className="text-xl">${volumeH?.toLocaleString()}</p>
@@ -43,6 +45,11 @@ function VolumeH() {
           <TrendingIcon />
         </div>
       </div>
+      {error && (
+        <div className="text-red-500 text-sm text-center">
+          Error fetching data: {error.message}
+        </div>
+      )}
     </div>
   );
 }
