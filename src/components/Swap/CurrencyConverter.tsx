@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { IoMdArrowDown } from "react-icons/io";
 
 interface Currency {
   code: string;
@@ -63,9 +64,9 @@ const CurrencyConverter: React.FC = () => {
   };
 
   return (
-    <div className="bg-white border-1 max-w-md rounded-md p-1">
+    <div className="bg-white border-1 w-full rounded-md p-1 space-y-1">
       <section>
-        <div className="bg-gray-100 flex flex-row items-center justify-between">
+        <div className="bg-gray-50 flex flex-row items-center justify-between rounded-md">
           <div className="p-4">
             <h1 className="font-semibold text-sm text-gray-400">You Pay</h1>
             <div className="py-4 text-2xl text-gray-500 bg-transparent">
@@ -73,11 +74,16 @@ const CurrencyConverter: React.FC = () => {
                 type="number"
                 value={amount}
                 onChange={handleAmountChange}
+                className="text-2xl max-w-44 outline-none bg-transparent"
               />
             </div>
           </div>
           <div>
-            <select className="py-3 px-2" value={fromCurrency} onChange={handleFromCurrencyChange}>
+            <select
+              className="py-3 px-4 mr-4 rounded-md"
+              value={fromCurrency}
+              onChange={handleFromCurrencyChange}
+            >
               {currencies.map((currency) => (
                 <option key={currency.code} value={currency.code}>
                   {currency.name}
@@ -88,18 +94,26 @@ const CurrencyConverter: React.FC = () => {
         </div>
       </section>
 
-      <span> to </span>
+      <div className="relative w-full text-center">
+        <div className="absolute inset-0 flex items-center justify-center">
+          <h1 className="bg-white font-semibold rounded-md">
+            <IoMdArrowDown className="bg-gray-50 rounded-md m-1 p-1 text-2xl"/>
+          </h1>
+        </div>
+      </div>
 
       <section>
-        <div className="bg-gray-100 flex flex-row items-center justify-between">
+        <div className="bg-gray-50 flex flex-row items-center justify-between rounded-md">
           <div className="p-4">
             <h1 className="font-semibold text-sm text-gray-400">You Receive</h1>
-            <div className="py-4 text-2xl text-gray-500">
-            {convertedAmount}
-            </div>
+            <div className="py-4 text-2xl text-gray-500">{convertedAmount}</div>
           </div>
           <div>
-            <select className="py-3 px-2" value={toCurrency} onChange={handleToCurrencyChange}>
+            <select
+              className="py-3 px-4 mr-4 rounded-md"
+              value={toCurrency}
+              onChange={handleToCurrencyChange}
+            >
               {currencies.map((currency) => (
                 <option key={currency.code} value={currency.code}>
                   {currency.name}
