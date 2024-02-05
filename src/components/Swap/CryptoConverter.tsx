@@ -1,91 +1,104 @@
-"use client";
-import React, { useState, useEffect } from "react";
+"use client"
+import React, { useState, useEffect, ChangeEvent } from "react";
 import axios from "axios";
 import { IoMdArrowDown } from "react-icons/io";
+import {
+  Select,
+  SelectItem,
+  Avatar,
+  SelectedItem,
+} from "@nextui-org/react";
+import { coins } from "./CryptoCurrencieData";
 
-interface Crypto {
-  market_cap_rank: any;
-  image: string;
-  id: string;
-  name: string;
-  symbol: string;
+interface Coin {
+  data: {
+    id: number;
+    name: string;
+    symbol: string;
+    avatar: string;
+  };
+  key: number;
 }
 
-interface ExchangeRateData {
+interface CryptoData {
   [key: string]: {
     [key: string]: number;
   };
 }
 
 const CryptoConverter: React.FC = () => {
+  const [cryptoData, setCryptoData] = useState<CryptoData>({});
+  const [fromCurrency, setFromCurrency] = useState<string>("");
+  const [toCurrency, setToCurrency] = useState<string>("");
   const [amount, setAmount] = useState<number>(1);
-  const [fromCrypto, setFromCrypto] = useState<string>("bitcoin");
-  const [toCrypto, setToCrypto] = useState<string>("ethereum");
-  const [exchangeRate, setExchangeRate] = useState<number | null>(null);
-  const [cryptos, setCryptos] = useState<Crypto[]>([]);
-  const selectedCryptos = [
-    "bitcoin",
-    "ethereum",
-    "tether",
-    "binancecoin",
-    "solana",
-    "ripple",
-    "usd-coin",
-    "lido-staked-ether",
-    "cardano",
-    "avalanche-2",
-    "dogecoin",
-  ];
+  const [convertedAmount, setConvertedAmount] = useState<number>(0);
 
   useEffect(() => {
-    const fetchExchangeRate = async () => {
+    const fetchData = async () => {
       try {
-        const response = await axios.get<ExchangeRateData>(
-          `https://api.coingecko.com/api/v3/simple/price?ids=${fromCrypto}&vs_currencies=${toCrypto}`
+        const fromResponse = await axios.get(
+          `https://api.coingecko.com/api/v3/simple/price`,
+          {
+            params: {
+              ids: fromCurrency,
+              vs_currencies: toCurrency,
+            },
+          }
         );
-        setExchangeRate(response.data[fromCrypto]?.[toCrypto] || 0);
+
+        const toResponse = await axios.get(
+          `https://api.coingecko.com/api/v3/simple/price`,
+          {
+            params: {
+              ids: toCurrency,
+              vs_currencies: fromCurrency,
+            },
+          }
+        );
+
+        setCryptoData({
+          [fromCurrency]: {
+            [toCurrency]: fromResponse.data[fromCurrency][toCurrency],
+          },
+          [toCurrency]: {
+            [fromCurrency]: toResponse.data[toCurrency][fromCurrency],
+          },
+        });
       } catch (error) {
-        console.error("Error fetching exchange rate:", error);
-        setExchangeRate(0);
+        console.error("Error fetching data:", error);
       }
     };
 
-    fetchExchangeRate();
-  }, [fromCrypto, toCrypto]);
+    fetchData();
+  }, [fromCurrency, toCurrency]);
 
   useEffect(() => {
-    if (fromCrypto !== toCrypto) {
-      getExchangeRate(fromCrypto, toCrypto).then((rate) =>
-        setExchangeRate(rate)
-      );
-    } else {
-      setExchangeRate(1);
+    if (cryptoData[fromCurrency] && cryptoData[toCurrency]) {
+      const conversionRate = cryptoData[fromCurrency][toCurrency];
+      setConvertedAmount(amount * conversionRate);
     }
-  }, [fromCrypto, toCrypto]);
+  }, [amount, cryptoData, fromCurrency, toCurrency]);
 
-  const getExchangeRate = async (from: string, to: string): Promise<number> => {
-    try {
-      const response = await axios.get<ExchangeRateData>(
-        `https://api.coingecko.com/api/v3/simple/price?ids=${from}&vs_currencies=${to}`
-      );
-      return response.data[from]?.[to] || 0;
-    } catch (error) {
-      console.error("Error fetching exchange rate:", error);
-      return 0;
+  const handleFromCurrencySelect = (
+    selectedItems: SelectedItem<Coin> | SelectedItem<Coin>[]
+  ) => {
+    const selectedCoin = Array.isArray(selectedItems)
+      ? selectedItems[0]
+      : selectedItems;
+    if (selectedCoin && selectedCoin.data) {
+      setFromCurrency(selectedCoin.data.name);
     }
   };
 
-  const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const inputAmount = parseFloat(e.target.value);
-    setAmount(isNaN(inputAmount) ? 0 : inputAmount);
-  };
-
-  const handleFromCryptoChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setFromCrypto(e.target.value);
-  };
-
-  const handleToCryptoChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setToCrypto(e.target.value);
+  const handleToCurrencySelect = (
+    selectedItems: SelectedItem<Coin> | SelectedItem<Coin>[]
+  ) => {
+    const selectedCoin = Array.isArray(selectedItems)
+      ? selectedItems[0]
+      : selectedItems;
+    if (selectedCoin && selectedCoin.data) {
+      setToCurrency(selectedCoin.data.symbol);
+    }
   };
 
   return (
@@ -98,28 +111,55 @@ const CryptoConverter: React.FC = () => {
               <input
                 type="number"
                 value={amount}
-                onChange={handleAmountChange}
+                onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                  setAmount(Number(e.target.value))
+                }
                 className="text-2xl max-w-44 outline-none bg-transparent"
               />
             </div>
           </div>
-          <div>
-            <select
-              className="py-3 px-4 mr-4 rounded-md max-w-sm"
-              value={fromCrypto}
-              onChange={handleFromCryptoChange}
+          <div className="bg-white flex w-1/2 flex-wrap md:flex-nowrap gap-4 max-w-sm">
+            <Select
+              items={coins}
+              placeholder="Select Crypto"
+              labelPlacement="outside"
+              classNames={{
+                base: "max-w-xs",
+                trigger: "h-12",
+              }}
+              renderValue={(items: SelectedItems) => {
+                return items.map((item) => (
+                  <div key={item.key} className="flex items-center gap-2">
+                    <Avatar
+                      alt={item.data.name}
+                      className="flex-shrink-0"
+                      size="sm"
+                      src={item.data.avatar}
+                    />
+                    <div className="flex flex-col">
+                      <span>{item.data.name}</span>
+                    </div>
+                  </div>
+                ));
+              }}
+              onSelect={handleToCurrencySelect}
             >
-              {cryptos.map((crypto) => (
-                <option key={crypto.id} value={crypto.id}>
-                  <img
-                    src={crypto.image}
-                    alt={crypto.name}
-                    className="inline-block w-8 h-8 mr-2"
-                  />
-                  {crypto.name} ({crypto.symbol.toUpperCase()})
-                </option>
-              ))}
-            </select>
+              {(coin) => (
+                <SelectItem key={coin.data.id} textValue={coin.data.name} data={coin}>
+                  <div className="flex gap-2 items-center">
+                    <Avatar
+                      alt={coin.data.name}
+                      className="flex-shrink-0"
+                      size="sm"
+                      src={coin.data.avatar}
+                    />
+                    <div className="flex flex-col">
+                      <span className="text-small">{coin.data.name}</span>
+                    </div>
+                  </div>
+                </SelectItem>
+              )}
+            </Select>
           </div>
         </div>
       </section>
@@ -137,35 +177,54 @@ const CryptoConverter: React.FC = () => {
           <div className="p-4">
             <h1 className="font-semibold text-sm text-gray-400">You Receive</h1>
             <div className="py-4 text-2xl text-gray-500">
-              {exchangeRate !== null
-                ? (amount * exchangeRate).toLocaleString(undefined, {
-                    minimumFractionDigits: 6,
-                    maximumFractionDigits: 6,
-                  })
-                : "Exchange rate not available"}
+              ${convertedAmount.toFixed(2)}
             </div>
           </div>
-          <div>
-            <select
-              className="py-3 px-4 mr-4 rounded-md max-w-sm"
-              value={toCrypto}
-              onChange={handleToCryptoChange}
+          <div className="bg-white flex w-1/2 flex-wrap md:flex-nowrap gap-4 max-w-sm">
+            <Select
+              items={coins}
+              placeholder="Select Crypto"
+              labelPlacement="outside"
+              classNames={{
+                base: "max-w-xs",
+                trigger: "h-12",
+              }}
+              renderValue={(items: SelectedItems) => {
+                return items.map((item) => (
+                  <div key={item.key} className="flex items-center gap-2">
+                    <Avatar
+                      alt={item.data.name}
+                      className="flex-shrink-0"
+                      size="sm"
+                      src={item.data.avatar}
+                    />
+                    <div className="flex flex-col">
+                      <span>{item.data.name}</span>
+                    </div>
+                  </div>
+                ));
+              }}
+              onSelect={handleFromCurrencySelect}
             >
-              {cryptos.map((crypto) => (
-                <option key={crypto.id} value={crypto.id}>
-                  <div className="inline-block font-bold">{crypto.name}</div> (
-                  {crypto.symbol.toUpperCase()})
-                </option>
-              ))}
-            </select>
+              {(coin) => (
+                <SelectItem key={coin.data.id} textValue={coin.data.name} data={coin}>
+                  <div className="flex gap-2 items-center">
+                    <Avatar
+                      alt={coin.data.name}
+                      className="flex-shrink-0"
+                      size="sm"
+                      src={coin.data.avatar}
+                    />
+                    <div className="flex flex-col">
+                      <span className="text-small">{coin.data.name}</span>
+                    </div>
+                  </div>
+                </SelectItem>
+              )}
+            </Select>
           </div>
         </div>
       </section>
-      <p className="text-center text-sm py-2">
-        {amount} {fromCrypto.toUpperCase()} is equal to{" "}
-        {exchangeRate !== null ? (amount * exchangeRate).toFixed(6) : "..."}{" "}
-        {toCrypto.toUpperCase()}
-      </p>
     </div>
   );
 };

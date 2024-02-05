@@ -88,7 +88,9 @@ export default function StocksPricesTable({
             >
               {item.quoteData.dp > 0
                 ? `+${item.quoteData.dp.toFixed(2)}%`
-                : `${item.quoteData.dp.toFixed(2)}%`}
+                : item.quoteData.dp != null
+                ? `${item.quoteData.dp.toFixed(2)}%`
+                : "N/A"}
             </TableCell>
             <TableCell>${item.quoteData.h.toFixed(2)}</TableCell>
             <TableCell>${item.quoteData.l.toFixed(2)}</TableCell>
