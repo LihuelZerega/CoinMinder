@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import ProgressiveLineChart from "./ProgressiveLineChart";
+import InvestmentReturns from "./InvestmentReturns";
 
 interface InvestmentSimulatorProps {
   initialInvestment: number;
@@ -9,64 +10,111 @@ interface InvestmentSimulatorProps {
 }
 
 const InvestmentSimulator: React.FC<InvestmentSimulatorProps> = ({
-    initialInvestment: initialInvestmentProp,
-    annualInterestRate: annualInterestRateProp,
-    investmentPeriod: investmentPeriodProp,
-  }) => {
-    const [initialInvestment, setInitialInvestment] = useState(
-      initialInvestmentProp
-    );
-    const [annualInterestRate, setAnnualInterestRate] = useState(
-      annualInterestRateProp
-    );
-    const [investmentPeriod, setInvestmentPeriod] =
-      useState(investmentPeriodProp);
-    const [futureValues, setFutureValues] = useState<number[]>([]);
-  
-    const calculateFutureValues = () => {
-      const rate = annualInterestRate / 100;
-      const periods = investmentPeriod;
-      const values = Array.from(
-        { length: periods + 1 },
-        (_, i) => initialInvestment * Math.pow(1 + rate, i)
-      );
-      setFutureValues(values);
-    };
+  initialInvestment: initialInvestmentProp,
+  annualInterestRate: annualInterestRateProp,
+  investmentPeriod: investmentPeriodProp,
+}) => {
+  const [initialInvestment, setInitialInvestment] = useState(
+    initialInvestmentProp
+  );
+  const [annualInterestRate, setAnnualInterestRate] = useState(
+    annualInterestRateProp
+  );
+  const [investmentPeriod, setInvestmentPeriod] =
+    useState(investmentPeriodProp);
+  const [monthlyContribution, setMonthlyContribution] = useState(0);
+  const [futureValues, setFutureValues] = useState<number[]>([]);
+
+  const calculateFutureValues = () => {
+    const rate = annualInterestRate / 100;
+    const periods = investmentPeriod;
+    const values = Array.from({ length: periods + 1 }, (_, i) => {
+      const monthlyAddition = monthlyContribution * (i + 1);
+      return (initialInvestment + monthlyAddition) * Math.pow(1 + rate, i);
+    });
+    setFutureValues(values);
+  };
 
   return (
     <div className="investment-simulator">
-      <h2>Investment Simulator</h2>
-      <div>
-        <label htmlFor="initialInvestment">Initial Investment:</label>
-        <input
-          type="number"
-          id="initialInvestment"
-          value={initialInvestment}
-          onChange={(e) => setInitialInvestment(Number(e.target.value))}
-        />
+      <section className="grid grid-cols-4 gap-4 max-w-4xl">
+        <div className="flex flex-col p-4 border rounded-md">
+          <label className="text-sm" htmlFor="initialInvestment">
+            Initial Investment:
+          </label>
+          <div className="flex flex-row items-center space-x-1 text-gray-400">
+            <p className="text-3xl">$</p>
+            <input
+              className="py-2 text-3xl outline-none max-w-32"
+              type="number"
+              id="initialInvestment"
+              value={initialInvestment}
+              onChange={(e) => setInitialInvestment(Number(e.target.value))}
+            />
+          </div>
+        </div>
+        <div className="flex flex-col p-4 border rounded-md">
+          <label className="text-sm" htmlFor="annualInterestRate">
+            Annual Interest Rate:
+          </label>
+          <div className="flex flex-row items-center space-x-1 text-gray-400">
+            <p className="text-3xl">%</p>
+            <input
+              className="py-2 text-3xl outline-none max-w-32"
+              type="number"
+              id="annualInterestRate"
+              value={annualInterestRate}
+              onChange={(e) => setAnnualInterestRate(Number(e.target.value))}
+            />
+          </div>
+        </div>
+        <div className="flex flex-col p-4 border rounded-md">
+          <label className="text-sm" htmlFor="investmentPeriod">
+            Investment Period:
+          </label>
+          <div className="flex flex-row items-center space-x-1 text-gray-400">
+            <input
+              className="py-2 text-3xl outline-none max-w-16"
+              type="number"
+              id="investmentPeriod"
+              value={investmentPeriod}
+              onChange={(e) => setInvestmentPeriod(Number(e.target.value))}
+            />
+            <p className="text-3xl">Years</p>
+          </div>
+        </div>
+        <div className="flex flex-col p-4 border rounded-md">
+          <label className="text-sm" htmlFor="monthlyContribution">
+            Monthly Contribution:
+          </label>
+          <div className="flex flex-row items-center space-x-1 text-gray-400">
+            <p className="text-3xl">$</p>
+            <input
+              className="py-2 text-3xl outline-none max-w-32"
+              type="number"
+              id="monthlyContribution"
+              value={monthlyContribution}
+              onChange={(e) => setMonthlyContribution(Number(e.target.value))}
+            />
+          </div>
+        </div>
+      </section>
+
+      <div className="flex flex-row items-center justify-center py-8 border-b mb-6">
+        <button
+          className="rounded-md bg-[#38bdf8] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#35aee3] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#38bdf8]"
+          onClick={calculateFutureValues}
+        >
+          Calculate
+        </button>
       </div>
-      <div>
-        <label htmlFor="annualInterestRate">Annual Interest Rate (%):</label>
-        <input
-          type="number"
-          id="annualInterestRate"
-          value={annualInterestRate}
-          onChange={(e) => setAnnualInterestRate(Number(e.target.value))}
-        />
-      </div>
-      <div>
-        <label htmlFor="investmentPeriod">Investment Period (years):</label>
-        <input
-          type="number"
-          id="investmentPeriod"
-          value={investmentPeriod}
-          onChange={(e) => setInvestmentPeriod(Number(e.target.value))}
-        />
-      </div>
-      <button onClick={calculateFutureValues}>Calculate</button>
+
       {futureValues.length > 0 && (
         <div>
-          <h3>Future Values:</h3>
+          <InvestmentReturns
+            initialInvestment={initialInvestment}
+            futureValues={futureValues}
+          />
           <ProgressiveLineChart
             labels={Array.from({ length: investmentPeriod + 1 }, (_, i) => i)}
             data={futureValues}
