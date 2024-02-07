@@ -10,13 +10,13 @@ import {
 } from "@nextui-org/react";
 
 interface QuoteData {
-  c: number; // Current price
-  d: number; // Change
-  dp: number; // Percent change
-  h: number; // High price of the day
-  l: number; // Low price of the day
-  o: number; // Open price of the day
-  pc: number; // Previous close price
+  c: number;
+  d: number;
+  dp: number;
+  h: number;
+  l: number;
+  o: number;
+  pc: number;
 }
 
 export interface StockData {
@@ -45,24 +45,9 @@ export default function StocksPricesTable({
 
   return (
     <Table
-      className="border rounded-md"
       shadow="none"
-      radius="md"
       layout="fixed"
       aria-label="Stock Prices Table"
-      bottomContent={
-        <div className="flex w-full justify-center">
-          <Pagination
-            isCompact
-            showControls
-            showShadow
-            color="secondary"
-            page={page}
-            total={pages}
-            onChange={(page) => setPage(page)}
-          />
-        </div>
-      }
       classNames={{
         wrapper: "min-h-[222px]",
       }}

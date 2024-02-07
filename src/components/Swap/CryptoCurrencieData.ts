@@ -19,7 +19,7 @@ export const coins = [
   },
   {
     id: 4,
-    name: "binance-bitcoin",
+    name: "Binance-bitcoin",
     symbol: "BNB",
     avatar: "https://s2.coinmarketcap.com/static/img/coins/64x64/1839.png",
   },
@@ -37,7 +37,7 @@ export const coins = [
   },
   {
     id: 7,
-    name: "litecoin",
+    name: "Litecoin",
     symbol: "LTC",
     avatar: "https://s2.coinmarketcap.com/static/img/coins/64x64/2.png",
   },
