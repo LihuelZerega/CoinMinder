@@ -21,7 +21,7 @@ export default function App() {
     "By using our platform, you gain access to key information to make informed financial decisions. Additionally, you can practice risk-free investment strategies through simulations and stay up to date with the latest financial news and trends.";
 
   return (
-    <div className="flex flex-col items-center justify-center mb-12 max-w-8xl">
+    <div className="flex flex-col items-center justify-center my-24 max-w-8xl">
       <div className="mx-auto max-w-8xl px-6 lg:px-8">
         <h2 className="text-center text-2xl font-semibold leading-8 text-gray-600 mb-10">
           Unlocking Financial Wisdom: Your FAQ Guide

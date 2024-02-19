@@ -346,7 +346,7 @@ const Footer = () => {
         </div>
       </section>
 
-      <div className="mx-96">
+      <div className="mx-6 sm:mx-96">
         <hr />
       </div>
 
