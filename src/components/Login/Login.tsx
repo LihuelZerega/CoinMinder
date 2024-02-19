@@ -6,7 +6,6 @@ import { Tooltip, Button } from "@nextui-org/react";
 import { Dialog } from "@headlessui/react";
 import { HiBars3 } from "react-icons/hi2";
 import { HiOutlineXMark } from "react-icons/hi2";
-import { motion } from "framer-motion";
 
 const navigation = [
   { name: "Financial News", href: "/news" },

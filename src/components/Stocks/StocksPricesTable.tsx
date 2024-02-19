@@ -6,7 +6,7 @@ import {
   TableBody,
   TableRow,
   TableCell,
-  Pagination,
+  Tooltip,
 } from "@nextui-org/react";
 
 interface QuoteData {
@@ -33,8 +33,6 @@ export default function StocksPricesTable({
 }: StocksPricesTableProps) {
   const [page, setPage] = React.useState(1);
   const rowsPerPage = 30;
-
-  const pages = Math.ceil(stockData.length / rowsPerPage);
 
   const items = React.useMemo(() => {
     const start = (page - 1) * rowsPerPage;
@@ -174,6 +172,14 @@ export default function StocksPricesTable({
             )}
           </TableBody>
         </Table>
+      </div>
+
+      <div className="flex flex-row items-center justify-center py-4 border-b mb-6">
+        <Tooltip content="More stocks soon...">
+          <button className="rounded-md bg-[#38bdf8] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#35aee3] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#38bdf8]">
+            Load More
+          </button>
+        </Tooltip>
       </div>
     </>
   );
