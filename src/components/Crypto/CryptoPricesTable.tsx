@@ -38,17 +38,7 @@ export default function CryptoPricesTable() {
       try {
         const symbols = [
           "bitcoin",
-          "bitcoin",
-          "bitcoin",
-          "bitcoin",
-          "bitcoin",
-          "bitcoin",
-          "bitcoin",
-          "bitcoin",
-          "bitcoin",
-          "bitcoin",
-          "bitcoin",
-          "bitcoin",
+          "avalanche",
         ];
         const response = await Promise.all(
           symbols.map(async (symbol) => {

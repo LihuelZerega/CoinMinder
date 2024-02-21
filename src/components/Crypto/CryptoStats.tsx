@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { motion } from "framer-motion";
 
 function CryptoStats() {
   const [cryptoStats, setCryptoStats] = useState({
@@ -14,16 +15,24 @@ function CryptoStats() {
     const fetchCryptoStats = async () => {
       try {
         const response = await axios.get(
-          "https://api.coingecko.com/api/v3/global"
+          "http://localhost:8080/api/crypto/market"
         );
 
-        if (response.data && response.data.data) {
+        if (response.data) {
+          const {
+            active_cryptocurrencies,
+            upcoming_icos,
+            ongoing_icos,
+            ended_icos,
+            markets,
+          } = response.data;
+
           const data = {
-            activeCryptocurrencies: response.data.data.active_cryptocurrencies,
-            upcomingICOs: response.data.data.upcoming_icos,
-            ongoingICOs: response.data.data.ongoing_icos,
-            endedICOs: response.data.data.ended_icos,
-            markets: response.data.data.markets,
+            activeCryptocurrencies: active_cryptocurrencies,
+            upcomingICOs: upcoming_icos,
+            ongoingICOs: ongoing_icos,
+            endedICOs: ended_icos,
+            markets: markets,
           };
 
           setCryptoStats(data);
@@ -37,29 +46,31 @@ function CryptoStats() {
   }, []);
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 mb-6">
-      <div className="flex flex-row items-center space-x-2 font-semibold bg-gray-100 p-4 rounded-md">
-        <h2 className="text-gray-400 text-sm">Active Currencies:</h2>
-        <p className="text-md">{cryptoStats.activeCryptocurrencies}</p>
-      </div>
-      <div className="flex flex-row items-center space-x-2 font-semibold bg-gray-100 p-4 rounded-md">
-        <h2 className="text-gray-400 text-sm">Upcoming ICOs:</h2>
-        <p className="text-md">{cryptoStats.upcomingICOs}</p>
-      </div>
-      <div className="flex flex-row items-center space-x-2 font-semibold bg-gray-100 p-4 rounded-md">
-        <h2 className="text-gray-400 text-sm">Ongoing ICOs:</h2>
-        <p className="text-md">{cryptoStats.ongoingICOs}</p>
-      </div>
-      <div className="flex flex-row items-center space-x-2 font-semibold bg-gray-100 p-4 rounded-md">
-        <h2 className="text-gray-400 text-sm">Ended ICOs:</h2>
-        <p className="text-md">{cryptoStats.endedICOs}</p>
-      </div>
-      <div className="flex flex-row items-center space-x-2 font-semibold bg-gray-100 p-4 rounded-md">
-        <h2 className="text-gray-400 text-sm">Markets:</h2>
-        <p className="text-md">{cryptoStats.markets}</p>
-      </div>
-    </div>
+    <motion.div
+      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 mb-6"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+    >
+      <CryptoStat title="Active Currencies" value={cryptoStats.activeCryptocurrencies} />
+      <CryptoStat title="Upcoming ICOs" value={cryptoStats.upcomingICOs} />
+      <CryptoStat title="Ongoing ICOs" value={cryptoStats.ongoingICOs} />
+      <CryptoStat title="Ended ICOs" value={cryptoStats.endedICOs} />
+      <CryptoStat title="Markets" value={cryptoStats.markets} />
+    </motion.div>
   );
 }
+
+const CryptoStat = ({ title, value }: { title: string, value: number }) => {
+  return (
+    <motion.div
+      className="flex flex-row items-center space-x-2 font-semibold bg-gray-100 p-4 rounded-md"
+      whileHover={{ scale: 1.05 }}
+    >
+      <h2 className="text-gray-400 text-sm">{title}:</h2>
+      <p className="text-md">{value}</p>
+    </motion.div>
+  );
+};
 
 export default CryptoStats;
