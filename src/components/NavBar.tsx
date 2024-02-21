@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { useState } from "react";
-import { motion, useAnimation } from "framer-motion";
+import { motion } from "framer-motion";
 import { Dialog } from "@headlessui/react";
 import { HiBars3 } from "react-icons/hi2";
 import { HiOutlineXMark } from "react-icons/hi2";
@@ -20,11 +20,19 @@ function NavBar() {
   return (
     <div>
       <header className="absolute inset-x-0 top-0 z-50">
-        <nav
-          className="flex items-center justify-between p-6 lg:px-8"
+        <motion.nav
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          className="flex items-center justify-between p-6 lg:px-8 border-b-1 shadow-sm"
           aria-label="Global"
         >
-          <div className="flex lg:flex-1">
+          <motion.div
+            initial={{ x: -20, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+            className="flex lg:flex-1"
+          >
             <a href="/" className="-m-1.5 p-1.5">
               <span className="sr-only">Bull Swap</span>
               <img
@@ -33,8 +41,13 @@ function NavBar() {
                 alt=""
               />
             </a>
-          </div>
-          <div className="flex lg:hidden">
+          </motion.div>
+          <motion.div
+            initial={{ x: 20, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+            className="flex lg:hidden"
+          >
             <button
               type="button"
               className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
@@ -43,27 +56,34 @@ function NavBar() {
               <span className="sr-only">Open main menu</span>
               <HiBars3 className="h-6 w-6" aria-hidden="true" />
             </button>
-          </div>
+          </motion.div>
           <div className="hidden lg:flex lg:gap-x-12">
-            {navigation.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="text-sm font-semibold leading-6 text-gray-900"
-              >
-                {item.name}
-              </a>
-            ))}
-          </div>
-          <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-            <a
+        {navigation.map((item) => (
+          <motion.a
+            key={item.name}
+            href={item.href}
+            className="text-sm font-semibold leading-6 text-gray-900 hover:text-[#38bdf8]"
+            whileHover={{ scale: 1.1 }} 
+          >
+            {item.name}
+          </motion.a>
+        ))}
+      </div>
+          <motion.div
+            initial={{ x: 20, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ delay: 0.6, duration: 0.5 }}
+            className="hidden lg:flex lg:flex-1 lg:justify-end"
+          >
+            <motion.a
               href="/login"
-              className="text-sm font-semibold leading-6 text-gray-900"
+              className="text-sm font-semibold leading-6 text-gray-900 hover:text-[#38bdf8]"
+              whileHover={{ scale: 1.1 }} 
             >
               Log in <span aria-hidden="true">&rarr;</span>
-            </a>
-          </div>
-        </nav>
+            </motion.a>
+          </motion.div>
+        </motion.nav>
         <Dialog
           as="div"
           className="lg:hidden"

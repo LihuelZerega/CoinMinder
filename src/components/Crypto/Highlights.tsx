@@ -8,16 +8,18 @@ import LargestGainers from "@/components/Crypto/LargestGainers";
 function Highlights() {
   return (
     <div>
-      <CryptoStats />
-      <div className="flex flex-row gap-8">
-        <section className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          <div className="flex flex-col gap-4">
-            <MarketCap />
-            <VolumeH />
-          </div>
+      {/* <CryptoStats /> */}
+      <div className="space-y-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <MarketCap />
+          <VolumeH />
+        </div>
+        <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           <Trending />
-          <LargestGainers />
-        </section>
+          <Trending />
+          <Trending />
+          {/* <LargestGainers /> */}
+        </div>
       </div>
     </div>
   );

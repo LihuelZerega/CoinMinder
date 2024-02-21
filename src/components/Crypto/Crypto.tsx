@@ -20,7 +20,7 @@ function Crypto() {
         </section>
         <section className="px-6">
           <TopTokensColapsablePanel />
-          {/* <CryptoPricesTable /> */}
+          <CryptoPricesTable />
         </section>
       </main>
       <Footer />
