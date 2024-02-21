@@ -15,11 +15,11 @@ function Crypto() {
           <h1 className="mb-4 text-lg font-light text-[#38bdf8]">Crypto</h1>
           <h1 className="font-medium text-4xl">Today&apos;s Crypto Prices</h1>
         </section>
-        <section className="border-b-1 pb-6 mb-6 mx-6">
+        <section className="border-b-1 pb-6 mb-2 mx-6">
           <Highlights />
         </section>
         <section className="px-6">
-          {/* <TopTokensColapsablePanel /> */}
+          <TopTokensColapsablePanel />
           {/* <CryptoPricesTable /> */}
         </section>
       </main>

@@ -4,56 +4,38 @@ import Image from "next/image";
 import TrendingIcon from "@/images/TrendingIcon.png";
 
 interface TrendingCoin {
-  id: string;
+  id: number;
   name: string;
-}
-
-interface DetailedTrendingCoin extends TrendingCoin {
-  image: string;
   symbol: string;
-  current_price: number;
-  price_change_percentage_24h: number;
+  thumb: string;
+  current_price: string;
+  sparkline: string;
 }
 
 function Trending() {
-  const [trendingCoins, setTrendingCoins] = useState<DetailedTrendingCoin[]>(
-    []
-  );
+  const [trendingCoins, setTrendingCoins] = useState<TrendingCoin[]>([]);
   const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
     const fetchTrendingCoins = async () => {
       try {
         const response = await axios.get(
-          "https://api.coingecko.com/api/v3/search/trending"
+          "http://localhost:8080/api/crypto/market/trending"
         );
 
-        if (response.data && response.data.coins) {
-          const coins: TrendingCoin[] = response.data.coins.map(
-            (coin: any) => ({
-              id: coin.item.id,
-              name: coin.item.name,
-            })
-          );
+        if (response.data && Array.isArray(response.data)) {
+          const coins: TrendingCoin[] = response.data
+            .slice(0, 3)
+            .map((coin: any) => ({
+              id: coin.id,
+              name: coin.name,
+              symbol: coin.symbol,
+              thumb: coin.thumb,
+              current_price: coin.price,
+              sparkline: coin.sparkline,
+            }));
 
-          const detailedCoins: DetailedTrendingCoin[] = await Promise.all(
-            coins.map(async (coin) => {
-              const coinDetails = await axios.get(
-                `https://api.coingecko.com/api/v3/coins/${coin.id}`
-              );
-
-              return {
-                ...coin,
-                image: coinDetails.data.image.large,
-                symbol: coinDetails.data.symbol,
-                current_price: coinDetails.data.market_data.current_price.usd,
-                price_change_percentage_24h:
-                  coinDetails.data.market_data.price_change_percentage_24h,
-              };
-            })
-          );
-
-          setTrendingCoins(detailedCoins);
+          setTrendingCoins(coins);
         }
       } catch (error) {
         console.error("Error fetching trending coins:", error);
@@ -78,26 +60,30 @@ function Trending() {
             Coins Trending
           </h2>
         </div>
-        <h2 className="text-gray-400 hover:text-gray-500 text-xs font-semibold cursor-pointer">
+        <h2 className="text-gray-400 hover:text-[#38bdf8] text-xs font-semibold cursor-pointer">
           See More →
         </h2>
       </div>
 
-      <ul className="flex flex-row">
+      <ul className="flex flex-col h-full">
         {trendingCoins.map((coin) => (
           <li key={coin.id}>
-            <div className="flex flex-col items-center space-y-2">
-              <Image src={coin.image} width={30} height={30} alt={coin.name} />
-              <div>{coin.name}</div>
-              <div>{coin.symbol}</div>
-              <div>${coin.current_price.toFixed(2)}</div>
-              <div
-                style={{
-                  color: coin.price_change_percentage_24h > 0 ? "green" : "red",
-                }}
-              >
-                {coin.price_change_percentage_24h > 0 ? "+" : ""}
-                {coin.price_change_percentage_24h.toFixed(2)}%
+            <div className="flex flex-col pt-2.5">
+              <div className="flex flex-row justify-between bg-transparent hover:bg-gray-50 rounded-md p-2 cursor-pointer">
+                <div className="flex flex-row items-center space-x-2">
+                  <Image
+                    src={coin.thumb}
+                    width={25}
+                    height={25}
+                    alt={coin.name}
+                    className="rounded-full"
+                  />
+                  <div>{coin.name}</div>
+                </div>
+                <div className="flex flex-row items-center space-x-3">
+                  <div>{coin.current_price}</div>
+                  <div className="max-h-5"><Image src={coin.sparkline} width={70} height={20} alt={coin.sparkline} /></div>
+                </div>
               </div>
             </div>
           </li>
