@@ -1,48 +1,54 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { FiTrendingUp, FiTrendingDown } from "react-icons/fi";
+import { motion } from "framer-motion";
+import Image from "next/image";
 
 function VolumeH() {
-  const [volumeH, setH24Volume] = useState<number | undefined>(0);
+  const [volumeData, setVolumeData] = useState<number>(0);
   const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
-    const fetch24hVolume = async () => {
+    const fetchVolumeData = async () => {
       try {
         const response = await axios.get(
-          "https://api.coingecko.com/api/v3/global"
+          "http://localhost:8080/api/crypto/market"
         );
-        setH24Volume(response.data.data.total_volume.usd);
+        const totalVolumeUSD = JSON.parse(response.data.total_volume)["usd"];
+        setVolumeData(totalVolumeUSD);
       } catch (error) {
         console.error("Error fetching 24h volume:", error);
         setError(error as Error);
       }
     };
 
-    fetch24hVolume();
+    fetchVolumeData();
   }, []);
 
   const TrendingIcon = () => {
-    if (volumeH === undefined) {
+    if (volumeData > 0) {
+      return <FiTrendingUp style={{ color: "green" }} />;
+    } else if (volumeData < 0) {
+      return <FiTrendingDown style={{ color: "red" }} />;
+    } else {
       return null;
     }
-
-    return volumeH > 0 ? (
-      <FiTrendingUp style={{ color: "green" }} />
-    ) : volumeH < 0 ? (
-      <FiTrendingDown style={{ color: "red" }} />
-    ) : null;
   };
 
   return (
-    <div className="w-full border rounded-md p-4 font-semibold">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="w-full border rounded-md p-4 font-semibold"
+    >
       <div className="flex flex-row items-center justify-between">
         <div>
-          <p className="text-xl">${volumeH?.toLocaleString()}</p>
-          <h2 className="text-gray-400">24h Trading Volume</h2>
+          <p className="text-lg">${volumeData.toLocaleString()}</p>
+          <h2 className="text-sm text-gray-400 py-1">24h Trading Volume</h2>
         </div>
-        <div className="text-6xl">
-          <TrendingIcon />
+        <div className="px-4">
+          <Image src="https://www.coingecko.com/total_volume.svg" width={135} height={50} alt="total_volume" />
         </div>
       </div>
       {error && (
@@ -50,7 +56,7 @@ function VolumeH() {
           Error fetching data: {error.message}
         </div>
       )}
-    </div>
+    </motion.div>
   );
 }
 
