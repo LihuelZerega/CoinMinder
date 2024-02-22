@@ -24,7 +24,6 @@ function TopLosers() {
         );
 
         if (response.data && Array.isArray(response.data)) {
-          const uniqueCoins: TrendingCoin[] = [];
           const coins: TrendingCoin[] = response.data.map((coin: any) => ({
             id: coin.id,
             name: coin.name,
@@ -34,13 +33,20 @@ function TopLosers() {
             price_change_percentage_24h: coin.price_change_percentage_24h,
           }));
 
-          coins.forEach((coin) => {
-            if (!uniqueCoins.some((c) => c.name === coin.name)) {
-              uniqueCoins.push(coin);
-            }
-          });
+          const uniqueNames: Set<string> = new Set();
+          const filteredCoins: TrendingCoin[] = [];
 
-          setTrendingCoins(uniqueCoins.slice(0, 10));
+          for (let i = 0; i < coins.length; i++) {
+            if (filteredCoins.length === 3) break;
+
+            const coin = coins[i];
+            if (!uniqueNames.has(coin.name)) {
+              filteredCoins.push(coin);
+              uniqueNames.add(coin.name);
+            }
+          }
+
+          setTrendingCoins(filteredCoins);
         }
       } catch (error) {
         console.error("Error fetching trending coins:", error);
