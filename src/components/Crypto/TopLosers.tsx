@@ -7,12 +7,12 @@ interface TrendingCoin {
   id: number;
   name: string;
   symbol: string;
-  thumb: string;
-  current_price: string;
-  sparkline: string;
+  image: string;
+  current_price: number;
+  price_change_percentage_24h: number;
 }
 
-function Trending() {
+function TopLosers() {
   const [trendingCoins, setTrendingCoins] = useState<TrendingCoin[]>([]);
   const [error, setError] = useState<Error | null>(null);
 
@@ -20,22 +20,27 @@ function Trending() {
     const fetchTrendingCoins = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8080/api/crypto/market/trending"
+          "http://localhost:8080/api/crypto/toplosers"
         );
 
         if (response.data && Array.isArray(response.data)) {
-          const coins: TrendingCoin[] = response.data
-            .slice(0, 3)
-            .map((coin: any) => ({
-              id: coin.id,
-              name: coin.name,
-              symbol: coin.symbol,
-              thumb: coin.thumb,
-              current_price: formatPrice(coin.price),
-              sparkline: coin.sparkline,
-            }));
+          const uniqueCoins: TrendingCoin[] = [];
+          const coins: TrendingCoin[] = response.data.map((coin: any) => ({
+            id: coin.id,
+            name: coin.name,
+            symbol: coin.symbol,
+            image: coin.image,
+            current_price: coin.current_price,
+            price_change_percentage_24h: coin.price_change_percentage_24h,
+          }));
 
-          setTrendingCoins(coins);
+          coins.forEach((coin) => {
+            if (!uniqueCoins.some((c) => c.name === coin.name)) {
+              uniqueCoins.push(coin);
+            }
+          });
+
+          setTrendingCoins(uniqueCoins.slice(0, 10));
         }
       } catch (error) {
         console.error("Error fetching trending coins:", error);
@@ -45,18 +50,6 @@ function Trending() {
 
     fetchTrendingCoins();
   }, []);
-
-  const formatPrice = (price: string) => {
-    // Verificar si el precio tiene el formato específico
-    const matches = price.match(/\$0\.0<sub\s+title="(\d+\.\d+)">/);
-    if (matches) {
-      const [, decimal] = matches;
-      return `$0.${decimal}`;
-    } else {
-      // Si no tiene el formato específico, devolver el precio sin cambios
-      return price;
-    }
-  };
 
   return (
     <div className="w-full border rounded-md p-4 font-semibold">
@@ -69,7 +62,7 @@ function Trending() {
             alt={"TrendingIcon"}
           />
           <h2 className="text-gray-400 hover:text-gray-500 text-xs font-semibold cursor-pointer">
-            Coins Trending
+            Top Losers
           </h2>
         </div>
         <h2 className="text-gray-400 hover:text-[#38bdf8] text-xs font-semibold cursor-pointer">
@@ -84,17 +77,31 @@ function Trending() {
               <div className="flex flex-row justify-between bg-transparent hover:bg-gray-50 rounded-md p-2 cursor-pointer">
                 <div className="flex flex-row items-center space-x-2">
                   <Image
-                    src={coin.thumb}
+                    src={coin.image}
                     width={25}
                     height={25}
                     alt={coin.name}
                     className="rounded-full"
                   />
-                  <div className="text-base lg:text-sm xl:text-base">{coin.name}</div>
+                  <div className="text-base lg:text-sm xl:text-base">
+                    {coin.name}
+                  </div>
                 </div>
                 <div className="flex flex-row items-center space-x-3">
-                  <div className="text-base lg:text-sm xl:text-base">{coin.current_price}</div>
-                  <div className="max-h-5"><Image src={coin.sparkline} width={70} height={20} alt={coin.sparkline} /></div>
+                  <div className="text-base lg:text-sm xl:text-base">
+                    ${coin.current_price.toFixed(2)}
+                  </div>
+                  <div
+                    className={
+                      coin.price_change_percentage_24h > 0
+                        ? "text-green-500 font-semibold"
+                        : "text-red-500 font-semibold"
+                    }
+                  >
+                    {coin.price_change_percentage_24h > 0
+                      ? `+${coin.price_change_percentage_24h.toFixed(2)}%`
+                      : `${coin.price_change_percentage_24h.toFixed(2)}%`}
+                  </div>
                 </div>
               </div>
             </div>
@@ -110,4 +117,4 @@ function Trending() {
   );
 }
 
-export default Trending;
+export default TopLosers;

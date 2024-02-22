@@ -9,10 +9,10 @@ import {
   TableCell,
   Spinner,
   Popover,
-  Tooltip,
   PopoverTrigger,
   PopoverContent,
 } from "@nextui-org/react";
+import { motion } from "framer-motion";
 import { FaInfoCircle } from "react-icons/fa";
 import Image from "next/image";
 
@@ -32,57 +32,28 @@ interface CryptoData {
 export default function CryptoPricesTable() {
   const [cryptoData, setCryptoData] = useState<CryptoData[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [startIndex, setStartIndex] = useState(0);
+  const itemsPerPage = 25;
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const symbols = [
-          "bitcoin",
-          "ethereum",
-          "tether",
-          "binance-bitcoin",
-          "solana",
-          "ripple",
-          "lido-staked-ether",
-          "usdc",
-          "cardano",
-          "avalanche",
-          "tron",
-          "dogecoin",
-          "chainlink",
-          "polkadot",
-          "polygon",
-          "wrapped-bitcoin",
-          "toincoin",
-          "internet-computer",
-          "shiba-inu",
-          "uniswap",
-          "litecoin",
-          "bitcoin-cash",
-          "dai",
-          "leo-token",
-          "cosmos-hub",
-        ];
-
-        const response = await Promise.all(
-          symbols.map(async (symbol) => {
-            const res = await axios.get(
-              `http://localhost:8080/api/crypto/${symbol}`
-            );
-            return res.data;
-          })
-        );
-
-        setCryptoData(response);
-        setIsLoading(false);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-        setIsLoading(false);
-      }
-    };
-
     fetchData();
-  }, []);
+  }, [startIndex]);
+
+  const fetchData = async () => {
+    setIsLoading(true);
+    try {
+      const res = await axios.get("http://localhost:8080/api/crypto");
+      setCryptoData((prevData) => [...prevData, ...res.data.slice(startIndex, startIndex + itemsPerPage)]);
+      setIsLoading(false);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      setIsLoading(false);
+    }
+  };
+
+  const loadMoreData = () => {
+    setStartIndex((prevIndex) => prevIndex + itemsPerPage);
+  };
 
   const formatMarketCap = (value: number) => {
     return `$${value.toLocaleString()}`;
@@ -530,12 +501,16 @@ export default function CryptoPricesTable() {
         </Table>
       </div>
 
-      <div className="flex flex-row items-center justify-center py-4 border-b mb-6">
-        <Tooltip content="More soon...">
-          <button className="rounded-md bg-[#38bdf8] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#35aee3] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#38bdf8]">
-            Load More
-          </button>
-        </Tooltip>
+      <div className="flex justify-center mt-4">
+        <motion.button
+          onClick={loadMoreData}
+          disabled={isLoading}
+          whileTap={{ scale: 0.95 }}
+          whileHover={{ scale: 1.05 }}
+          className="rounded-md bg-[#38bdf8] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#35aee3] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#38bdf8]"
+        >
+          {isLoading ? "Loading..." : "Load More"}
+        </motion.button>
       </div>
     </>
   );
