@@ -78,10 +78,10 @@ function Trending() {
                     alt={coin.name}
                     className="rounded-full"
                   />
-                  <div>{coin.name}</div>
+                  <div className="text-base lg:text-sm xl:text-base">{coin.name}</div>
                 </div>
                 <div className="flex flex-row items-center space-x-3">
-                  <div>{coin.current_price}</div>
+                  <div className="text-base lg:text-sm xl:text-base">{coin.current_price}</div>
                   <div className="max-h-5"><Image src={coin.sparkline} width={70} height={20} alt={coin.sparkline} /></div>
                 </div>
               </div>

@@ -4,7 +4,7 @@ import NavBar from "../NavBar";
 import Footer from "@/components/Footer";
 import Highlights from "./Highlights";
 import CryptoPricesTable from "@/components/Crypto/CryptoPricesTable";
-import TopTokensColapsablePanel from "./TopTokensColapsablePanel"
+import TopTokensColapsablePanel from "./TopTokensColapsablePanel";
 
 function Crypto() {
   return (
@@ -18,9 +18,13 @@ function Crypto() {
         <section className="border-b-1 pb-6 mb-2 mx-6">
           <Highlights />
         </section>
-        <section className="px-6">
-          <TopTokensColapsablePanel />
-          <CryptoPricesTable />
+        <section>
+          <div className="px-6">
+            <TopTokensColapsablePanel />
+          </div>
+          <div className="px-2">
+            <CryptoPricesTable />
+          </div>
         </section>
       </main>
       <Footer />
