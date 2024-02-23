@@ -12,11 +12,13 @@ import {
   PopoverTrigger,
   PopoverContent,
 } from "@nextui-org/react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { FaInfoCircle } from "react-icons/fa";
-import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 interface CryptoData {
+  id: number;
   image: string;
   name: string;
   symbol: string;
@@ -35,6 +37,8 @@ export default function CryptoPricesTable() {
   const [startIndex, setStartIndex] = useState(0);
   const itemsPerPage = 25;
 
+  const router = useRouter();
+
   useEffect(() => {
     fetchData();
   }, [startIndex]);
@@ -43,7 +47,10 @@ export default function CryptoPricesTable() {
     setIsLoading(true);
     try {
       const res = await axios.get("http://localhost:8080/api/crypto");
-      setCryptoData((prevData) => [...prevData, ...res.data.slice(startIndex, startIndex + itemsPerPage)]);
+      setCryptoData((prevData) => [
+        ...prevData,
+        ...res.data.slice(startIndex, startIndex + itemsPerPage),
+      ]);
       setIsLoading(false);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -65,6 +72,10 @@ export default function CryptoPricesTable() {
 
   const formatTotalVolume = (value: number) => {
     return `$${value.toLocaleString()}`;
+  };
+
+  const handleRedirect = (id: number) => {
+    router.push(`/crypto/coin/${id}`);
   };
 
   return (
@@ -90,7 +101,7 @@ export default function CryptoPricesTable() {
             {(item) => (
               <TableRow
                 key={item.name}
-                className="bg-transparent hover:bg-gray-50 cursor-pointer my-6 rounded-md border-b-1"
+                className="bg-transparent hover:bg-gray-50 my-6 rounded-md border-b-1"
               >
                 <TableCell>
                   <Image
@@ -174,11 +185,11 @@ export default function CryptoPricesTable() {
             items={cryptoData}
             isLoading={isLoading}
             loadingContent={<Spinner />}
-            className="bg-green-300"
           >
             {(item) => (
               <TableRow
                 key={item.name}
+                onClick={() => handleRedirect(item.id)}
                 className="bg-transparent hover:bg-gray-50 cursor-pointer my-6 rounded-md border-b-1"
               >
                 <TableCell>
@@ -299,6 +310,7 @@ export default function CryptoPricesTable() {
             {(item) => (
               <TableRow
                 key={item.name}
+                onClick={() => handleRedirect(item.id)}
                 className="bg-transparent hover:bg-gray-50 cursor-pointer my-6 rounded-md border-b-1"
               >
                 <TableCell>
@@ -446,6 +458,7 @@ export default function CryptoPricesTable() {
             {(item) => (
               <TableRow
                 key={item.name}
+                onClick={() => handleRedirect(item.id)}
                 className="bg-transparent hover:bg-gray-50 cursor-pointer my-6 rounded-md border-b-1"
               >
                 <TableCell>

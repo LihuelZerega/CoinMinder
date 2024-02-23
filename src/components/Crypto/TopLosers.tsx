@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import TrendingIcon from "@/images/TrendingIcon.png";
 
 interface TrendingCoin {
@@ -15,6 +16,7 @@ interface TrendingCoin {
 function TopLosers() {
   const [trendingCoins, setTrendingCoins] = useState<TrendingCoin[]>([]);
   const [error, setError] = useState<Error | null>(null);
+  const router = useRouter();
 
   useEffect(() => {
     const fetchTrendingCoins = async () => {
@@ -57,6 +59,10 @@ function TopLosers() {
     fetchTrendingCoins();
   }, []);
 
+  const handleRedirect = (id: number) => {
+    router.push(`/crypto/coin/${id}`);
+  };
+
   return (
     <div className="w-full border rounded-md p-4 font-semibold">
       <div className="flex flex-row items-center justify-between">
@@ -68,7 +74,7 @@ function TopLosers() {
             alt={"TrendingIcon"}
           />
           <h2 className="text-gray-400 hover:text-gray-500 text-xs font-semibold cursor-pointer">
-            Top Losers
+            Biggest Losers
           </h2>
         </div>
         <h2 className="text-gray-400 hover:text-[#38bdf8] text-xs font-semibold cursor-pointer">
@@ -78,7 +84,11 @@ function TopLosers() {
 
       <ul className="flex flex-col h-full">
         {trendingCoins.map((coin) => (
-          <li key={coin.id}>
+          <li
+            key={coin.id}
+            onClick={() => handleRedirect(coin.id)}
+            className="cursor-pointer"
+          >
             <div className="flex flex-col pt-2.5">
               <div className="flex flex-row justify-between bg-transparent hover:bg-gray-50 rounded-md p-2 cursor-pointer">
                 <div className="flex flex-row items-center space-x-2">

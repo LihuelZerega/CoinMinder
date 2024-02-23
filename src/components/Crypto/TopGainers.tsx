@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Image from "next/image";
-import TrendingIcon from "@/images/TrendingIcon.png";
+import { useRouter } from "next/navigation";
+import RocketIcon from "@/images/RocketIcon.png";
 
 interface TrendingCoin {
   id: number;
@@ -15,6 +16,7 @@ interface TrendingCoin {
 function TopGainers() {
   const [trendingCoins, setTrendingCoins] = useState<TrendingCoin[]>([]);
   const [error, setError] = useState<Error | null>(null);
+  const router = useRouter();
 
   useEffect(() => {
     const fetchTrendingCoins = async () => {
@@ -57,18 +59,17 @@ function TopGainers() {
     fetchTrendingCoins();
   }, []);
 
+  const handleRedirect = (id: number) => {
+    router.push(`/crypto/coin/${id}`);
+  };
+
   return (
     <div className="w-full border rounded-md p-4 font-semibold">
       <div className="flex flex-row items-center justify-between">
         <div className="flex flex-row items-center space-x-1">
-          <Image
-            src={TrendingIcon}
-            width={18}
-            height={18}
-            alt={"TrendingIcon"}
-          />
+          <Image src={RocketIcon} width={18} height={18} alt={"RocketIcon"} />
           <h2 className="text-gray-400 hover:text-gray-500 text-xs font-semibold cursor-pointer">
-            Top Gainers
+            Largest Gainers
           </h2>
         </div>
         <h2 className="text-gray-400 hover:text-[#38bdf8] text-xs font-semibold cursor-pointer">
@@ -78,7 +79,11 @@ function TopGainers() {
 
       <ul className="flex flex-col h-full">
         {trendingCoins.map((coin) => (
-          <li key={coin.id}>
+          <li
+            key={coin.id}
+            onClick={() => handleRedirect(coin.id)}
+            className="cursor-pointer"
+          >
             <div className="flex flex-col pt-2.5">
               <div className="flex flex-row justify-between bg-transparent hover:bg-gray-50 rounded-md p-2 cursor-pointer">
                 <div className="flex flex-row items-center space-x-2">
