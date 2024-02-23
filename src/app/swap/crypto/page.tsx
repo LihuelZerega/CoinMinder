@@ -1,7 +1,7 @@
 import React from "react";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
-import CryptoConverter from "@/components/Swap/CryptoConverter";
+import CryptoConverter from "@/pages/Swap/CryptoConverter";
 import { HiOutlineExternalLink } from "react-icons/hi";
 import Link from "next/link";
 

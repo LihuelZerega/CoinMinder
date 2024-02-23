@@ -1,3 +1,5 @@
+"use client";
+import "tailwindcss/tailwind.css";
 import React, { useEffect, useState } from "react";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
@@ -11,7 +13,26 @@ interface CryptoCurrency {
   image: string;
   current_price: number;
   market_cap: number;
-  // Otros campos...
+  market_cap_rank: number;
+  fully_diluted_valuation: number;
+  total_volume: number;
+  high_24h: number;
+  low_24h: number;
+  price_change_24h: number;
+  price_change_percentage_24h: number;
+  market_cap_change_24h: number;
+  market_cap_change_percentage_24h: number;
+  circulating_supply: number;
+  total_supply: number;
+  max_supply: number;
+  ath: number;
+  ath_change_percentage: number;
+  ath_date: string;
+  atl: number;
+  atl_change_percentage: number;
+  atl_date: number;
+  roi: number;
+  last_updated: string;
 }
 
 const CryptoCurrencyDetails: React.FC = () => {
@@ -60,12 +81,12 @@ const CryptoCurrencyDetails: React.FC = () => {
   return (
     <div className="h-screen">
       <NavBar />
-      <section>
+      <main className="mx-auto max-w-7xl py-6 lg:px-8 mt-24 mb-24">
         <h1>{cryptoCurrency.name}</h1>
         <p>Símbolo: {cryptoCurrency.symbol}</p>
         <p>Precio actual: ${cryptoCurrency.current_price}</p>
         <p>Capitalización de mercado: ${cryptoCurrency.market_cap}</p>
-      </section>
+      </main>
       <Footer />
     </div>
   );

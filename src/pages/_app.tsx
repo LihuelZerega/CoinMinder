@@ -1,5 +1,4 @@
-import "@/styles/globals.css";
-import "react-toastify/dist/ReactToastify.css";
+import "@/components/globals.css";
 import { NextUIProvider } from "@nextui-org/react";
 import type { AppProps } from "next/app";
 import { Chart, LinearScale, CategoryScale } from "chart.js";

@@ -1,5 +1,5 @@
 import React from "react";
-import Swap from "@/components/Swap/Swap";
+import Swap from "@/pages/Swap/Swap";
 
 function page() {
   return (

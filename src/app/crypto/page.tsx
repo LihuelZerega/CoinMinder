@@ -1,6 +1,6 @@
 "use client"
 import { useState, useEffect } from "react";
-import Crypto from "@/components/Crypto/Crypto";
+import Crypto from "@/pages/Crypto/Crypto";
 import LoadingPage from "@/components/LoadingPage";
 
 function page() {

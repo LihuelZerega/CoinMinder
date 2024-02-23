@@ -1,5 +1,5 @@
 import React from "react";
-import NavBar from "../NavBar";
+import NavBar from "../../components/NavBar";
 import Footer from "@/components/Footer";
 import CurrencyConverter from "./CurrencyConverter";
 import { HiOutlineExternalLink } from "react-icons/hi";

@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import StocksPricesTable, { StockData } from "./StocksPricesTable";
-import Loading from "../Loading";
+import Loading from "../../components/Loading";
 
 interface QuoteData {
   c: number;

@@ -1,12 +1,12 @@
 "use client";
 import { NextUIProvider } from "@nextui-org/react";
 import { useState, useEffect } from "react";
-import HeroSectionV2 from "@/components/LandingPageComponents/SubComps/HeroSectionV2";
-import Stats from "@/components/LandingPageComponents/SubComps/Stats";
+import HeroSectionV2 from "@/pages/SubComps/HeroSectionV2";
+import Stats from "@/pages/SubComps/Stats";
 import Footer from "@/components/Footer";
-import Faq from "@/components/LandingPageComponents/SubComps/Faq";
-import TryFeatures from "@/components/LandingPageComponents/SubComps/TryFeatures";
-import FinancialExplorer from "@/components/LandingPageComponents/SubComps/FinancialExplorer";
+import Faq from "@/pages/SubComps/Faq";
+import TryFeatures from "@/pages/SubComps/TryFeatures";
+import FinancialExplorer from "@/pages/SubComps/FinancialExplorer";
 import LoadingPage from "@/components/LoadingPage";
 
 export default function Home() {

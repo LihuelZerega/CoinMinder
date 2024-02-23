@@ -1,5 +1,5 @@
 import React from "react";
-import News from "@/components/News/News";
+import News from "@/pages/News/News";
 
 function page() {
   return (

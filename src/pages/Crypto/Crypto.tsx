@@ -1,9 +1,9 @@
 "use client";
 import React from "react";
-import NavBar from "../NavBar";
+import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import Highlights from "./Highlights";
-import CryptoPricesTable from "@/components/Crypto/CryptoPricesTable";
+import CryptoPricesTable from "@/pages/Crypto/CryptoPricesTable";
 import TopTokensColapsablePanel from "./TopTokensColapsablePanel";
 import Image from "next/image";
 

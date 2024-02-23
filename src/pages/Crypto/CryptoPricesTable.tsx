@@ -75,7 +75,7 @@ export default function CryptoPricesTable() {
   };
 
   const handleRedirect = (id: number) => {
-    router.push(`/crypto/coin/${id}`);
+    router.push(`/coin/${id}`);
   };
 
   return (

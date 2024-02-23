@@ -3,8 +3,8 @@ import MarketCap from "./MarketCap";
 import VolumeH from "./VolumeH";
 import Trending from "./Trending";
 import CryptoStats from "./CryptoStats";
-import TopGainers from "@/components/Crypto/TopGainers";
-import TopLosers from "@/components/Crypto/TopLosers";
+import TopGainers from "@/pages/Crypto/TopGainers";
+import TopLosers from "@/pages/Crypto/TopLosers";
 
 function Highlights() {
   return (
