@@ -20,6 +20,11 @@ import { CiStar, CiShare2 } from "react-icons/ci";
 import { FaCaretDown, FaCaretUp } from "react-icons/fa";
 import { IoInformationCircleOutline } from "react-icons/io5";
 import BitcoinChart from "../Crypto/CryptoCharts/BitcoinChart/BitcoinChart";
+import BnbChart from "../Crypto/CryptoCharts/BnbChart/BnbChart";
+import EthereumChart from "../Crypto/CryptoCharts/EthereumChart/EthereumChart";
+import SolanaChart from "../Crypto/CryptoCharts/SolanaChart/SolanaChart";
+import TetherChart from "../Crypto/CryptoCharts/TetherChart/TetherChart";
+import ChartError from "../Crypto/CryptoCharts/ChartError";
 import CryptoPricesTable from "@/pages/Crypto/CryptoPricesTable";
 import LoadingPage from "@/components/LoadingPage";
 
@@ -121,7 +126,9 @@ const CryptoCurrencyDetails: React.FC = () => {
                     Cryptocurrencies
                   </Link>
                 </BreadcrumbItem>
-                <BreadcrumbItem>{cryptoCurrency.name ? cryptoCurrency.name : 'Error'}</BreadcrumbItem>
+                <BreadcrumbItem>
+                  {cryptoCurrency.name ? cryptoCurrency.name : "Error"}
+                </BreadcrumbItem>
               </Breadcrumbs>
             </div>
 
@@ -529,7 +536,12 @@ const CryptoCurrencyDetails: React.FC = () => {
                 </div>
 
                 <div className="w-full sm:w-2/3 h-full border-t-1 sm:border-1 rounded-md p-4">
-                  <BitcoinChart />
+                  {id === "1" && <BitcoinChart />}
+                  {id === "2" && <EthereumChart />}
+                  {id === "3" && <TetherChart />}
+                  {id === "4" && <BnbChart />}
+                  {id === "5" && <SolanaChart />}
+                  {(Number(id) < 1 || Number(id) > 5) && <ChartError />}
 
                   <div className="flex flex-col sm:flex-row border-t-1 py-3 w-full">
                     <div className="flex flex-row items-center justify-between w-full py-3 sm:py-0 border-b-1 sm:border-b-0">
