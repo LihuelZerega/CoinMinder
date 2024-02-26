@@ -58,10 +58,6 @@ const Trending: React.FC = () => {
     }
   };
 
-  const handleRedirect = (id: number) => {
-    router.push(`/crypto/coin/${id}`);
-  };
-
   return (
     <div className="w-full border rounded-md p-4 font-semibold">
       <div className="flex flex-row items-center justify-between">
@@ -78,11 +74,7 @@ const Trending: React.FC = () => {
 
       <ul className="flex flex-col h-full">
         {trendingCoins.map((coin) => (
-          <li
-            key={coin.id}
-            onClick={() => handleRedirect(coin.id)}
-            className="cursor-pointer"
-          >
+          <li key={coin.id} className="cursor-pointer">
             <div className="flex flex-col pt-2.5">
               <div className="flex flex-row justify-between bg-transparent hover:bg-gray-50 rounded-md p-2">
                 <div className="flex flex-row items-center space-x-2">
