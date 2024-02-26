@@ -27,6 +27,7 @@ import TetherChart from "../Crypto/CryptoCharts/TetherChart/TetherChart";
 import ChartError from "../Crypto/CryptoCharts/ChartError";
 import CryptoPricesTable from "@/pages/Crypto/CryptoPricesTable";
 import LoadingPage from "@/components/LoadingPage";
+import ErrorPage from "@/app/not-found";
 
 interface CryptoCurrency {
   id: number;
@@ -98,7 +99,7 @@ const CryptoCurrencyDetails: React.FC = () => {
   }, [id]);
 
   if (!id) {
-    return <div>Cargando...</div>;
+    return <div><LoadingPage /></div>;
   }
 
   if (error) {
@@ -106,7 +107,7 @@ const CryptoCurrencyDetails: React.FC = () => {
   }
 
   if (!cryptoCurrency) {
-    return <div>No se encontraron detalles de la criptomoneda</div>;
+    return <div><ErrorPage /></div>;
   }
 
   return (
@@ -119,7 +120,7 @@ const CryptoCurrencyDetails: React.FC = () => {
         <div>
           <NavBar />
           <main className="h-full mx-auto max-w-7xl px-2 sm:px-0 py-6 lg:px-8 mt-20 mb-24">
-            <div className="block sm:hidden py-4">
+            <div className="block md:hidden py-4">
               <Breadcrumbs>
                 <BreadcrumbItem>
                   <Link href="http://localhost:3000/crypto">
@@ -133,8 +134,8 @@ const CryptoCurrencyDetails: React.FC = () => {
             </div>
 
             <div className="space-y-4">
-              <section className="flex flex-col sm:flex-row items-start gap-4">
-                <div className="w-full sm:w-1/3 border-0 sm:border-1 rounded-md p-4">
+              <section className="flex flex-col lg:flex-row items-start gap-4">
+                <div className="w-full lg:w-1/3 border-0 sm:border-1 rounded-md p-4">
                   <section className="flex flex-row items-center justify-between">
                     <div className="flex flex-row items-center space-x-3">
                       <div>
@@ -535,7 +536,7 @@ const CryptoCurrencyDetails: React.FC = () => {
                   </section>
                 </div>
 
-                <div className="w-full sm:w-2/3 h-full border-t-1 sm:border-1 rounded-md p-4">
+                <div className="w-full lg:w-2/3 h-full border-t-1 sm:border-1 rounded-md p-4">
                   {id === "1" && <BitcoinChart />}
                   {id === "2" && <EthereumChart />}
                   {id === "3" && <TetherChart />}
