@@ -13,6 +13,16 @@ import Stocks from "./WhatIs/Stocks";
 import Crypto from "./WhatIs/Crypto";
 import Simulate from "./WhatIs/Simulate";
 import Swap from "./WhatIs/Swap";
+import StocksIntroduction from "./WhatIs/WhatIsStocks/StocksIntroduction";
+import TypesofStocks from "./WhatIs/WhatIsStocks/TypesofStocks";
+import FundamentalAnalysis from "./WhatIs/WhatIsStocks/FundamentalAnalysis";
+import HowtoBuyStocks from "./WhatIs/WhatIsStocks/HowtoBuyStocks";
+import Technicalanalysis from "./WhatIs/WhatIsStocks/Technicalanalysis";
+import InvestmentStrategies from "./WhatIs/WhatIsStocks/InvestmentStrategies";
+import RiskandConsiderations from "./WhatIs/WhatIsStocks/RisksandConsiderations";
+import OriginsoftheStockMarket from "./WhatIs/WhatIsStocks/OriginsoftheStockMarket";
+import Casestudiesofsuccessfulandfailedcompanies from "./WhatIs/WhatIsStocks/Casestudiesofsuccessfulandfailedcompanies";
+import GoToTheTopButon from "./WhatIs/GoToTheTopButton";
 
 function DocumentationPage() {
   const controls = useAnimation();
@@ -25,12 +35,19 @@ function DocumentationPage() {
   };
 
   return (
-    <div className="h-screen">
+    <div className="h-screen" id="Top">
       <NavBar />
       <main className="mx-auto max-w-7xl py-6 lg:px-8 mt-24 mb-24">
         <div className="flex flex-row items-center space-x-4 border-b-1 pb-6 mb-6 select-none">
           <Image src={LogoBullSwap} width={50} height={50} alt="LogoBullSwap" />
           <h1 className="text-5xl font-bold text-[#38bdf8]">Bull Swap Learn</h1>
+          <a
+            onClick={() => scrollToSection("Top")}
+            href="#Top"
+            className="text-transparent"
+          >
+            <GoToTheTopButon />
+          </a>
         </div>
         <div className="flex">
           <div className="w-1/4 h-screen border-r-1 pr-4 mr-4">
@@ -45,6 +62,7 @@ function DocumentationPage() {
                     • Introduction
                   </a>
                 </li>
+                {/* What Is? */}
                 <li className="border-b-1 mr-12">
                   <Accordion>
                     <AccordionItem key="1" title="What is?">
@@ -103,64 +121,118 @@ function DocumentationPage() {
                     </AccordionItem>
                   </Accordion>
                 </li>
+                {/* What Is Stocks? */}
                 <li className="border-b-1 mr-12">
                   <Accordion>
                     <AccordionItem key="1" title="What is Stocks?">
                       <div className="flex flex-col">
                         <a
-                          onClick={() => scrollToSection("FinancialNews")}
-                          href="#FinancialNews"
+                          onClick={() => scrollToSection("StocksIntroduction")}
+                          href="#StocksIntroduction"
                           className="font-medium text-md text-gray-500 hover:text-gray-600 pb-3"
                         >
                           <div className="flex flex-row">
                             <h1 className="mr-2">•</h1>
-                            <h1>Financial News</h1>
+                            <h1>Stocks Introduction</h1>
                           </div>
                         </a>
                         <a
-                          onClick={() => scrollToSection("Stocks")}
-                          href="#Stocks"
+                          onClick={() => scrollToSection("TypesofStocks")}
+                          href="#TypesofStocks"
                           className="font-medium text-md text-gray-500 hover:text-gray-600 pb-3"
                         >
                           <div className="flex flex-row">
                             <h1 className="mr-2">•</h1>
-                            <h1>Stocks</h1>
+                            <h1>Types of Stocks</h1>
                           </div>
                         </a>
                         <a
-                          onClick={() => scrollToSection("Crypto")}
-                          href="#Crypto"
+                          onClick={() => scrollToSection("HowtoBuyStocks")}
+                          href="#HowtoBuyStocks"
                           className="font-medium text-md text-gray-500 hover:text-gray-600 pb-3"
                         >
                           <div className="flex flex-row">
                             <h1 className="mr-2">•</h1>
-                            <h1>Crypto</h1>
+                            <h1>How to Buy Stocks</h1>
                           </div>
                         </a>
                         <a
-                          onClick={() => scrollToSection("Simulate")}
-                          href="#Simulate"
+                          onClick={() => scrollToSection("FundamentalAnalysis")}
+                          href="#FundamentalAnalysis"
                           className="font-medium text-md text-gray-500 hover:text-gray-600 pb-3"
                         >
                           <div className="flex flex-row">
                             <h1 className="mr-2">•</h1>
-                            <h1>Simulate</h1>
+                            <h1>Fundamental Analysis</h1>
                           </div>
                         </a>
                         <a
-                          onClick={() => scrollToSection("Swap")}
-                          href="#Swap"
+                          onClick={() => scrollToSection("Technicalanalysis")}
+                          href="#Technicalanalysis"
                           className="font-medium text-md text-gray-500 hover:text-gray-600 pb-3"
                         >
                           <div className="flex flex-row">
                             <h1 className="mr-2">•</h1>
-                            <h1>Swap</h1>
+                            <h1>Technical analysis</h1>
+                          </div>
+                        </a>
+                        <a
+                          onClick={() =>
+                            scrollToSection("InvestmentStrategies")
+                          }
+                          href="#InvestmentStrategies"
+                          className="font-medium text-md text-gray-500 hover:text-gray-600 pb-3"
+                        >
+                          <div className="flex flex-row">
+                            <h1 className="mr-2">•</h1>
+                            <h1>Investment Strategies</h1>
+                          </div>
+                        </a>
+                        <a
+                          onClick={() =>
+                            scrollToSection("RiskandConsiderations")
+                          }
+                          href="#RiskandConsiderations"
+                          className="font-medium text-md text-gray-500 hover:text-gray-600 pb-3"
+                        >
+                          <div className="flex flex-row">
+                            <h1 className="mr-2">•</h1>
+                            <h1>Risk and Considerations</h1>
+                          </div>
+                        </a>
+                        <a
+                          onClick={() =>
+                            scrollToSection("OriginsoftheStockMarket")
+                          }
+                          href="#OriginsoftheStockMarket"
+                          className="font-medium text-md text-gray-500 hover:text-gray-600 pb-3"
+                        >
+                          <div className="flex flex-row">
+                            <h1 className="mr-2">•</h1>
+                            <h1>Origins of the stock market</h1>
+                          </div>
+                        </a>
+                        <a
+                          onClick={() =>
+                            scrollToSection(
+                              "Casestudiesofsuccessfulandfailedcompanies"
+                            )
+                          }
+                          href="#Casestudiesofsuccessfulandfailedcompanies"
+                          className="font-medium text-md text-gray-500 hover:text-gray-600 pb-3"
+                        >
+                          <div className="flex flex-row">
+                            <h1 className="mr-2">•</h1>
+                            <h1>
+                              Case studies of successful and failed companies
+                            </h1>
                           </div>
                         </a>
                       </div>
                     </AccordionItem>
                   </Accordion>
                 </li>
+                {/* What Is Crypto? */}
                 <li className="border-b-1 mr-12">
                   <Accordion>
                     <AccordionItem key="1" title="What is Crypto?">
@@ -219,6 +291,7 @@ function DocumentationPage() {
                     </AccordionItem>
                   </Accordion>
                 </li>
+                {/* What Is Simulate? */}
                 <li className="border-b-1 mr-12">
                   <Accordion>
                     <AccordionItem key="1" title="What is Simulate?">
@@ -277,6 +350,7 @@ function DocumentationPage() {
                     </AccordionItem>
                   </Accordion>
                 </li>
+                {/* What Is Swap? */}
                 <li className="border-b-1 mr-12">
                   <Accordion>
                     <AccordionItem key="1" title="What is Swap?">
@@ -356,6 +430,33 @@ function DocumentationPage() {
             </div>
             <div id="Swap">
               <Swap />
+            </div>
+            <div id="StocksIntroduction">
+              <StocksIntroduction />
+            </div>
+            <div id="TypesofStocks">
+              <TypesofStocks />
+            </div>
+            <div id="HowtoBuyStocks">
+              <HowtoBuyStocks />
+            </div>
+            <div id="FundamentalAnalysis">
+              <FundamentalAnalysis />
+            </div>
+            <div id="Technicalanalysis">
+              <Technicalanalysis />
+            </div>
+            <div id="InvestmentStrategies">
+              <InvestmentStrategies />
+            </div>
+            <div id="RiskandConsiderations">
+              <RiskandConsiderations />
+            </div>
+            <div id="OriginsoftheStockMarket">
+              <OriginsoftheStockMarket />
+            </div>
+            <div id="Casestudiesofsuccessfulandfailedcompanies">
+              <Casestudiesofsuccessfulandfailedcompanies />
             </div>
           </div>
         </div>
