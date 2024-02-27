@@ -5,6 +5,20 @@ import { motion } from "framer-motion";
 import { Dialog } from "@headlessui/react";
 import { HiBars3 } from "react-icons/hi2";
 import { HiOutlineXMark } from "react-icons/hi2";
+import {
+  Dropdown,
+  DropdownTrigger,
+  DropdownMenu,
+  DropdownSection,
+  DropdownItem,
+  Button,
+  cn,
+} from "@nextui-org/react";
+import { FaBitcoin } from "react-icons/fa6";
+import { MdOutlineQuestionAnswer, MdOutlineSwapHoriz  } from "react-icons/md";
+import { CiCoins1 } from "react-icons/ci";
+import { IoTrendingUp } from "react-icons/io5";
+import { GiBuyCard } from "react-icons/gi";
 
 const navigation = [
   { name: "Financial News", href: "/news" },
@@ -58,17 +72,75 @@ function NavBar() {
             </button>
           </motion.div>
           <div className="hidden lg:flex lg:gap-x-12">
-        {navigation.map((item) => (
-          <motion.a
-            key={item.name}
-            href={item.href}
-            className="text-sm font-semibold leading-6 text-gray-900 hover:text-[#38bdf8]"
-            whileHover={{ scale: 1.1 }} 
-          >
-            {item.name}
-          </motion.a>
-        ))}
-      </div>
+            <motion.a
+              href="/news"
+              className="text-sm font-semibold leading-6 text-gray-900 hover:text-[#38bdf8]"
+              whileHover={{ scale: 1.05 }}
+            >
+              Financial News
+            </motion.a>
+            <motion.a
+              href="/stocks"
+              className="text-sm font-semibold leading-6 text-gray-900 hover:text-[#38bdf8]"
+              whileHover={{ scale: 1.05 }}
+            >
+              Stocks
+            </motion.a>
+
+            <Dropdown>
+              <DropdownTrigger>
+                <motion.h1
+                  className="text-sm font-semibold leading-6 text-gray-900 hover:text-[#38bdf8] cursor-pointer"
+                  whileHover={{ scale: 1.05 }}
+                >
+                  Crypto
+                </motion.h1>
+              </DropdownTrigger>
+              <DropdownMenu
+                variant="faded"
+                aria-label="Dropdown menu with description"
+              >
+                <DropdownSection title="Cryptocurrencies" showDivider>
+                  <DropdownItem href="/crypto" key="marketcap" startContent={<CiCoins1 className="text-2xl font-bold text-[#38bdf8]"/>}>
+                    By Market Cap
+                  </DropdownItem>
+                </DropdownSection>
+                <DropdownSection title="Popular" showDivider>
+                  <DropdownItem href="/crypto/popular" key="trending" startContent={<IoTrendingUp className="text-xl font-bold text-[#38bdf8]"/>}>
+                    Trending
+                  </DropdownItem>
+                  <DropdownItem href="/crypto/popular" key="gainers&losers" startContent={<GiBuyCard className="text-xl font-bold text-[#38bdf8]"/>}>
+                    Gainers & Losers
+                  </DropdownItem>
+                </DropdownSection>
+                <DropdownSection title="Tools" showDivider>
+                  <DropdownItem href="/swap/crypto" key="convert" startContent={<MdOutlineSwapHoriz className="text-xl font-bold text-[#38bdf8]" />}>
+                    Convert
+                  </DropdownItem>
+                </DropdownSection>
+                <DropdownSection title="What Is?">
+                  <DropdownItem href="/crypto/whatis" key="terms" startContent={<MdOutlineQuestionAnswer className="text-xl font-bold text-[#38bdf8]"/>}>
+                    Terms
+                  </DropdownItem>
+                </DropdownSection>
+              </DropdownMenu>
+            </Dropdown>
+
+            <motion.a
+              href="/crypto"
+              className="text-sm font-semibold leading-6 text-gray-900 hover:text-[#38bdf8]"
+              whileHover={{ scale: 1.05 }}
+            >
+              Simulate
+            </motion.a>
+            <motion.a
+              href="/swap"
+              className="text-sm font-semibold leading-6 text-gray-900 hover:text-[#38bdf8]"
+              whileHover={{ scale: 1.05 }}
+            >
+              Swap
+            </motion.a>
+          </div>
           <motion.div
             initial={{ x: 20, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
@@ -78,7 +150,7 @@ function NavBar() {
             <motion.a
               href="/login"
               className="text-sm font-semibold leading-6 text-gray-900 hover:text-[#38bdf8]"
-              whileHover={{ scale: 1.1 }} 
+              whileHover={{ scale: 1.05 }}
             >
               Log in <span aria-hidden="true">&rarr;</span>
             </motion.a>
