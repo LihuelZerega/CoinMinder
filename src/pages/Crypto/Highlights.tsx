@@ -1,10 +1,10 @@
 import React from "react";
 import MarketCap from "./MarketCap";
 import VolumeH from "./VolumeH";
-import Trending from "./Trending";
+import Trending from "./Popular/Trending";
 import CryptoStats from "./CryptoStats";
-import TopGainers from "@/pages/Crypto/TopGainers";
-import TopLosers from "@/pages/Crypto/TopLosers";
+import TopGainers from "@/pages/Crypto/Popular/TopGainers";
+import TopLosers from "@/pages/Crypto/Popular/TopLosers";
 
 function Highlights() {
   return (

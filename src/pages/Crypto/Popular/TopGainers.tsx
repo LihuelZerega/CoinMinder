@@ -1,43 +1,53 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
-import TrendingIcon from "@/images/TrendingIcon.png";
+import RocketIcon from "@/images/RocketIcon.png";
+import Link from "next/link";
 
 interface TrendingCoin {
   id: number;
   name: string;
   symbol: string;
-  thumb: string;
-  current_price: string;
-  sparkline: string;
+  image: string;
+  current_price: number;
+  price_change_percentage_24h: number;
 }
 
-const Trending: React.FC = () => {
+function TopGainers() {
   const [trendingCoins, setTrendingCoins] = useState<TrendingCoin[]>([]);
   const [error, setError] = useState<Error | null>(null);
-  const router = useRouter();
 
   useEffect(() => {
     const fetchTrendingCoins = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8080/api/crypto/market/trending"
+          "http://localhost:8080/api/crypto/topgainers"
         );
 
         if (response.data && Array.isArray(response.data)) {
-          const coins: TrendingCoin[] = response.data
-            .slice(0, 3)
-            .map((coin: any) => ({
-              id: coin.id,
-              name: coin.name,
-              symbol: coin.symbol,
-              thumb: coin.thumb,
-              current_price: formatPrice(coin.price),
-              sparkline: coin.sparkline,
-            }));
+          const coins: TrendingCoin[] = response.data.map((coin: any) => ({
+            id: coin.id,
+            name: coin.name,
+            symbol: coin.symbol,
+            image: coin.image,
+            current_price: coin.current_price,
+            price_change_percentage_24h: coin.price_change_percentage_24h,
+          }));
 
-          setTrendingCoins(coins);
+          const uniqueNames: Set<string> = new Set();
+          const filteredCoins: TrendingCoin[] = [];
+
+          for (let i = 0; i < coins.length; i++) {
+            if (filteredCoins.length === 3) break;
+
+            const coin = coins[i];
+            if (!uniqueNames.has(coin.name)) {
+              filteredCoins.push(coin);
+              uniqueNames.add(coin.name);
+            }
+          }
+
+          setTrendingCoins(filteredCoins);
         }
       } catch (error) {
         console.error("Error fetching trending coins:", error);
@@ -48,38 +58,33 @@ const Trending: React.FC = () => {
     fetchTrendingCoins();
   }, []);
 
-  const formatPrice = (price: string) => {
-    const matches = price.match(/\$0\.0<sub\s+title="(\d+\.\d+)">/);
-    if (matches) {
-      const [, decimal] = matches;
-      return `$0.${decimal}`;
-    } else {
-      return price;
-    }
-  };
 
   return (
     <div className="w-full border rounded-md p-4 font-semibold">
       <div className="flex flex-row items-center justify-between">
         <div className="flex flex-row items-center space-x-1">
-          <Image src={TrendingIcon} width={18} height={18} alt="TrendingIcon" />
+          <Image src={RocketIcon} width={18} height={18} alt={"RocketIcon"} />
           <h2 className="text-gray-400 hover:text-gray-500 text-xs font-semibold cursor-pointer">
-            Coins Trending
+            Largest Gainers
           </h2>
         </div>
         <h2 className="text-gray-400 hover:text-[#38bdf8] text-xs font-semibold cursor-pointer">
-          See More →
+        <Link href="/crypto/popular">See More →</Link>
+
         </h2>
       </div>
 
       <ul className="flex flex-col h-full">
         {trendingCoins.map((coin) => (
-          <li key={coin.id} className="cursor-pointer">
+          <li
+            key={coin.id}
+            className="cursor-pointer"
+          >
             <div className="flex flex-col pt-2.5">
-              <div className="flex flex-row justify-between bg-transparent hover:bg-gray-50 rounded-md p-2">
+              <div className="flex flex-row justify-between bg-transparent hover:bg-gray-50 rounded-md p-2 cursor-pointer">
                 <div className="flex flex-row items-center space-x-2">
                   <Image
-                    src={coin.thumb}
+                    src={coin.image}
                     width={25}
                     height={25}
                     alt={coin.name}
@@ -91,15 +96,18 @@ const Trending: React.FC = () => {
                 </div>
                 <div className="flex flex-row items-center space-x-3">
                   <div className="text-base lg:text-sm xl:text-base">
-                    {coin.current_price}
+                    ${coin.current_price.toFixed(2)}
                   </div>
-                  <div className="max-h-5">
-                    <Image
-                      src={coin.sparkline}
-                      width={70}
-                      height={20}
-                      alt={coin.sparkline}
-                    />
+                  <div
+                    className={
+                      coin.price_change_percentage_24h > 0
+                        ? "text-green-500 font-semibold"
+                        : "text-red-500 font-semibold"
+                    }
+                  >
+                    {coin.price_change_percentage_24h > 0
+                      ? `+${coin.price_change_percentage_24h.toFixed(2)}%`
+                      : `${coin.price_change_percentage_24h.toFixed(2)}%`}
                   </div>
                 </div>
               </div>
@@ -114,6 +122,6 @@ const Trending: React.FC = () => {
       )}
     </div>
   );
-};
+}
 
-export default Trending;
+export default TopGainers;

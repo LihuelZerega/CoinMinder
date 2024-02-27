@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import TrendingIcon from "@/images/TrendingIcon.png";
+import RocketIcon from "@/images/RocketIcon.png";
 
 interface TrendingCoin {
   id: number;
@@ -13,16 +13,15 @@ interface TrendingCoin {
   price_change_percentage_24h: number;
 }
 
-function TopLosers() {
+function GainersCoins() {
   const [trendingCoins, setTrendingCoins] = useState<TrendingCoin[]>([]);
   const [error, setError] = useState<Error | null>(null);
-  const router = useRouter();
 
   useEffect(() => {
     const fetchTrendingCoins = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8080/api/crypto/toplosers"
+          "http://localhost:8080/api/crypto/topgainers"
         );
 
         if (response.data && Array.isArray(response.data)) {
@@ -39,7 +38,7 @@ function TopLosers() {
           const filteredCoins: TrendingCoin[] = [];
 
           for (let i = 0; i < coins.length; i++) {
-            if (filteredCoins.length === 3) break;
+            if (filteredCoins.length === 16) break;
 
             const coin = coins[i];
             if (!uniqueNames.has(coin.name)) {
@@ -59,36 +58,26 @@ function TopLosers() {
     fetchTrendingCoins();
   }, []);
 
-  const handleRedirect = (id: number) => {
-    router.push(`/crypto/coin/${id}`);
-  };
-
   return (
-    <div className="w-full border rounded-md p-4 font-semibold">
-      <div className="flex flex-row items-center justify-between">
-        <div className="flex flex-row items-center space-x-1">
-          <Image
-            src={TrendingIcon}
-            width={18}
-            height={18}
-            alt={"TrendingIcon"}
-          />
-          <h2 className="text-gray-400 hover:text-gray-500 text-xs font-semibold cursor-pointer">
-            Biggest Losers
-          </h2>
+    <div className="w-full h-full border rounded-md p-4 font-semibold">
+      <div className="flex flex-row items-center justify-between border-b-1 pb-2">
+        <h1 className="text-[#38bdf8] text-lg font-semibold">Top Gainers</h1>
+      </div>
+
+      <div className="flex flex-row items-center justify-between border-b-1 pb-2 p-2 text-gray-500">
+        <div>
+          <h1 className="text-sm">Coin</h1>
         </div>
-        <h2 className="text-gray-400 hover:text-[#38bdf8] text-xs font-semibold cursor-pointer">
-          See More →
-        </h2>
+        <div className="flex flex-row space-x-4">
+          <h1 className="text-sm">Price</h1>
+          <h1 className="block sm:hidden text-sm">C.(24hs)</h1>
+          <h1 className="hidden sm:block text-sm">Change (24hs)</h1>
+        </div>
       </div>
 
       <ul className="flex flex-col h-full">
         {trendingCoins.map((coin) => (
-          <li
-            key={coin.id}
-            onClick={() => handleRedirect(coin.id)}
-            className="cursor-pointer"
-          >
+          <li key={coin.id} className="cursor-pointer">
             <div className="flex flex-col pt-2.5">
               <div className="flex flex-row justify-between bg-transparent hover:bg-gray-50 rounded-md p-2 cursor-pointer">
                 <div className="flex flex-row items-center space-x-2">
@@ -99,24 +88,26 @@ function TopLosers() {
                     alt={coin.name}
                     className="rounded-full"
                   />
-                  <div className="text-base lg:text-sm xl:text-base">
+                  <div className="text-sm md:text-sm xl:text-base">
                     {coin.name}
                   </div>
                 </div>
                 <div className="flex flex-row items-center space-x-3">
-                  <div className="text-base lg:text-sm xl:text-base">
+                  <div className="text-sm md:text-sm xl:text-base">
                     ${coin.current_price.toFixed(2)}
                   </div>
-                  <div
-                    className={
-                      coin.price_change_percentage_24h > 0
-                        ? "text-green-500 font-semibold"
-                        : "text-red-500 font-semibold"
-                    }
-                  >
-                    {coin.price_change_percentage_24h > 0
-                      ? `+${coin.price_change_percentage_24h.toFixed(2)}%`
-                      : `${coin.price_change_percentage_24h.toFixed(2)}%`}
+                  <div className="text-sm md:text-sm xl:text-base">
+                    <div
+                      className={
+                        coin.price_change_percentage_24h > 0
+                          ? "text-green-500 font-semibold"
+                          : "text-red-500 font-semibold"
+                      }
+                    >
+                      {coin.price_change_percentage_24h > 0
+                        ? `+${coin.price_change_percentage_24h.toFixed(2)}%`
+                        : `${coin.price_change_percentage_24h.toFixed(2)}%`}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -124,6 +115,7 @@ function TopLosers() {
           </li>
         ))}
       </ul>
+
       {error && (
         <div className="text-red-500 text-sm text-center">
           Error fetching data: {error.message}
@@ -133,4 +125,4 @@ function TopLosers() {
   );
 }
 
-export default TopLosers;
+export default GainersCoins;

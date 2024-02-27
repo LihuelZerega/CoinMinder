@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
-import RocketIcon from "@/images/RocketIcon.png";
+import TrendingIcon from "@/images/TrendingIcon.png";
+import Link from "next/link";
 
 interface TrendingCoin {
   id: number;
@@ -13,16 +13,15 @@ interface TrendingCoin {
   price_change_percentage_24h: number;
 }
 
-function TopGainers() {
+function TopLosers() {
   const [trendingCoins, setTrendingCoins] = useState<TrendingCoin[]>([]);
   const [error, setError] = useState<Error | null>(null);
-  const router = useRouter();
 
   useEffect(() => {
     const fetchTrendingCoins = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8080/api/crypto/topgainers"
+          "http://localhost:8080/api/crypto/toplosers"
         );
 
         if (response.data && Array.isArray(response.data)) {
@@ -59,21 +58,23 @@ function TopGainers() {
     fetchTrendingCoins();
   }, []);
 
-  const handleRedirect = (id: number) => {
-    router.push(`/crypto/coin/${id}`);
-  };
-
   return (
     <div className="w-full border rounded-md p-4 font-semibold">
       <div className="flex flex-row items-center justify-between">
         <div className="flex flex-row items-center space-x-1">
-          <Image src={RocketIcon} width={18} height={18} alt={"RocketIcon"} />
+          <Image
+            src={TrendingIcon}
+            width={18}
+            height={18}
+            alt={"TrendingIcon"}
+          />
           <h2 className="text-gray-400 hover:text-gray-500 text-xs font-semibold cursor-pointer">
-            Largest Gainers
+            Biggest Losers
           </h2>
         </div>
         <h2 className="text-gray-400 hover:text-[#38bdf8] text-xs font-semibold cursor-pointer">
-          See More →
+        <Link href="/crypto/popular">See More →</Link>
+
         </h2>
       </div>
 
@@ -81,7 +82,6 @@ function TopGainers() {
         {trendingCoins.map((coin) => (
           <li
             key={coin.id}
-            onClick={() => handleRedirect(coin.id)}
             className="cursor-pointer"
           >
             <div className="flex flex-col pt-2.5">
@@ -128,4 +128,4 @@ function TopGainers() {
   );
 }
 
-export default TopGainers;
+export default TopLosers;

@@ -61,25 +61,25 @@ const BitcoinHalvingCollapsiblePanel = () => {
               <IoClose className="text-xl" />
             </button>
           </div>
-          <div className="flex flex-row px-3 space-x-12">
+          <div className="flex flex-col md:flex-row px-3 space-x-12">
             <section>
               <div className="pb-6">
-                <h1 className="text-left font-semibold text-4xl">
+                <h1 className="text-center md:text-left font-semibold text-3xl md:text-4xl">
                   When Is the Next Bitcoin
                 </h1>
-                <h1 className="text-left font-semibold text-4xl">
+                <h1 className="text-center md:text-left font-semibold text-3xl md:text-4xl">
                   Halving in 2024?
                 </h1>
               </div>
               <div>
-                <div className="flex flex-row space-x-4">
+                <div className="flex flex-row items-center justify-center md:items-start md:justify-start space-x-4">
                   <div className="flex flex-col items-center">
-                    <h1 className="font-semibold text-3xl">{countdown.days}</h1>
+                    <h1 className="font-semibold text-2xl md:text-3xl">{countdown.days}</h1>
                     <h1 className="font-normal text-sm">DAYS</h1>
                   </div>
                   <h1 className="text-xl font-bold space-x-6">:</h1>
                   <div className="flex flex-col items-center">
-                    <h1 className="font-semibold text-3xl">
+                    <h1 className="font-semibold text-2xl md:text-3xl">
                       {countdown.hours}
                     </h1>
                     <h1 className="font-normal text-sm">HOURS</h1>
@@ -87,7 +87,7 @@ const BitcoinHalvingCollapsiblePanel = () => {
                   <h1 className="text-xl font-bold space-x-6">:</h1>
 
                   <div className="flex flex-col items-center">
-                    <h1 className="font-semibold text-3xl">
+                    <h1 className="font-semibold text-2xl md:text-3xl">
                       {countdown.minutes}
                     </h1>
                     <h1 className="font-normal text-sm">MINS</h1>
@@ -95,7 +95,7 @@ const BitcoinHalvingCollapsiblePanel = () => {
                   <h1 className="text-xl font-bold space-x-6">:</h1>
 
                   <div className="flex flex-col items-center">
-                    <h1 className="font-semibold text-3xl">
+                    <h1 className="font-semibold text-2xl md:text-3xl">
                       {countdown.seconds}
                     </h1>
                     <h1 className="font-normal text-sm">SECS</h1>
@@ -104,7 +104,7 @@ const BitcoinHalvingCollapsiblePanel = () => {
               </div>
             </section>
             <section>
-              <div className="max-w-lg text-sm font-medium text-gray-700">
+              <div className="hidden md:block max-w-lg text-sm font-medium text-gray-700">
                 <h1 className="pb-2">
                   The next Bitcoin halving is anticipated to occur in April
                   2024. The exact date is difficult to predict as it depends on
