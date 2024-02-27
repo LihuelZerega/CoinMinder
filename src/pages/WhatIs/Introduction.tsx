@@ -26,8 +26,8 @@ function Introduction() {
         <p className="pb-6">
           Our goal is to equip you with the knowledge necessary to make informed
           and strategic decisions in your financial and investment activities.
-          From basic terms like "stocks" and "cryptocurrencies" to more advanced
-          concepts like "technical analysis" and "trading strategies," BullSwap
+          From basic terms like &quot;stocks&quot; and &quot;cryptocurrencies&quot; to more advanced
+          concepts like &quot;technical analysis&quot; and &quot;trading strategies,&quot; BullSwap
           Learn covers a wide range of topics to meet your educational needs.
         </p>
         <p className="pb-6">
