@@ -64,11 +64,10 @@ function CryptoStats() {
 const CryptoStat = ({ title, value }: { title: string, value: number }) => {
   return (
     <motion.div
-      className="flex flex-row items-center space-x-2 font-semibold bg-gray-100 p-4 rounded-md"
-      whileHover={{ scale: 1.05 }}
+      className="flex flex-row items-center space-x-2 font-semibold border p-3 rounded-md"
     >
       <h2 className="text-gray-400 text-sm">{title}:</h2>
-      <p className="text-md">{value}</p>
+      <p className="text-sm">{value}</p>
     </motion.div>
   );
 };
