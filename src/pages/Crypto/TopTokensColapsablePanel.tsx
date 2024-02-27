@@ -61,7 +61,7 @@ const CollapsiblePanel = () => {
             </p>
             <p className="font-normal text-sm">
               The data displayed is for informational purposes only. Some data
-              is provided by Coin Gecko and is presented "as is" without
+              is provided by Coin Gecko and is presented &quot;as is&quot; without
               representation or warranty of any kind.
             </p>
           </div>

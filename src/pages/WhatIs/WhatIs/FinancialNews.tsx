@@ -28,7 +28,7 @@ function FinancialNews() {
         <p className="pb-6">
           Our commitment to financial education is reflected in our careful
           selection of financial news, designed to provide a comprehensive and
-          insightful view of the financial world. Whether you're interested in
+          insightful view of the financial world. Whether you&apos;re interested in
           learning about investment strategies, understanding the factors that
           drive markets, or simply keeping up with the latest trends, BullSwap
           Learn is here to help you navigate the complex world of finance.

@@ -39,11 +39,11 @@ function RisksandConsiderations() {
           <p>
             Individual stocks can be affected by company-specific factors, such
             as financial results, management decisions, market competition, and
-            industry changes.{" "}
+            industry changes. 
           </p>
           <p>
             Bankruptcy, mergers and acquisitions, or legal problems can have a
-            negative impact on a company's stock price.{" "}
+            negative impact on a company's stock price. 
           </p>
         </div>
       </div>

@@ -369,7 +369,7 @@ const CryptoCurrencyDetails: React.FC = () => {
                                   of a
                                 </h1>
                                 <h1>
-                                  cryptocurrency's circulating supply. It is
+                                  cryptocurrencys circulating supply. It is
                                 </h1>
                                 <h1>
                                   calculated by multiplying the current price by

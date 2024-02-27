@@ -1,9 +1,9 @@
 "use client"
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import LoadingPage from "@/components/LoadingPage";
 import PopularCoins from "@/pages/Crypto/Popular/PopularCoins";
 
-function page() {
+function Page() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -29,4 +29,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;

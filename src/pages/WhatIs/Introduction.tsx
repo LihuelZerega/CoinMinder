@@ -31,7 +31,7 @@ function Introduction() {
           Learn covers a wide range of topics to meet your educational needs.
         </p>
         <p className="pb-6">
-          Whether you're interested in learning about how financial markets
+          Whether you&apos;re interested in learning about how financial markets
           work, understanding the principles behind asset valuation, or
           exploring the intricacies of cryptocurrency trading, BullSwap Learn is
           here to help you every step of the way.

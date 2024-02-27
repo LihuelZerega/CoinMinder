@@ -49,7 +49,7 @@ function FundamentalAnalysis() {
             among others.
           </p>
           <p>
-            These ratios provide valuable information about a company's
+            These ratios provide valuable information about a company&apos;s
             profitability, efficiency, solvency, and valuation, allowing
             investors to make informed decisions about whether to buy, sell, or
             hold shares in a particular company.
@@ -63,9 +63,9 @@ function FundamentalAnalysis() {
           </h2>
           <p>
             Fundamental analysis also involves reviewing and understanding a
-            company's financial reports, such as the balance sheet, income
+            company&apos;s financial reports, such as the balance sheet, income
             statement, and cash flow statement. These reports provide a detailed
-            view of the company's financial condition, its operating
+            view of the company&apos;s financial condition, its operating
             performance, and its investment and financing activities.
           </p>
           <p>

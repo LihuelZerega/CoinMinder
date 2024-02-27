@@ -27,7 +27,7 @@ function TypesofStocks() {
           <p>
             On the other hand, preferred shares grant their owners certain
             benefits over common shares, such as priority in the payment of
-            dividends and reimbursement in the event of the company's
+            dividends and reimbursement in the event of the company&apos;s
             bankruptcy. However, owners of preferred stock generally do not have
             voting rights.
           </p>

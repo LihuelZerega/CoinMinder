@@ -20,7 +20,7 @@ function Casestudiesofsuccessfulandfailedcompanies() {
           </h2>
           <p>
             Case studies of successful and failed companies provide deep insight
-            into the factors that contribute to a company's success or failure
+            into the factors that contribute to a company&apos;s success or failure
             in the marketplace.
           </p>
           <p>

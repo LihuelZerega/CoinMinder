@@ -44,7 +44,7 @@ function Stocks() {
           strategic financial decisions.
         </p>
         <p className="pb-6">
-          Whether you're a novice investor just getting started or an
+          Whether you&apos;re a novice investor just getting started or an
           experienced trader looking for new opportunities, BullSwap Learn is
           here to guide you on your journey of discovery in the exciting world
           of stocks. Join us as we explore the unlimited potential of the stock

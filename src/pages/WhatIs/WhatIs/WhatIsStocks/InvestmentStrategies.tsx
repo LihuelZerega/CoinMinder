@@ -11,7 +11,7 @@ function InvestmentStrategies() {
           Investment strategies are specific approaches used by investors and
           traders to manage their portfolios and make investment decisions in
           the financial market. These strategies may vary depending on each
-          individual's time horizon, level of risk, and financial objectives.
+          individual&apos;s time horizon, level of risk, and financial objectives.
         </p>
       </div>
       <div className="text-gray-500 font-medium pr-16 pb-6">
@@ -29,7 +29,7 @@ function InvestmentStrategies() {
           <p className="pt-2 text-gray-700">Swing Trading:</p>
           <p>
             Swing trading is a strategy that focuses on taking advantage of
-            price fluctuations or "swings" over a period of days or weeks.
+            price fluctuations or &quot;swings&quot; over a period of days or weeks.
             Traders seek to identify short-term trends and take positions with
             the goal of making profits when the price moves in the expected
             direction.

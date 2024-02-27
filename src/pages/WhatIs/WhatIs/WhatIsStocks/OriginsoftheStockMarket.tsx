@@ -44,7 +44,7 @@ function OriginsoftheStockMarket() {
             trading.
           </p>
           <p>
-            The 1929 Wall Street crash, known as "Black Thursday," was one of
+            The 1929 Wall Street crash, known as &quot;Black Thursday,&quot; was one of
             the most devastating events in stock market history, marking the
             beginning of the Great Depression and leading to significant
             regulatory reform in the financial markets.

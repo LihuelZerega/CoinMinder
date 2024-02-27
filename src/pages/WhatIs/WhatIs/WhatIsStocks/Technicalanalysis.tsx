@@ -11,7 +11,7 @@ export default function Technicalanalysis() {
           Technical analysis is a methodology used to predict future price
           movements of stocks, cryptocurrencies, or other financial assets by
           studying historical market data such as prices and trading volumes.
-          Unlike fundamental analysis, which focuses on a company's
+          Unlike fundamental analysis, which focuses on a company&apos;s
           fundamentals, technical analysis is based exclusively on price action
           and market behavior patterns.
         </p>
@@ -29,11 +29,11 @@ export default function Technicalanalysis() {
           <p>
             Technical analysts use charts and technical tools to identify
             trends, price patterns, support and resistance levels, as well as
-            buy and sell signals in financial markets.{" "}
+            buy and sell signals in financial markets.
           </p>
           <p>
             It is used to make trading decisions, such as entering and exiting
-            positions, setting price targets, and managing risk.{" "}
+            positions, setting price targets, and managing risk.
           </p>
         </div>
       </div>

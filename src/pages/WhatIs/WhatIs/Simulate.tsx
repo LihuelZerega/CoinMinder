@@ -33,7 +33,7 @@ function Simulate() {
           investments and plan your financial future with confidence.
         </p>
         <p className="pb-6">
-          Whether you're planning for retirement, saving for a big purchase, or
+          Whether you&apos;re planning for retirement, saving for a big purchase, or
           simply looking to grow your wealth over the long term, our simulation
           tool gives you the tools and information you need to make smart
           decisions and achieve your financial goals. At BullSwap Learn, we are
