@@ -43,7 +43,7 @@ function RisksandConsiderations() {
           </p>
           <p>
             Bankruptcy, mergers and acquisitions, or legal problems can have a
-            negative impact on a company's stock price. 
+            negative impact on a companys stock price. 
           </p>
         </div>
       </div>
