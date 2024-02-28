@@ -2,19 +2,19 @@ import React from "react";
 
 function RisksandConsiderations() {
   return (
-    <div className="px-12 mb-12">
+    <div className="px-8 md:px-12 mb-12">
       <div>
-        <h1 className="text-[#38bdf8] font-bold text-5xl pb-4">
+        <h1 className="text-[#38bdf8] font-bold text-3xl md:text-5xl pb-4">
           Risks and Considerations
         </h1>
-        <p className="text-gray-500 font-medium pr-16 pb-6">
+        <p className="text-gray-500 font-medium pr-0 md:pr-16 pb-6">
           Investing in stocks can offer opportunities for growth and income
           generation, but it also carries certain risks that investors should be
           aware of. Here are some of the risks and considerations associated
           with investing in stocks:
         </p>
       </div>
-      <div className="text-gray-500 font-medium pr-16 pb-6">
+      <div className="text-gray-500 font-medium pr-0 md:pr-16 pb-6">
         <div className="pb-6">
           <h2 className="text-xl font-semibold text-gray-700 pb-2">
             Market Risks:
@@ -31,7 +31,7 @@ function RisksandConsiderations() {
           </p>
         </div>
       </div>
-      <div className="text-gray-500 font-medium pr-16 pb-6">
+      <div className="text-gray-500 font-medium pr-0 md:pr-16 pb-6">
         <div className="pb-6">
           <h2 className="text-xl font-semibold text-gray-700 pb-2">
             Company Specific Risks:
@@ -47,7 +47,7 @@ function RisksandConsiderations() {
           </p>
         </div>
       </div>
-      <div className="text-gray-500 font-medium pr-16 pb-6">
+      <div className="text-gray-500 font-medium pr-0 md:pr-16 pb-6">
         <div className="pb-6">
           <h2 className="text-xl font-semibold text-gray-700 pb-2">
             Currency and Political Risks:
@@ -64,7 +64,7 @@ function RisksandConsiderations() {
           </p>
         </div>
       </div>
-      <div className="text-gray-500 font-medium pr-16 pb-6">
+      <div className="text-gray-500 font-medium pr-0 md:pr-16 pb-6">
         <div className="pb-6">
           <h2 className="text-xl font-semibold text-gray-700 pb-2">
             Liquidity Risks:
@@ -81,7 +81,7 @@ function RisksandConsiderations() {
           </p>
         </div>
       </div>
-      <div className="text-gray-500 font-medium pr-16 pb-6">
+      <div className="text-gray-500 font-medium pr-0 md:pr-16 pb-6">
         <div className="pb-6">
           <h2 className="text-xl font-semibold text-gray-700 pb-2">
             To manage these risks and minimize losses, investors can follow some
@@ -105,7 +105,7 @@ function RisksandConsiderations() {
           </p>
         </div>
       </div>
-      <div className="text-gray-500 font-medium pr-16 pb-6 border-b-1">
+      <div className="text-gray-500 font-medium pr-0 md:pr-16 pb-6 border-b-1">
         <div className="pb-6">
           <p>
             By properly understanding and addressing the risks associated with

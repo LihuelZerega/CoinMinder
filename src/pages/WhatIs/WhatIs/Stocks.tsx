@@ -2,11 +2,11 @@ import React from "react";
 
 function Stocks() {
   return (
-    <div className="px-12 mb-12">
+    <div className="px-8 md:px-12 mb-12">
       <div>
-        <h1 className="text-[#38bdf8] font-bold text-5xl pb-4">Stocks</h1>
+        <h1 className="text-[#38bdf8] font-bold text-3xl md:text-5xl pb-4">Stocks</h1>
       </div>
-      <div className="text-gray-500 font-medium pr-16 pb-6 border-b-1">
+      <div className="text-gray-500 font-medium pr-0 md:pr-16 pb-6 border-b-1">
         <p className="pb-6">
           Stocks represent a fundamental part of the financial market and offer
           investors the opportunity to participate in the ownership of public

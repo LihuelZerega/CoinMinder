@@ -23,6 +23,12 @@ import RiskandConsiderations from "./WhatIs/WhatIsStocks/RisksandConsiderations"
 import OriginsoftheStockMarket from "./WhatIs/WhatIsStocks/OriginsoftheStockMarket";
 import Casestudiesofsuccessfulandfailedcompanies from "./WhatIs/WhatIsStocks/Casestudiesofsuccessfulandfailedcompanies";
 import GoToTheTopButon from "./WhatIs/GoToTheTopButton";
+import IntroductiontoCryptocurrencies from "./WhatIs/WhatIsCrypto/IntroductiontoCryptocurrencies";
+import MainCryptocurrencies from "./WhatIs/WhatIsCrypto/MainCryptocurrencies";
+import UnderlyingTechnology from "./WhatIs/WhatIsCrypto/UnderlyingTechnology";
+import CryptocurrencyTrading from "./WhatIs/WhatIsCrypto/CryptocurrencyTrading";
+import RegulationandLegality from "./WhatIs/WhatIsCrypto/RegulationandLegality";
+import InnovationsandTrends from "./WhatIs/WhatIsCrypto/InnovationsandTrends";
 
 function DocumentationPage() {
   const controls = useAnimation();
@@ -38,9 +44,9 @@ function DocumentationPage() {
     <div className="h-screen" id="Top">
       <NavBar />
       <main className="mx-auto max-w-7xl py-6 lg:px-8 mt-24 mb-24">
-        <div className="flex flex-row items-center space-x-4 border-b-1 pb-6 mb-6 select-none">
+        <div className="flex flex-col md:flex-row items-center space-x-4 border-b-1 pb-6 mb-6 select-none">
           <Image src={LogoBullSwap} width={50} height={50} alt="LogoBullSwap" />
-          <h1 className="text-5xl font-bold text-[#38bdf8]">Bull Swap Learn</h1>
+          <h1 className="text-4xl md:text-5xl font-bold text-[#38bdf8] pt-2 md:pt-0">Bull Swap Learn</h1>
           <a
             onClick={() => scrollToSection("Top")}
             href="#Top"
@@ -49,8 +55,9 @@ function DocumentationPage() {
             <GoToTheTopButon />
           </a>
         </div>
+
         <div className="flex">
-          <div className="w-1/4 h-screen border-r-1 pr-4 mr-4">
+          <div className="hidden md:block md:w-1/4 h-screen border-r-1 md:pr-4 md:mr-4">
             <ScrollShadow hideScrollBar className="w-[300px] h-[2800px]">
               <ul>
                 <li className="border-b-1 mr-12 pb-3">
@@ -238,53 +245,63 @@ function DocumentationPage() {
                     <AccordionItem key="1" title="What is Crypto?">
                       <div className="flex flex-col">
                         <a
-                          onClick={() => scrollToSection("FinancialNews")}
-                          href="#FinancialNews"
+                          onClick={() => scrollToSection("IntroductiontoCryptocurrencies")}
+                          href="#IntroductiontoCryptocurrencies"
                           className="font-medium text-md text-gray-500 hover:text-gray-600 pb-3"
                         >
                           <div className="flex flex-row">
                             <h1 className="mr-2">•</h1>
-                            <h1>Financial News</h1>
+                            <h1>Introduction to Cryptocurrencies</h1>
                           </div>
                         </a>
                         <a
-                          onClick={() => scrollToSection("Stocks")}
-                          href="#Stocks"
+                          onClick={() => scrollToSection("MainCryptocurrencies")}
+                          href="#MainCryptocurrencies"
                           className="font-medium text-md text-gray-500 hover:text-gray-600 pb-3"
                         >
                           <div className="flex flex-row">
                             <h1 className="mr-2">•</h1>
-                            <h1>Stocks</h1>
+                            <h1>Main Cryptocurrencies</h1>
                           </div>
                         </a>
                         <a
-                          onClick={() => scrollToSection("Crypto")}
-                          href="#Crypto"
+                          onClick={() => scrollToSection("UnderlyingTechnology")}
+                          href="#UnderlyingTechnology"
                           className="font-medium text-md text-gray-500 hover:text-gray-600 pb-3"
                         >
                           <div className="flex flex-row">
                             <h1 className="mr-2">•</h1>
-                            <h1>Crypto</h1>
+                            <h1>Underlying Technology</h1>
                           </div>
                         </a>
                         <a
-                          onClick={() => scrollToSection("Simulate")}
-                          href="#Simulate"
+                          onClick={() => scrollToSection("CryptocurrencyTrading")}
+                          href="#CryptocurrencyTrading"
                           className="font-medium text-md text-gray-500 hover:text-gray-600 pb-3"
                         >
                           <div className="flex flex-row">
                             <h1 className="mr-2">•</h1>
-                            <h1>Simulate</h1>
+                            <h1>Cryptocurrency Trading</h1>
                           </div>
                         </a>
                         <a
-                          onClick={() => scrollToSection("Swap")}
-                          href="#Swap"
+                          onClick={() => scrollToSection("RegulationandLegality")}
+                          href="#RegulationandLegality"
                           className="font-medium text-md text-gray-500 hover:text-gray-600 pb-3"
                         >
                           <div className="flex flex-row">
                             <h1 className="mr-2">•</h1>
-                            <h1>Swap</h1>
+                            <h1>Regulation and Legality</h1>
+                          </div>
+                        </a>
+                        <a
+                          onClick={() => scrollToSection("InnovationsandTrends")}
+                          href="#InnovationsandTrends"
+                          className="font-medium text-md text-gray-500 hover:text-gray-600 pb-3"
+                        >
+                          <div className="flex flex-row">
+                            <h1 className="mr-2">•</h1>
+                            <h1>Innovations and Trends</h1>
                           </div>
                         </a>
                       </div>
@@ -412,7 +429,8 @@ function DocumentationPage() {
               </ul>
             </ScrollShadow>
           </div>
-          <div className="w-3/4">
+
+          <div className="w-full md:block md:w-3/4">
             <div id="Introduction">
               <Introduction />
             </div>
@@ -457,6 +475,24 @@ function DocumentationPage() {
             </div>
             <div id="Casestudiesofsuccessfulandfailedcompanies">
               <Casestudiesofsuccessfulandfailedcompanies />
+            </div>
+            <div id="IntroductiontoCryptocurrencies">
+              <IntroductiontoCryptocurrencies />
+            </div>
+            <div id="MainCryptocurrencies">
+              <MainCryptocurrencies />
+            </div>
+            <div id="UnderlyingTechnology">
+              <UnderlyingTechnology />
+            </div>
+            <div id="CryptocurrencyTrading">
+              <CryptocurrencyTrading />
+            </div>
+            <div id="RegulationandLegality">
+              <RegulationandLegality />
+            </div>
+            <div id="InnovationsandTrends">
+              <InnovationsandTrends />
             </div>
           </div>
         </div>
