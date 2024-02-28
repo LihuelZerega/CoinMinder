@@ -10,23 +10,27 @@ const InvestmentReturns: React.FC<InvestmentReturnsProps> = ({
   futureValues,
 }) => {
   const calculateReturns = () => {
+    if (!futureValues || !Array.isArray(futureValues)) return null;
+  
     const totalValue = futureValues[futureValues.length - 1];
     const totalReturns = totalValue - initialInvestment;
     const monthlyReturns = totalReturns / futureValues.length;
     const annualReturns = monthlyReturns * 12;
-
+  
     const returnsPercentage = (totalReturns / initialInvestment) * 100;
-
+  
     return {
       totalReturns,
       returnsPercentage,
       monthlyReturns,
       annualReturns,
     };
-  };
+  };  
 
-  const { totalReturns, returnsPercentage, monthlyReturns, annualReturns } =
-    calculateReturns();
+  const returns = calculateReturns();
+
+  if (returns) {
+    const { totalReturns, returnsPercentage, monthlyReturns, annualReturns } = returns;
 
   return (
     <div className="investment-returns">
@@ -49,7 +53,14 @@ const InvestmentReturns: React.FC<InvestmentReturnsProps> = ({
         </div>
       </section>
     </div>
-  );
+    );
+  } else {
+    return (
+      <div className="investment-returns">
+        <p className="text-red-500">No data available for investment returns.</p>
+      </div>
+    );
+  }
 };
 
 export default InvestmentReturns;

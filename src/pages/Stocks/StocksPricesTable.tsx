@@ -35,6 +35,7 @@ export default function StocksPricesTable({
   const rowsPerPage = 30;
 
   const items = React.useMemo(() => {
+    if (!stockData) return [];
     const start = (page - 1) * rowsPerPage;
     const end = start + rowsPerPage;
 
