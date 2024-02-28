@@ -1,4 +1,4 @@
-export const ToCurrencieCoins = [
+const ToCurrencieCoins = [
     {
       id: 1,
       name: "Dollar",
@@ -18,4 +18,6 @@ export const ToCurrencieCoins = [
       avatar: "https://res.cloudinary.com/dszjgdktf/image/upload/v1707161478/usd-coin-usdc-logo_o9qonp.png",
     },
   ];
+
+export default ToCurrencieCoins; 
   

@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { coins } from "./CryptoCurrencieData";
+import coins from "./CryptoCurrencieData";
 import { Select, SelectItem, Avatar } from "@nextui-org/react";
 import { IoMdArrowDown } from "react-icons/io";
 

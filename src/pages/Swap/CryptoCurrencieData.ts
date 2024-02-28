@@ -1,4 +1,4 @@
-export const coins = [
+const coins = [
   {
     id: 1,
     name: "Bitcoin",
@@ -60,3 +60,5 @@ export const coins = [
     avatar: "https://s2.coinmarketcap.com/static/img/coins/64x64/74.png",
   },
 ];
+
+export default coins;
