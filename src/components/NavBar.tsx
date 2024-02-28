@@ -11,10 +11,7 @@ import {
   DropdownMenu,
   DropdownSection,
   DropdownItem,
-  Button,
-  cn,
 } from "@nextui-org/react";
-import { FaBitcoin } from "react-icons/fa6";
 import { MdOutlineQuestionAnswer, MdOutlineSwapHoriz  } from "react-icons/md";
 import { CiCoins1 } from "react-icons/ci";
 import { IoTrendingUp } from "react-icons/io5";
@@ -127,7 +124,7 @@ function NavBar() {
             </Dropdown>
 
             <motion.a
-              href="/crypto"
+              href="/simulate"
               className="text-sm font-semibold leading-6 text-gray-900 hover:text-[#38bdf8]"
               whileHover={{ scale: 1.05 }}
             >
