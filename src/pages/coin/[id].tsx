@@ -99,7 +99,11 @@ const CryptoCurrencyDetails: React.FC = () => {
   }, [id]);
 
   if (!id) {
-    return <div><LoadingPage /></div>;
+    return (
+      <div>
+        <LoadingPage />
+      </div>
+    );
   }
 
   if (error) {
@@ -107,7 +111,36 @@ const CryptoCurrencyDetails: React.FC = () => {
   }
 
   if (!cryptoCurrency) {
-    return <div><ErrorPage /></div>;
+    return (
+      <div>
+        <ErrorPage />
+      </div>
+    );
+  }
+
+  const { market_cap_rank } = cryptoCurrency;
+
+  let ChartComponent = null;
+
+  switch (market_cap_rank) {
+    case 1:
+      ChartComponent = <BitcoinChart />;
+      break;
+    case 2:
+      ChartComponent = <EthereumChart />;
+      break;
+    case 3:
+      ChartComponent = <TetherChart />;
+      break;
+    case 4:
+      ChartComponent = <BnbChart />;
+      break;
+    case 5:
+      ChartComponent = <SolanaChart />;
+      break;
+    default:
+      ChartComponent = <ChartError />;
+      break;
   }
 
   return (
@@ -537,12 +570,7 @@ const CryptoCurrencyDetails: React.FC = () => {
                 </div>
 
                 <div className="w-full lg:w-2/3 h-full border-t-1 sm:border-1 rounded-md p-4">
-                  {id === "1" && <BitcoinChart />}
-                  {id === "2" && <EthereumChart />}
-                  {id === "3" && <TetherChart />}
-                  {id === "4" && <BnbChart />}
-                  {id === "5" && <SolanaChart />}
-                  {(Number(id) < 1 || Number(id) > 5) && <ChartError />}
+                  {ChartComponent}
 
                   <div className="flex flex-col sm:flex-row border-t-1 py-3 w-full">
                     <div className="flex flex-row items-center justify-between w-full py-3 sm:py-0 border-b-1 sm:border-b-0">
