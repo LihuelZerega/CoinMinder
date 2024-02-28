@@ -113,6 +113,7 @@ const Footer = () => {
             </p>
           </div>
         </div>
+
         <div className="mt-3">
           <h1 className="font-bold text-lg text-[#38bdf8] my-2">Community</h1>
           <div className="grid grid-cols-6 gap-3">
@@ -172,65 +173,115 @@ const Footer = () => {
             Privacy
           </p>
         </div>
+
         <div>
           <h1 className="font-bold text-lg text-[#38bdf8] mb-2">Products</h1>
-          <p className="font-medium text-gray-600 hover:text-gray-800 py-1 cursor-pointer">
-            Financial News
-          </p>
-          <p className="font-medium text-gray-600 hover:text-gray-800 py-1 cursor-pointer">
-            Indexs
-          </p>
-          <p className="font-medium text-gray-600 hover:text-gray-800 py-1 cursor-pointer">
-            Stocks
-          </p>
-          <p className="font-medium text-gray-600 hover:text-gray-800 py-1 cursor-pointer">
-            Crypto
-          </p>
-          <p className="font-medium text-gray-600 hover:text-gray-800 py-1 cursor-pointer">
-            Simulate
-          </p>
-          <p className="font-medium text-gray-600 hover:text-gray-800 py-1 cursor-pointer">
-            Swap
-          </p>
+          <Link href="/news">
+            <p className="font-medium text-gray-600 hover:text-gray-800 py-1 cursor-pointer">
+              Financial News
+            </p>
+          </Link>
+          <Link href="/learn">
+            <p className="font-medium text-gray-600 hover:text-gray-800 py-1 cursor-pointer">
+              Learn
+            </p>
+          </Link>
+          <Link href="/stocks">
+            <p className="font-medium text-gray-600 hover:text-gray-800 py-1 cursor-pointer">
+              Stocks
+            </p>
+          </Link>
+
+          <Link href="/crypto">
+            <p className="font-medium text-gray-600 hover:text-gray-800 py-1 cursor-pointer">
+              Crypto
+            </p>
+          </Link>
+
+          <Link href="/simulate">
+            <p className="font-medium text-gray-600 hover:text-gray-800 py-1 cursor-pointer">
+              Simulate
+            </p>
+          </Link>
+
+          <Link href="/swap">
+            <p className="font-medium text-gray-600 hover:text-gray-800 py-1 cursor-pointer">
+              Swap
+            </p>
+          </Link>
+        </div>
+
+        <div>
+          <h1 className="font-bold text-lg text-[#38bdf8] mb-2">View</h1>
+          <Link href="/stocks">
+            <p className="font-medium text-gray-600 hover:text-gray-800 py-1 cursor-pointer">
+              AAPL
+            </p>
+          </Link>
+          <Link href="/stocks">
+            <p className="font-medium text-gray-600 hover:text-gray-800 py-1 cursor-pointer">
+              TSLA
+            </p>
+          </Link>
+          <Link href="/stocks">
+            <p className="font-medium text-gray-600 hover:text-gray-800 py-1 cursor-pointer">
+              MSFT
+            </p>
+          </Link>
+
+          <Link href="/coin/1">
+            <p className="font-medium text-gray-600 hover:text-gray-800 py-1 cursor-pointer">
+              Bitcoin
+            </p>
+          </Link>
+          <Link href="/coin/2">
+            <p className="font-medium text-gray-600 hover:text-gray-800 py-1 cursor-pointer">
+              Ethereum
+            </p>
+          </Link>
+          <Link href="/coin/5">
+            <p className="font-medium text-gray-600 hover:text-gray-800 py-1 cursor-pointer">
+              Solana
+            </p>
+          </Link>
+          <Link href="/coin/3">
+            <p className="font-medium text-gray-600 hover:text-gray-800 py-1 cursor-pointer">
+              Tether
+            </p>
+          </Link>
+          <Link href="/coin/4">
+            <p className="font-medium text-gray-600 hover:text-gray-800 py-1 cursor-pointer">
+              BNB
+            </p>
+          </Link>
         </div>
         <div>
           <h1 className="font-bold text-lg text-[#38bdf8] mb-2">Learn</h1>
-          <p className="font-medium text-gray-600 hover:text-gray-800 py-1 cursor-pointer">
-            View AAPL
-          </p>
-          <p className="font-medium text-gray-600 hover:text-gray-800 py-1 cursor-pointer">
-            View TSLA
-          </p>
-          <p className="font-medium text-gray-600 hover:text-gray-800 py-1 cursor-pointer">
-            View MSFT
-          </p>
-          <p className="font-medium text-gray-600 hover:text-gray-800 py-1 cursor-pointer">
-            View Bitcoin
-          </p>
-          <p className="font-medium text-gray-600 hover:text-gray-800 py-1 cursor-pointer">
-            View Ethereum
-          </p>
-          <p className="font-medium text-gray-600 hover:text-gray-800 py-1 cursor-pointer">
-            View Ripple
-          </p>
-          <p className="font-medium text-gray-600 hover:text-gray-800 py-1 cursor-pointer">
-            View DogeCoin
-          </p>
-          <p className="font-medium text-gray-600 hover:text-gray-800 py-1 cursor-pointer">
-            View BNB
-          </p>
-        </div>
-        <div>
-          <h1 className="font-bold text-lg text-[#38bdf8] mb-2">Support</h1>
-          <p className="font-medium text-gray-600 hover:text-gray-800 py-1 cursor-pointer">
-            24/7 Chat Support
-          </p>
-          <p className="font-medium text-gray-600 hover:text-gray-800 py-1 cursor-pointer">
-            Support Center
-          </p>
-          <p className="font-medium text-gray-600 hover:text-gray-800 py-1 cursor-pointer">
-            Product Feedback & Suggestions
-          </p>
+          <Link href="/learn">
+            <p className="font-medium text-gray-600 hover:text-gray-800 py-1 cursor-pointer">
+              Introduction
+            </p>
+          </Link>
+          <Link href="/learn#StocksIntroduction">
+            <p className="font-medium text-gray-600 hover:text-gray-800 py-1 cursor-pointer">
+              Stocks
+            </p>
+          </Link>
+          <Link href="/learn#IntroductiontoCryptocurrencies">
+            <p className="font-medium text-gray-600 hover:text-gray-800 py-1 cursor-pointer">
+              Cryto
+            </p>
+          </Link>
+          <Link href="/learn#SimulateTool">
+            <p className="font-medium text-gray-600 hover:text-gray-800 py-1 cursor-pointer">
+              Simulate
+            </p>
+          </Link>
+          <Link href="/learn#SwapTool">
+            <p className="font-medium text-gray-600 hover:text-gray-800 py-1 cursor-pointer">
+              Swap
+            </p>
+          </Link>
         </div>
       </section>
 
@@ -254,6 +305,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
+
         <div>
           <h1 className="font-bold text-lg text-[#38bdf8] mb-2">About Us</h1>
           <p className="font-medium text-gray-600 hover:text-gray-800 py-1 cursor-pointer">
@@ -352,7 +404,9 @@ const Footer = () => {
 
       <section>
         <div className="flex flex-col-reverse items-center py-8 select-none">
-          <h3 className="mt-2">Designed by Lihuel Zerega</h3>
+          <h3 className="font-medium text-gray-600 hover:text-gray-800 mt-2">
+            Developed and designed by Lihuel Zerega
+          </h3>
           <div className="flex flex-row items-center">
             <Link href="https://www.linkedin.com/in/lihuelzerega/">
               <AiFillLinkedin className="text-xl text-default-500" />

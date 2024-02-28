@@ -189,7 +189,7 @@ export default function Example() {
                 Get started
               </motion.a>
               <a
-                href="/info"
+                href="/learn"
                 className="text-sm font-semibold leading-6 text-gray-900"
               >
                 Learn more <span aria-hidden="true">→</span>
