@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import { motion } from "framer-motion";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import GainersCoins from "./GainersCoins";
@@ -8,7 +9,12 @@ import TrendingCoins from "./TrendingCoins";
 
 function PopularCoins() {
   return (
-    <div className="h-screen">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      className="h-screen"
+    >
       <NavBar />
       <main className="mx-auto max-w-7xl px-2 py-6 lg:px-8 mt-24 mb-24 select-none">
         <section className="border-b-1 pb-6 mb-6">
@@ -17,19 +23,34 @@ function PopularCoins() {
           </h1>
         </section>
         <section className="flex flex-col md:flex-row justify-between gap-8">
-          <div className="w-full h-full">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="w-full h-full"
+          >
             <TrendingCoins />
-          </div>
-          <div className="w-full h-full">
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="w-full h-full"
+          >
             <GainersCoins />
-          </div>
-          <div className="w-full h-full">
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
+            className="w-full h-full"
+          >
             <LosersCoins />
-          </div>
+          </motion.div>
         </section>
       </main>
       <Footer />
-    </div>
+    </motion.div>
   );
 }
 

@@ -47,25 +47,60 @@ function CryptoStats() {
 
   return (
     <motion.div
-      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 mb-6"
+      className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 mb-6"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
-      <CryptoStat title="Active Currencies" value={cryptoStats.activeCryptocurrencies} />
-      <CryptoStat title="Upcoming ICOs" value={cryptoStats.upcomingICOs} />
-      <CryptoStat title="Ongoing ICOs" value={cryptoStats.ongoingICOs} />
-      <CryptoStat title="Ended ICOs" value={cryptoStats.endedICOs} />
-      <CryptoStat title="Markets" value={cryptoStats.markets} />
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+      >
+        <CryptoStat
+          title="Active Currencies"
+          value={cryptoStats.activeCryptocurrencies}
+        />
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.3 }}
+      >
+        <CryptoStat title="Upcoming ICOs" value={cryptoStats.upcomingICOs} />
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.4 }}
+      >
+        <CryptoStat title="Ongoing ICOs" value={cryptoStats.ongoingICOs} />
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.5 }}
+      >
+        <CryptoStat title="Ended ICOs" value={cryptoStats.endedICOs} />
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.6 }}
+      >
+        <CryptoStat title="Markets" value={cryptoStats.markets} />
+      </motion.div>
     </motion.div>
   );
 }
 
-const CryptoStat = ({ title, value }: { title: string, value: number }) => {
+const CryptoStat = ({ title, value }: { title: string; value: number }) => {
   return (
-    <motion.div
-      className="flex flex-row items-center space-x-2 font-semibold border p-3 rounded-md"
-    >
+    <motion.div className="flex flex-col md:flex-row items-center space-x-2 font-semibold border p-3 rounded-md">
       <h2 className="text-gray-400 text-sm">{title}:</h2>
       <p className="text-sm">{value}</p>
     </motion.div>

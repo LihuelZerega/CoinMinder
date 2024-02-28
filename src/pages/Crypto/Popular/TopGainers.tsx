@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import axios from "axios";
 import Image from "next/image";
 import RocketIcon from "@/images/RocketIcon.png";
@@ -60,7 +61,11 @@ function TopGainers() {
 
 
   return (
-    <div className="w-full border rounded-md p-4 font-semibold">
+    <motion.div
+    initial={{ opacity: 0, y: 50 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5, delay: 0.9 }}
+    className="w-full border rounded-md p-4 font-semibold">
       <div className="flex flex-row items-center justify-between">
         <div className="flex flex-row items-center space-x-1">
           <Image src={RocketIcon} width={18} height={18} alt={"RocketIcon"} />
@@ -120,7 +125,7 @@ function TopGainers() {
           Error fetching data: {error.message}
         </div>
       )}
-    </div>
+    </motion.div>
   );
 }
 

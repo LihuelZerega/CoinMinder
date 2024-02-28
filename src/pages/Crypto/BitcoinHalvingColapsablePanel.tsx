@@ -1,7 +1,9 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { IoClose } from "react-icons/io5";
 import Link from "next/link";
+import Image from "next/image";
+import BitcoinLogo from "@/images/Bitcoin.svg";
 
 const BitcoinHalvingCollapsiblePanel = () => {
   const [isOpen, setIsOpen] = useState(true);
@@ -44,82 +46,66 @@ const BitcoinHalvingCollapsiblePanel = () => {
   return (
     <motion.div
       layout
-      initial={{ opacity: 1, height: "auto" }}
-      animate={{ opacity: isOpen ? 1 : 0, height: isOpen ? "auto" : 0 }}
+      initial={{ opacity: 0, height: 0 }}
+      animate={{ opacity: 1, height: isOpen ? "auto" : 0 }}
       transition={{ duration: 0.5 }}
       className="overflow-hidden"
     >
-      {isOpen && (
-        <div className="w-full border rounded-md p-4 my-4 select-none">
-          <div className="flex flex-row items-center justify-between">
-            <div className="text-transparent">d</div>
-            <button
-              onClick={togglePanel}
-              disabled={!isOpen || isClosed}
-              className="focus:outline-none"
-            >
-              <IoClose className="text-xl" />
-            </button>
-          </div>
-          <div className="flex flex-col md:flex-row px-3 space-x-12">
-            <section>
-              <div className="pb-6">
-                <h1 className="text-center md:text-left font-semibold text-3xl md:text-4xl">
-                  When Is the Next Bitcoin
-                </h1>
-                <h1 className="text-center md:text-left font-semibold text-3xl md:text-4xl">
-                  Halving in 2024?
-                </h1>
-              </div>
-              <div>
-                <div className="flex flex-row items-center justify-center md:items-start md:justify-start space-x-4">
-                  <div className="flex flex-col items-center">
-                    <h1 className="font-semibold text-2xl md:text-3xl">{countdown.days}</h1>
-                    <h1 className="font-normal text-sm">DAYS</h1>
-                  </div>
-                  <h1 className="text-xl font-bold space-x-6">:</h1>
-                  <div className="flex flex-col items-center">
-                    <h1 className="font-semibold text-2xl md:text-3xl">
-                      {countdown.hours}
-                    </h1>
-                    <h1 className="font-normal text-sm">HOURS</h1>
-                  </div>
-                  <h1 className="text-xl font-bold space-x-6">:</h1>
-
-                  <div className="flex flex-col items-center">
-                    <h1 className="font-semibold text-2xl md:text-3xl">
-                      {countdown.minutes}
-                    </h1>
-                    <h1 className="font-normal text-sm">MINS</h1>
-                  </div>
-                  <h1 className="text-xl font-bold space-x-6">:</h1>
-
-                  <div className="flex flex-col items-center">
-                    <h1 className="font-semibold text-2xl md:text-3xl">
-                      {countdown.seconds}
-                    </h1>
-                    <h1 className="font-normal text-sm">SECS</h1>
-                  </div>
-                </div>
-              </div>
-            </section>
-            <section>
-              <div className="hidden md:block max-w-lg text-sm font-medium text-gray-700">
-                <h1 className="pb-2">
-                  The next Bitcoin halving is anticipated to occur in April
-                  2024. The exact date is difficult to predict as it depends on
-                  the block height. Since the halving occurs every 210,000
-                  blocks, the next Bitcoin halving is expected to take place in
-                  April 2024 when the block height reaches 840,000.
-                </h1>
-                <Link href="/events/halving">
-                  <h1 className="hover:text-[#38bdf8]">Read More</h1>
-                </Link>
-              </div>
-            </section>
+      <div className="w-full flex flex-col md:flex-row px-3 items-center md:items-start justify-between border rounded-md p-4 my-4 select-none">
+        <div className="flex flex-row items-center space-x-4 pb-4 md:pb-0">
+          <Image src={BitcoinLogo} width={50} height={50} alt="BitcoinLogo" className="hidden md:block"/>
+          <div className="flex flex-col text-center md:text-left">
+            <h1 className="font-semibold text-2xl md:text-3xl">
+              When Is the Next Bitcoin Halving in 2024?
+            </h1>
+            <p className="hidden md:block text-gray-600 font-medium text-sm">The next Bitcoin halving is expected to take place in April 2024.</p>
           </div>
         </div>
-      )}
+
+        <div className="">
+          <div className="flex flex-row space-x-4">
+            <div className="flex flex-col items-center">
+              <h1 className="font-semibold text-2xl md:text-3xl">
+                {countdown.days}
+              </h1>
+              <h1 className="font-normal text-sm">DAYS</h1>
+            </div>
+            <h1 className="text-xl font-bold space-x-6">:</h1>
+            <div className="flex flex-col items-center">
+              <h1 className="font-semibold text-2xl md:text-3xl">
+                {countdown.hours}
+              </h1>
+              <h1 className="font-normal text-sm">HOURS</h1>
+            </div>
+            <h1 className="text-xl font-bold space-x-6">:</h1>
+
+            <div className="flex flex-col items-center">
+              <h1 className="font-semibold text-2xl md:text-3xl">
+                {countdown.minutes}
+              </h1>
+              <h1 className="font-normal text-sm">MINS</h1>
+            </div>
+            <h1 className="text-xl font-bold space-x-6">:</h1>
+
+            <div className="flex flex-col items-center">
+              <h1 className="font-semibold text-2xl md:text-3xl">
+                {countdown.seconds}
+              </h1>
+              <h1 className="font-normal text-sm">SECS</h1>
+            </div>
+          </div>
+        </div>
+
+        <div className="hidden md:block h-full text-gray-600 hover:text-gray-700">
+          <button
+            onClick={togglePanel}
+            disabled={!isOpen || isClosed}
+            className="focus:outline-none"
+          >
+            <IoClose className="text-xl" />
+          </button>
+        </div>
+      </div>
     </motion.div>
   );
 };

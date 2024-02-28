@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import axios from "axios";
 import Image from "next/image";
 import TrendingIcon from "@/images/TrendingIcon.png";
@@ -59,7 +60,11 @@ function TopLosers() {
   }, []);
 
   return (
-    <div className="w-full border rounded-md p-4 font-semibold">
+    <motion.div
+    initial={{ opacity: 0, y: 50 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5, delay: 0.11 }}
+    className="w-full border rounded-md p-4 font-semibold">
       <div className="flex flex-row items-center justify-between">
         <div className="flex flex-row items-center space-x-1">
           <Image
@@ -124,7 +129,7 @@ function TopLosers() {
           Error fetching data: {error.message}
         </div>
       )}
-    </div>
+    </motion.div>
   );
 }
 
