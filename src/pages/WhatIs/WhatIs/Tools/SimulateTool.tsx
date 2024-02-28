@@ -11,13 +11,13 @@ function Simulate() {
 
       <div className="text-gray-500 font-medium pr-0 md:pr-16 pb-6">
         <p className="pb-6">
-          With "Simulate", users have the ability to simulate investments easily
+          With &quot;Simulate&quot;, users have the ability to simulate investments easily
           and efficiently. This tool allows them to enter various
           investment-related parameters and receive detailed analyzes on the
           return potential of their investments over a given period of time.
         </p>
         <p className="pb-6">
-          The operation of "Simulate" is simple and effective. Users simply
+          The operation of &quot;Simulate&quot; is simple and effective. Users simply
           enter the following data:
         </p>
       </div>
@@ -48,7 +48,7 @@ function Simulate() {
 
       <div className="text-gray-500 font-medium pr-0 md:pr-16 pb-6 border-b-1">
         <p className="pb-6">
-          Once users enter this data, "Simulate" performs complex calculations
+          Once users enter this data, &quot;Simulate&quot; performs complex calculations
           and generates a detailed ROI analysis.
         </p>
 
@@ -76,8 +76,8 @@ function Simulate() {
         <p className="pb-6">The expected annual return on the investment.</p>
 
         <p className="pb-6">
-          In addition to this data, "Simulate" can also generate a visual graph
-          showing the evolution of the investment's value over time, allowing
+          In addition to this data, &quot;Simulate&quot; can also generate a visual graph
+          showing the evolution of the investment&apos;s value over time, allowing
           users to easily understand how their investment performs at different
           times.
         </p>
