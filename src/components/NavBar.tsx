@@ -19,11 +19,11 @@ import { GiBuyCard } from "react-icons/gi";
 
 const navigation = [
   { name: "Financial News", href: "/news" },
-  { name: "Indexs", href: "/indexs" },
   { name: "Stocks", href: "/stocks" },
   { name: "Crypto", href: "/crypto" },
   { name: "Simulate", href: "/simulate" },
   { name: "Swap", href: "/swap" },
+  { name: "Learn", href: "/learn" },
 ];
 function NavBar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -136,6 +136,13 @@ function NavBar() {
               whileHover={{ scale: 1.05 }}
             >
               Swap
+            </motion.a>
+            <motion.a
+              href="/learn"
+              className="text-sm font-semibold leading-6 text-gray-900 hover:text-[#38bdf8]"
+              whileHover={{ scale: 1.05 }}
+            >
+              Learn
             </motion.a>
           </div>
           <motion.div

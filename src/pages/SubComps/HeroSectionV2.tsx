@@ -1,17 +1,17 @@
 "use client";
 import { useState } from "react";
-import { motion, useAnimation } from "framer-motion";
+import { motion } from "framer-motion";
 import { Dialog } from "@headlessui/react";
 import { HiBars3 } from "react-icons/hi2";
 import { HiOutlineXMark } from "react-icons/hi2";
 
 const navigation = [
   { name: "Financial News", href: "/news" },
-  { name: "Indexs", href: "/indexs" },
   { name: "Stocks", href: "/stocks" },
   { name: "Crypto", href: "/crypto" },
   { name: "Simulate", href: "/simulate" },
   { name: "Swap", href: "/swap" },
+  { name: "Learn", href: "/learn" },
 ];
 
 export default function Example() {
@@ -158,7 +158,7 @@ export default function Example() {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56"
+          className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-32 2xl:py-56"
         >
           <div className="text-center">
             <motion.h1
@@ -180,12 +180,14 @@ export default function Example() {
               variants={buttonVariants}
               className="mt-10 flex items-center justify-center gap-x-6"
             >
-              <a
+              <motion.a
                 href="/login"
+                whileTap={{ scale: 0.95 }}
+                whileHover={{ scale: 1.05 }}
                 className="rounded-md bg-[#38bdf8] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#35aee3] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#38bdf8]"
               >
                 Get started
-              </a>
+              </motion.a>
               <a
                 href="/info"
                 className="text-sm font-semibold leading-6 text-gray-900"
