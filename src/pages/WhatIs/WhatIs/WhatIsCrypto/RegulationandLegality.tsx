@@ -2,14 +2,14 @@ import React from "react";
 
 export default function RegulationandLegality() {
   return (
-    <div className="px-8 md:px-12 mb-12">
+    <div className="px-12 mb-12">
       <div>
-        <h1 className="text-[#38bdf8] font-bold text-3xl md:text-5xl pb-4">
+        <h1 className="text-[#38bdf8] font-bold text-5xl pb-4">
           Regulation and Legality
         </h1>
       </div>
 
-      <div className="text-gray-500 font-medium pr-0 md:pr-16 pb-6">
+      <div className="text-gray-500 font-medium pr-16 pb-6">
         <div className="pb-6">
           <h2 className="text-xl font-semibold text-gray-700 pb-2">
             Regulation Status:
@@ -33,7 +33,7 @@ export default function RegulationandLegality() {
         </div>
       </div>
 
-      <div className="text-gray-500 font-medium pr-0 md:pr-16 pb-6">
+      <div className="text-gray-500 font-medium pr-16 pb-6">
         <div className="pb-6">
           <h2 className="text-xl font-semibold text-gray-700 pb-2">
             Legal and Tax Implications:
@@ -55,7 +55,7 @@ export default function RegulationandLegality() {
         </div>
       </div>
 
-      <div className="text-gray-500 font-medium pr-0 md:pr-16 pb-6 border-b-1">
+      <div className="text-gray-500 font-medium pr-16 pb-6 border-b-1">
         <div className="pb-6">
           <h2 className="text-xl font-semibold text-gray-700 pb-2">
             Challenges and Future Perspectives:

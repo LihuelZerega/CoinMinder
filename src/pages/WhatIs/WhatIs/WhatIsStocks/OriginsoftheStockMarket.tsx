@@ -2,19 +2,19 @@ import React from "react";
 
 function OriginsoftheStockMarket() {
   return (
-    <div className="px-8 md:px-12 mb-12">
+    <div className="px-12 mb-12">
       <div>
-        <h1 className="text-[#38bdf8] font-bold text-3xl md:text-5xl pb-4">
+        <h1 className="text-[#38bdf8] font-bold text-5xl pb-4">
           History and Evolution of the Stock Market
         </h1>
-        <p className="text-gray-500 font-medium pr-0 md:pr-16 pb-6">
+        <p className="text-gray-500 font-medium pr-16 pb-6">
           The stock market has a rich and complex history dating back several
           centuries. Its evolution is marked by a series of significant events
           that have shaped the way financial markets operate today. Here is an
           exploration of the history and evolution of the stock market:
         </p>
       </div>
-      <div className="text-gray-500 font-medium pr-0 md:pr-16 pb-6">
+      <div className="text-gray-500 font-medium pr-16 pb-6">
         <div className="pb-6">
           <h2 className="text-xl font-semibold text-gray-700 pb-2">
             Origins of the Stock Market:
@@ -32,7 +32,7 @@ function OriginsoftheStockMarket() {
           </p>
         </div>
       </div>
-      <div className="text-gray-500 font-medium pr-0 md:pr-16 pb-6">
+      <div className="text-gray-500 font-medium pr-16 pb-6">
         <div className="pb-6">
           <h2 className="text-xl font-semibold text-gray-700 pb-2">
             Main Historical Events:
@@ -58,7 +58,7 @@ function OriginsoftheStockMarket() {
           </p>
         </div>
       </div>
-      <div className="text-gray-500 font-medium pr-0 md:pr-16 pb-6 border-b-1">
+      <div className="text-gray-500 font-medium pr-16 pb-6 border-b-1">
         <div className="pb-6">
           <h2 className="text-xl font-semibold text-gray-700 pb-2">
             Regulation and Technology:

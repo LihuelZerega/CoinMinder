@@ -29,6 +29,8 @@ import UnderlyingTechnology from "./WhatIs/WhatIsCrypto/UnderlyingTechnology";
 import CryptocurrencyTrading from "./WhatIs/WhatIsCrypto/CryptocurrencyTrading";
 import RegulationandLegality from "./WhatIs/WhatIsCrypto/RegulationandLegality";
 import InnovationsandTrends from "./WhatIs/WhatIsCrypto/InnovationsandTrends";
+import SimulateTool from "./WhatIs/Tools/SimulateTool";
+import SwapTool from "./WhatIs/Tools/SwapTool";
 
 function DocumentationPage() {
   const controls = useAnimation();
@@ -64,9 +66,9 @@ function DocumentationPage() {
                   <a
                     onClick={() => scrollToSection("Introduction")}
                     href="#Introduction"
-                    className="text-lg text-gray-500 hover:text-gray-600 font-medium "
+                    className="ml-3 text-lg text-gray-500 hover:text-gray-600 font-medium "
                   >
-                    • Introduction
+                    Introduction
                   </a>
                 </li>
                 {/* What Is? */}
@@ -308,44 +310,14 @@ function DocumentationPage() {
                     </AccordionItem>
                   </Accordion>
                 </li>
-                {/* What Is Simulate? */}
+                {/* Tools? */}
                 <li className="border-b-1 mr-12">
                   <Accordion>
-                    <AccordionItem key="1" title="What is Simulate?">
+                    <AccordionItem key="1" title="Tools">
                       <div className="flex flex-col">
                         <a
-                          onClick={() => scrollToSection("FinancialNews")}
-                          href="#FinancialNews"
-                          className="font-medium text-md text-gray-500 hover:text-gray-600 pb-3"
-                        >
-                          <div className="flex flex-row">
-                            <h1 className="mr-2">•</h1>
-                            <h1>Financial News</h1>
-                          </div>
-                        </a>
-                        <a
-                          onClick={() => scrollToSection("Stocks")}
-                          href="#Stocks"
-                          className="font-medium text-md text-gray-500 hover:text-gray-600 pb-3"
-                        >
-                          <div className="flex flex-row">
-                            <h1 className="mr-2">•</h1>
-                            <h1>Stocks</h1>
-                          </div>
-                        </a>
-                        <a
-                          onClick={() => scrollToSection("Crypto")}
-                          href="#Crypto"
-                          className="font-medium text-md text-gray-500 hover:text-gray-600 pb-3"
-                        >
-                          <div className="flex flex-row">
-                            <h1 className="mr-2">•</h1>
-                            <h1>Crypto</h1>
-                          </div>
-                        </a>
-                        <a
-                          onClick={() => scrollToSection("Simulate")}
-                          href="#Simulate"
+                          onClick={() => scrollToSection("SimulateTool")}
+                          href="#SimulateTool"
                           className="font-medium text-md text-gray-500 hover:text-gray-600 pb-3"
                         >
                           <div className="flex flex-row">
@@ -354,67 +326,8 @@ function DocumentationPage() {
                           </div>
                         </a>
                         <a
-                          onClick={() => scrollToSection("Swap")}
-                          href="#Swap"
-                          className="font-medium text-md text-gray-500 hover:text-gray-600 pb-3"
-                        >
-                          <div className="flex flex-row">
-                            <h1 className="mr-2">•</h1>
-                            <h1>Swap</h1>
-                          </div>
-                        </a>
-                      </div>
-                    </AccordionItem>
-                  </Accordion>
-                </li>
-                {/* What Is Swap? */}
-                <li className="border-b-1 mr-12">
-                  <Accordion>
-                    <AccordionItem key="1" title="What is Swap?">
-                      <div className="flex flex-col">
-                        <a
-                          onClick={() => scrollToSection("FinancialNews")}
-                          href="#FinancialNews"
-                          className="font-medium text-md text-gray-500 hover:text-gray-600 pb-3"
-                        >
-                          <div className="flex flex-row">
-                            <h1 className="mr-2">•</h1>
-                            <h1>Financial News</h1>
-                          </div>
-                        </a>
-                        <a
-                          onClick={() => scrollToSection("Stocks")}
-                          href="#Stocks"
-                          className="font-medium text-md text-gray-500 hover:text-gray-600 pb-3"
-                        >
-                          <div className="flex flex-row">
-                            <h1 className="mr-2">•</h1>
-                            <h1>Stocks</h1>
-                          </div>
-                        </a>
-                        <a
-                          onClick={() => scrollToSection("Crypto")}
-                          href="#Crypto"
-                          className="font-medium text-md text-gray-500 hover:text-gray-600 pb-3"
-                        >
-                          <div className="flex flex-row">
-                            <h1 className="mr-2">•</h1>
-                            <h1>Crypto</h1>
-                          </div>
-                        </a>
-                        <a
-                          onClick={() => scrollToSection("Simulate")}
-                          href="#Simulate"
-                          className="font-medium text-md text-gray-500 hover:text-gray-600 pb-3"
-                        >
-                          <div className="flex flex-row">
-                            <h1 className="mr-2">•</h1>
-                            <h1>Simulate</h1>
-                          </div>
-                        </a>
-                        <a
-                          onClick={() => scrollToSection("Swap")}
-                          href="#Swap"
+                          onClick={() => scrollToSection("SwapTool")}
+                          href="#SwapTool"
                           className="font-medium text-md text-gray-500 hover:text-gray-600 pb-3"
                         >
                           <div className="flex flex-row">
@@ -493,6 +406,12 @@ function DocumentationPage() {
             </div>
             <div id="InnovationsandTrends">
               <InnovationsandTrends />
+            </div>
+            <div id="SimulateTool">
+              <SimulateTool />
+            </div>
+            <div id="SwapTool">
+              <SwapTool />
             </div>
           </div>
         </div>
