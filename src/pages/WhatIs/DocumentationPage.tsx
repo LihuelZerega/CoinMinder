@@ -71,6 +71,7 @@ function DocumentationPage() {
                     Introduction
                   </a>
                 </li>
+                
                 {/* What Is? */}
                 <li className="border-b-1 mr-12">
                   <Accordion>
@@ -130,6 +131,7 @@ function DocumentationPage() {
                     </AccordionItem>
                   </Accordion>
                 </li>
+
                 {/* What Is Stocks? */}
                 <li className="border-b-1 mr-12">
                   <Accordion>
@@ -241,6 +243,7 @@ function DocumentationPage() {
                     </AccordionItem>
                   </Accordion>
                 </li>
+
                 {/* What Is Crypto? */}
                 <li className="border-b-1 mr-12">
                   <Accordion>
@@ -310,6 +313,7 @@ function DocumentationPage() {
                     </AccordionItem>
                   </Accordion>
                 </li>
+
                 {/* Tools? */}
                 <li className="border-b-1 mr-12">
                   <Accordion>
