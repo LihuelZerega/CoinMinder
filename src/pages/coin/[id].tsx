@@ -60,7 +60,7 @@ interface CryptoCurrency {
 
 const CryptoCurrencyDetails: React.FC = () => {
   const router = useRouter();
-  const { id } = router.query;
+  const { name } = router.query;
   const [cryptoCurrency, setCryptoCurrency] = useState<CryptoCurrency | null>(
     null
   );
@@ -79,7 +79,7 @@ const CryptoCurrencyDetails: React.FC = () => {
     const fetchCryptoCurrencyDetails = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8080/api/crypto/quote/${id}`
+          `http://localhost:8080/api/crypto/name/${name}`
         );
 
         setCryptoCurrency(response.data);
@@ -93,12 +93,12 @@ const CryptoCurrencyDetails: React.FC = () => {
       }
     };
 
-    if (id) {
+    if (name) {
       fetchCryptoCurrencyDetails();
     }
-  }, [id]);
+  }, [name]);
 
-  if (!id) {
+  if (!name) {
     return (
       <div>
         <LoadingPage />

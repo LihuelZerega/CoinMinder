@@ -6,7 +6,7 @@ const nextConfig = {
   module.exports = {
     reactStrictMode: true,
     images: {
-      domains: ['assets.coingecko.com', 'api.coingecko.com'],
+      domains: ['assets.coingecko.com', 'api.coingecko.com', 'dgbijzg00pxv8.cloudfront.net', 'www.bitcoinsensus.com', 'bin.bnbstatic.com'],
     },
   };
 

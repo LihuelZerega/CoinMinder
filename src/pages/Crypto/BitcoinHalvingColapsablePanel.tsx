@@ -19,7 +19,7 @@ export function BitcoinHalvingCollapsiblePanel() {
           isOpen ? "" : "hidden"
         }`}
       >
-        <Link href="/events/bitcoin-halving">
+        <Link href="/crypto/events/bitcoin-halving">
           <section className="flex flex-col md:flex-row items-center md:items-start justify-between p-2 md:p-4">
             <div className="mx-auto space-y-6">
               <h1 className="flex flex-row relative containter z-10 text-4xl md:text-7xl text-[#38bdf8] text-center md:text-left font-sans font-bold">
