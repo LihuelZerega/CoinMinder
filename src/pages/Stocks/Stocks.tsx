@@ -3,15 +3,20 @@ import React from "react";
 import NavBar from "../../components/NavBar";
 import Footer from "@/components/Footer";
 import StockPrices from "./StockPrices";
+import { StocksPrices, StocksPricesResponsive } from "@/utils/MarketsOverview";
 
 function Stocks() {
   return (
     <div className="h-screen">
       <NavBar />
-      <main className="mx-auto max-w-7xl py-6 lg:px-8 mt-32 mb-24">
-        <section className="border-b-1 pb-12 mb-6 px-6">
-          <h1 className="mb-4 text-lg font-extralight">Stocks</h1>
-          <h1 className="font-medium text-4xl">Today&apos;s Stocks Prices</h1>
+      <main className="mx-auto max-w-7xl py-6 lg:px-8 mt-24 md:mt-32 mb-24">
+      <section className="px-6">
+          <div className="hidden md:block mb-5">
+            <StocksPrices />
+          </div>
+          <div className="block md:hidden">
+            <StocksPricesResponsive />
+          </div>
         </section>
         <section className="mb-12">
           <StockPrices />

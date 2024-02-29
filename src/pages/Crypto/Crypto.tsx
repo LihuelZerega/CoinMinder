@@ -5,19 +5,22 @@ import Footer from "@/components/Footer";
 import Highlights from "./Highlights";
 import CryptoPricesTable from "@/pages/Crypto/CryptoPricesTable";
 import TopTokensColapsablePanel from "./TopTokensColapsablePanel";
-import BitcoinHalvingCollapsiblePanel from "./BitcoinHalvingColapsablePanel";
+import { BitcoinHalvingCollapsiblePanel } from "./BitcoinHalvingColapsablePanel";
+import { MarketsOverview, MarketsOverviewResponsive } from "@/utils/MarketsOverview";
 
 function Crypto() {
   return (
     <div className="h-screen">
       <NavBar />
       <main className="mx-auto max-w-7xl py-6 lg:px-8 mt-24 mb-24">
-        {/* <section className="flex flex-row items-center space-x-4 border-b-1 pb-6 mb-2 mx-6">
-          <div>
-            <h1 className="mb-4 text-lg font-light text-[#38bdf8]">Crypto</h1>
-            <h1>Today&apos;s Crypto Prices</h1>
+      <section className="px-6">
+          <div className="hidden md:block mb-5">
+            <MarketsOverview />
           </div>
-        </section> */}
+          <div className="block md:hidden">
+            <MarketsOverviewResponsive />
+          </div>
+        </section>
 
         <section className="px-6">
           <BitcoinHalvingCollapsiblePanel />

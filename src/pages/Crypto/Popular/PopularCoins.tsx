@@ -9,20 +9,15 @@ import TrendingCoins from "./TrendingCoins";
 import {
   MarketsOverviewPopularCoins,
   MarketsOverviewPopularCoinsResponsive,
-} from "@/utils/MarktesOverview/MarketsOverview";
+} from "@/utils/MarketsOverview";
 
 function PopularCoins() {
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-      className="h-screen"
-    >
+    <motion.div className="h-screen">
       <NavBar />
       <main className="mx-auto max-w-7xl px-2 py-6 lg:px-8 mt-24 mb-24 select-none">
-        <section>
-          <div className="hidden md:block mb-5">
+        <section className="px-3">
+          <div className="hidden md:block">
             <MarketsOverviewPopularCoins />
           </div>
           <div className="block md:hidden">
