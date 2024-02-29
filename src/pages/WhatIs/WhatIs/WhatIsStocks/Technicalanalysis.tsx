@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Technicalanalysis() {
   return (
-    <div className="px-12 mb-12">
+    <div className="px-8 md:px-12 mb-12">
       <div>
         <h1 className="text-[#38bdf8] font-bold text-5xl pb-4">
           Technical Analysis
@@ -16,7 +16,7 @@ export default function Technicalanalysis() {
           and market behavior patterns.
         </p>
       </div>
-      <div className="text-gray-500 font-medium pr-16 pb-6">
+      <div className="text-gray-500 font-medium pr-0 md:pr-16 pb-6">
         <div className="pb-6">
           <h2 className="text-xl font-semibold text-gray-700 pb-2">
             What is Technical Analysis and How is it Used:
@@ -37,7 +37,7 @@ export default function Technicalanalysis() {
           </p>
         </div>
       </div>
-      <div className="text-gray-500 font-medium pr-16 pb-6 border-b-1">
+      <div className="text-gray-500 font-medium pr-0 md:pr-16 pb-6 border-b-1">
         <div className="pb-6">
           <h2 className="text-xl font-semibold text-gray-700 pb-2">
             Common Technical Analysis Tools:

@@ -2,7 +2,7 @@ import React from "react";
 
 function FundamentalAnalysis() {
   return (
-    <div className="px-12 mb-12">
+    <div className="px-8 md:px-12 mb-12">
       <div>
         <h1 className="text-[#38bdf8] font-bold text-5xl pb-4">
           Fundamental Analysis
@@ -17,7 +17,7 @@ function FundamentalAnalysis() {
           the market price and the fundamental value of a company.
         </p>
       </div>
-      <div className="text-gray-500 font-medium pr-16 pb-6">
+      <div className="text-gray-500 font-medium pr-0 md:pr-16 pb-6">
         <div className="pb-6">
           <h2 className="text-xl font-semibold text-gray-700 pb-2">
             What is Fundamental Analysis and its Importance:
@@ -36,7 +36,7 @@ function FundamentalAnalysis() {
           </p>
         </div>
       </div>
-      <div className="text-gray-500 font-medium pr-16 pb-6">
+      <div className="text-gray-500 font-medium pr-0 md:pr-16 pb-6">
         <div className="pb-6">
           <h2 className="text-xl font-semibold text-gray-700 pb-2">
             Key Financial Ratios:
@@ -56,7 +56,7 @@ function FundamentalAnalysis() {
           </p>
         </div>
       </div>
-      <div className="text-gray-500 font-medium pr-16 pb-6 border-b-1">
+      <div className="text-gray-500 font-medium pr-0 md:pr-16 pb-6 border-b-1">
         <div className="pb-6">
           <h2 className="text-xl font-semibold text-gray-700 pb-2">
             Reading Company Financial Reports:

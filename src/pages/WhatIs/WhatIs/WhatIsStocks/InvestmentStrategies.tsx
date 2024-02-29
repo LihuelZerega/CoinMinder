@@ -2,7 +2,7 @@ import React from "react";
 
 function InvestmentStrategies() {
   return (
-    <div className="px-12 mb-12">
+    <div className="px-8 md:px-12 mb-12">
       <div>
         <h1 className="text-[#38bdf8] font-bold text-5xl pb-4">
           Investment Strategies
@@ -14,7 +14,7 @@ function InvestmentStrategies() {
           individual&apos;s time horizon, level of risk, and financial objectives.
         </p>
       </div>
-      <div className="text-gray-500 font-medium pr-16 pb-6">
+      <div className="text-gray-500 font-medium pr-0 md:pr-16 pb-6">
         <div className="pb-6">
           <h2 className="text-xl font-semibold text-gray-700 pb-2">
             Short Term Strategies:
@@ -37,7 +37,7 @@ function InvestmentStrategies() {
         </div>
       </div>
 
-      <div className="text-gray-500 font-medium pr-16 pb-6">
+      <div className="text-gray-500 font-medium pr-0 md:pr-16 pb-6">
         <div className="pb-6">
           <h2 className="text-xl font-semibold text-gray-700 pb-2">
             Long Term Strategies:
@@ -59,7 +59,7 @@ function InvestmentStrategies() {
         </div>
       </div>
 
-      <div className="text-gray-500 font-medium pr-16 pb-6 border-b-1">
+      <div className="text-gray-500 font-medium pr-0 md:pr-16 pb-6 border-b-1">
         <div className="pb-6">
           <h2 className="text-xl font-semibold text-gray-700 pb-2">
             Portfolio Diversification:
