@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { IoClose } from "react-icons/io5";
-import { BackgroundBeams } from "@/utils/background-beams";
+import { BackgroundBeams } from "@/utils/UI/background-beams";
 import BitcoinHalvingCountDown from "./utils/BitcoinHalvingCountDown";
 
 export function BitcoinHalvingCollapsiblePanel() {

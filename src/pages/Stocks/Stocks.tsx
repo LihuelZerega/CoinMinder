@@ -3,7 +3,7 @@ import React from "react";
 import NavBar from "../../components/NavBar";
 import Footer from "@/components/Footer";
 import StockPrices from "./StockPrices";
-import { StocksPrices, StocksPricesResponsive } from "@/utils/MarketsOverview";
+import { StocksPrices, StocksPricesResponsive } from "@/utils/UI/MarketsOverview";
 
 function Stocks() {
   return (

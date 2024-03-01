@@ -9,7 +9,7 @@ import TrendingCoins from "./TrendingCoins";
 import {
   MarketsOverviewPopularCoins,
   MarketsOverviewPopularCoinsResponsive,
-} from "@/utils/MarketsOverview";
+} from "@/utils/UI/MarketsOverview";
 
 function PopularCoins() {
   return (

@@ -6,7 +6,7 @@ import Highlights from "./Highlights";
 import CryptoPricesTable from "@/pages/Crypto/CryptoPricesTable";
 import TopTokensColapsablePanel from "./TopTokensColapsablePanel";
 import { BitcoinHalvingCollapsiblePanel } from "./BitcoinHalvingColapsablePanel";
-import { MarketsOverview, MarketsOverviewResponsive } from "@/utils/MarketsOverview";
+import { MarketsOverview, MarketsOverviewResponsive } from "@/utils/UI/MarketsOverview";
 
 function Crypto() {
   return (
