@@ -34,7 +34,7 @@ const InvestmentReturns: React.FC<InvestmentReturnsProps> = ({
 
   return (
     <div className="investment-returns">
-      <section className="grid grid-cols-4 gap-4 max-w-4xl py-8">
+      <section className="grid gird-cols-2 md:grid-cols-4 gap-4 max-w-4xl py-8">
         <div className="flex flex-col p-4 border rounded-md">
           <p className="text-sm">Total Returns</p>
           <p className="flex flex-row items-center space-x-1 text-[#38bdf8] font-medium py-2 text-3xl">${totalReturns.toFixed(2)}</p>

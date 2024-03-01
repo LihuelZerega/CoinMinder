@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 import ProgressiveLineChart from "./ProgressiveLineChart";
 import InvestmentReturns from "./InvestmentReturns";
 
@@ -37,15 +38,15 @@ const InvestmentSimulator: React.FC<InvestmentSimulatorProps> = ({
 
   return (
     <div className="investment-simulator">
-      <section className="grid grid-cols-4 gap-4 max-w-4xl">
-        <div className="flex flex-col p-4 border rounded-md">
+      <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-2 md:gap-4 max-w-4xl">
+        <div className="flex flex-col p-4 border rounded-md w-full">
           <label className="text-sm" htmlFor="initialInvestment">
             Initial Investment:
           </label>
           <div className="flex flex-row items-center space-x-1 text-gray-400">
             <p className="text-3xl">$</p>
             <input
-              className="py-2 text-3xl outline-none max-w-32"
+              className="py-2 text-3xl outline-none max-w-24 md:max-w-32"
               type="number"
               id="initialInvestment"
               value={initialInvestment}
@@ -53,14 +54,14 @@ const InvestmentSimulator: React.FC<InvestmentSimulatorProps> = ({
             />
           </div>
         </div>
-        <div className="flex flex-col p-4 border rounded-md">
+        <div className="flex flex-col p-4 border rounded-md w-full">
           <label className="text-sm" htmlFor="annualInterestRate">
             Annual Interest Rate:
           </label>
           <div className="flex flex-row items-center space-x-1 text-gray-400">
             <p className="text-3xl">%</p>
             <input
-              className="py-2 text-3xl outline-none max-w-32"
+              className="py-2 text-3xl outline-none max-w-24 md:max-w-32"
               type="number"
               id="annualInterestRate"
               value={annualInterestRate}
@@ -68,29 +69,28 @@ const InvestmentSimulator: React.FC<InvestmentSimulatorProps> = ({
             />
           </div>
         </div>
-        <div className="flex flex-col p-4 border rounded-md">
+        <div className="flex flex-col p-4 border rounded-md w-full">
           <label className="text-sm" htmlFor="investmentPeriod">
-            Investment Period:
+            Investment Period (Years):
           </label>
           <div className="flex flex-row items-center space-x-1 text-gray-400">
             <input
-              className="py-2 text-3xl outline-none max-w-16"
+              className="py-2 text-3xl outline-none max-w-24"
               type="number"
               id="investmentPeriod"
               value={investmentPeriod}
               onChange={(e) => setInvestmentPeriod(Number(e.target.value))}
             />
-            <p className="text-3xl">Years</p>
           </div>
         </div>
-        <div className="flex flex-col p-4 border rounded-md">
+        <div className="flex flex-col p-4 border rounded-md w-full">
           <label className="text-sm" htmlFor="monthlyContribution">
             Monthly Contribution:
           </label>
           <div className="flex flex-row items-center space-x-1 text-gray-400">
             <p className="text-3xl">$</p>
             <input
-              className="py-2 text-3xl outline-none max-w-32"
+              className="py-2 text-3xl outline-none max-w-24 md:max-w-32"
               type="number"
               id="monthlyContribution"
               value={monthlyContribution}
@@ -101,12 +101,14 @@ const InvestmentSimulator: React.FC<InvestmentSimulatorProps> = ({
       </section>
 
       <div className="flex flex-row items-center justify-center py-8 border-b mb-6">
-        <button
+        <motion.button
+          whileTap={{ scale: 0.95 }}
+          whileHover={{ scale: 1.05 }}
           className="rounded-md bg-[#38bdf8] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#35aee3] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#38bdf8]"
           onClick={calculateFutureValues}
         >
           Calculate
-        </button>
+        </motion.button>
       </div>
 
       {futureValues.length > 0 && (

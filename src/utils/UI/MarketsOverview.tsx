@@ -1,7 +1,5 @@
 import React from "react";
 import { motion } from "framer-motion";
-import Image from "next/image";
-import LogoBullSwap from "@/images/bullswap_icon-skyblue.png";
 import { TypewriterEffectSmooth } from "@/utils/typewriter-effect";
 
 export function MarketsOverview() {
@@ -184,6 +182,122 @@ export function MarketsOverviewPopularCoinsResponsive() {
           </div>
         </div>
       </div>
+    </section>
+  );
+}
+
+export function SwapCurrencies() {
+  const SwapCurrenciesText = [
+    {
+      text: "Swap Your Currencies Instantly",
+      className: "text-4xl sm:text-3xl font-bold tracking-tight text-[#38bdf8]",
+    },
+  ];
+
+  const SwapCurrenciesText2 = [
+    {
+      text: "Using Bull Swap!",
+      className: "text-4xl sm:text-3xl font-bold tracking-tight text-[#38bdf8]",
+    },
+  ];
+
+  return (
+    <section>
+      <motion.div className="flex flex-col items-center justify-center">
+        <TypewriterEffectSmooth words={SwapCurrenciesText} />
+        <TypewriterEffectSmooth words={SwapCurrenciesText2} />
+      </motion.div>
+    </section>
+  );
+}
+
+export function SwapCurrenciesResponsive() {
+  const SwapCurrenciesText = [
+    {
+      text: "Swap Your Currencies",
+      className: "text-3xl sm:text-3xl font-bold tracking-tight text-[#38bdf8]",
+    },
+  ];
+
+  const SwapCurrenciesText2 = [
+    {
+      text: "Instantly Using",
+      className: "text-3xl sm:text-3xl font-bold tracking-tight text-[#38bdf8]",
+    },
+  ];
+
+  const SwapCurrenciesText3 = [
+    {
+      text: "Bull Swap!",
+      className: "text-3xl sm:text-3xl font-bold tracking-tight text-[#38bdf8]",
+    },
+  ];
+
+  return (
+    <section>
+      <motion.div className="flex flex-col items-center justify-center">
+        <TypewriterEffectSmooth words={SwapCurrenciesText} />
+        <TypewriterEffectSmooth words={SwapCurrenciesText2} />
+        <TypewriterEffectSmooth words={SwapCurrenciesText3} />
+      </motion.div>
+    </section>
+  );
+}
+
+export function SwapTokens() {
+  const SwapCurrenciesText = [
+    {
+      text: "Swap Your Tokens Instantly",
+      className: "text-4xl font-bold tracking-tight text-[#38bdf8]",
+    },
+  ];
+
+  const SwapCurrenciesText2 = [
+    {
+      text: "Using Bull Swap!",
+      className: "text-4xl font-bold tracking-tight text-[#38bdf8]",
+    },
+  ];
+
+  return (
+    <section>
+      <motion.div className="flex flex-col items-center justify-center">
+        <TypewriterEffectSmooth words={SwapCurrenciesText} />
+        <TypewriterEffectSmooth words={SwapCurrenciesText2} />
+      </motion.div>
+    </section>
+  );
+}
+
+export function SwapTokensResponsive() {
+  const SwapCurrenciesText = [
+    {
+      text: "Swap Your Tokens",
+      className: "text-4xl font-bold tracking-tight text-[#38bdf8]",
+    },
+  ];
+
+  const SwapCurrenciesText2 = [
+    {
+      text: "Instantly Using",
+      className: "text-4xl font-bold tracking-tight text-[#38bdf8]",
+    },
+  ];
+
+  const SwapCurrenciesText3 = [
+    {
+      text: "Bull Swap!",
+      className: "text-4xl sm:text-3xl font-bold tracking-tight text-[#38bdf8]",
+    },
+  ];
+
+  return (
+    <section>
+      <motion.div className="flex flex-col items-center justify-center">
+        <TypewriterEffectSmooth words={SwapCurrenciesText} />
+        <TypewriterEffectSmooth words={SwapCurrenciesText2} />
+        <TypewriterEffectSmooth words={SwapCurrenciesText3} />
+      </motion.div>
     </section>
   );
 }
