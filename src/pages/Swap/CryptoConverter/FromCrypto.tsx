@@ -1,4 +1,3 @@
-// FromCrypto.tsx
 import React, { useState } from "react";
 
 interface Props {
@@ -30,6 +29,10 @@ function FromCrypto({ cryptos, onConvert }: Props) {
       onConvert(conversionAmount);
     }
   };
+
+  if (!cryptos) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="crypto-card bg-white rounded-lg p-4 shadow-md">

@@ -1,4 +1,3 @@
-// ToCrypto.tsx
 import React, { useState } from 'react';
 
 interface Props {
@@ -25,6 +24,10 @@ function ToCrypto({ cryptos, onConvert }: Props) {
       onConvert(selectedCrypto);
     }
   };
+
+  if (!cryptos) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="crypto-card bg-white rounded-lg p-4 shadow-md">
