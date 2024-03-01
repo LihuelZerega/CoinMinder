@@ -12,7 +12,7 @@ import {
   DropdownSection,
   DropdownItem,
 } from "@nextui-org/react";
-import { MdOutlineQuestionAnswer, MdOutlineSwapHoriz  } from "react-icons/md";
+import { MdOutlineQuestionAnswer, MdOutlineSwapHoriz } from "react-icons/md";
 import { CiCoins1 } from "react-icons/ci";
 import { IoTrendingUp } from "react-icons/io5";
 import { GiBuyCard } from "react-icons/gi";
@@ -98,25 +98,66 @@ function NavBar() {
                 aria-label="Dropdown menu with description"
               >
                 <DropdownSection title="Cryptocurrencies" showDivider>
-                  <DropdownItem href="/crypto" key="marketcap" startContent={<CiCoins1 className="text-2xl font-bold text-[#38bdf8]"/>}>
+                  <DropdownItem
+                    href="/crypto"
+                    key="marketcap"
+                    startContent={
+                      <CiCoins1 className="text-2xl font-bold text-[#38bdf8]" />
+                    }
+                  >
                     By Market Cap
                   </DropdownItem>
                 </DropdownSection>
                 <DropdownSection title="Popular" showDivider>
-                  <DropdownItem href="/crypto/popular" key="trending" startContent={<IoTrendingUp className="text-xl font-bold text-[#38bdf8]"/>}>
+                  <DropdownItem
+                    href="/crypto/popular"
+                    key="trending"
+                    startContent={
+                      <IoTrendingUp className="text-xl font-bold text-[#38bdf8]" />
+                    }
+                  >
                     Trending
                   </DropdownItem>
-                  <DropdownItem href="/crypto/popular" key="gainers&losers" startContent={<GiBuyCard className="text-xl font-bold text-[#38bdf8]"/>}>
+                  <DropdownItem
+                    href="/crypto/popular"
+                    key="gainers&losers"
+                    startContent={
+                      <GiBuyCard className="text-xl font-bold text-[#38bdf8]" />
+                    }
+                  >
                     Gainers & Losers
                   </DropdownItem>
                 </DropdownSection>
                 <DropdownSection title="Tools" showDivider>
-                  <DropdownItem href="/swap/crypto" key="convert" startContent={<MdOutlineSwapHoriz className="text-xl font-bold text-[#38bdf8]" />}>
+                  <DropdownItem
+                    href="/swap/crypto"
+                    key="convert"
+                    startContent={
+                      <MdOutlineSwapHoriz className="text-xl font-bold text-[#38bdf8]" />
+                    }
+                  >
                     Convert
                   </DropdownItem>
                 </DropdownSection>
+                <DropdownSection title="Events">
+                  <DropdownItem
+                    href="/events/bitcoin-halving"
+                    key="terms"
+                    startContent={
+                      <MdOutlineQuestionAnswer className="text-xl font-bold text-[#38bdf8]" />
+                    }
+                  >
+                    Bitcoin Halving
+                  </DropdownItem>
+                </DropdownSection>
                 <DropdownSection title="What Is?">
-                  <DropdownItem href="/crypto/whatis" key="terms" startContent={<MdOutlineQuestionAnswer className="text-xl font-bold text-[#38bdf8]"/>}>
+                  <DropdownItem
+                    href="/learn#IntroductiontoCryptocurrencies"
+                    key="terms"
+                    startContent={
+                      <MdOutlineQuestionAnswer className="text-xl font-bold text-[#38bdf8]" />
+                    }
+                  >
                     Terms
                   </DropdownItem>
                 </DropdownSection>

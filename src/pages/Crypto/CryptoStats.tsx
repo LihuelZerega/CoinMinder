@@ -55,7 +55,7 @@ function CryptoStats() {
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.2 }}
+        transition={{ duration: 0.5, delay: 0.1 }}
       >
         <CryptoStat
           title="Active Currencies"
@@ -66,7 +66,7 @@ function CryptoStats() {
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.3 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
       >
         <CryptoStat title="Upcoming ICOs" value={cryptoStats.upcomingICOs} />
       </motion.div>
@@ -74,7 +74,7 @@ function CryptoStats() {
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.4 }}
+        transition={{ duration: 0.5, delay: 0.3 }}
       >
         <CryptoStat title="Ongoing ICOs" value={cryptoStats.ongoingICOs} />
       </motion.div>
@@ -82,7 +82,7 @@ function CryptoStats() {
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.5 }}
+        transition={{ duration: 0.5, delay: 0.4 }}
       >
         <CryptoStat title="Ended ICOs" value={cryptoStats.endedICOs} />
       </motion.div>
@@ -90,7 +90,7 @@ function CryptoStats() {
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.6 }}
+        transition={{ duration: 0.5, delay: 0.5 }}
       >
         <CryptoStat title="Markets" value={cryptoStats.markets} />
       </motion.div>

@@ -64,7 +64,7 @@ function TopGainers() {
     <motion.div
     initial={{ opacity: 0, y: 50 }}
     animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.5, delay: 0.9 }}
+    transition={{ duration: 0.5, delay: 0.8 }}
     className="w-full border rounded-md p-4 font-semibold">
       <div className="flex flex-row items-center justify-between">
         <div className="flex flex-row items-center space-x-1">
