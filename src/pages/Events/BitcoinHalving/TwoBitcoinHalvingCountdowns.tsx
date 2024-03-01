@@ -32,7 +32,7 @@ function TwoBitcoinHalvingCountdowns() {
               than expected, and vice versa.
             </p>
             <p>
-              However, thanks to Bitcoin's difficulty adjustment, the block time
+              However, thanks to Bitcoin&apos;s difficulty adjustment, the block time
               usually stays close to 10 minutes.
             </p>
           </div>
@@ -89,7 +89,7 @@ function TwoBitcoinHalvingCountdowns() {
               blocks.
             </p>
             <p>
-              That's why we created this on-chain Bitcoin halving countdown. The
+              That&apos;s why we created this on-chain Bitcoin halving countdown. The
               timer updates the target date in real time whenever the blockchain
               data demands it. This will help you better estimate the Bitcoin
               halving date.

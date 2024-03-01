@@ -22,8 +22,8 @@ function WhatisBitcoinHalving() {
         </p>
         <p>
           To better understand the Bitcoin halving, how new Bitcoins are created
-          and added to the cryptocurrency market, let's explain the term
-          "Bitcoin Mining" and how it works.
+          and added to the cryptocurrency market, let&apos;s explain the term
+          &quot;Bitcoin Mining&quot; and how it works.
         </p>
       </div>
     </div>

@@ -12,7 +12,7 @@ function BitcoinHalvingin2024() {
       <div className="text-gray-500 font-medium pr-0 md:pr-16 pb-6 space-y-3">
         <p>
           The 2020 Bitcoin halving will take place in May and will see the block
-          reward drop from 6.25 Bitcoins to 3.125 Bitcoins per block. Bitcoin's
+          reward drop from 6.25 Bitcoins to 3.125 Bitcoins per block. Bitcoin&apos;s
           current annual inflation is 3.68%, but after the 2024 halving
           inflation will be halved to approximately 1.80%.
         </p>

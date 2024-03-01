@@ -12,7 +12,7 @@ function BitcoinZeroInflation() {
       <div className="text-gray-500 font-medium pr-0 md:pr-16 pb-6 space-y-3">
         <p>
           Now, it is impossible to know what the price of Bitcoin will be in the
-          future, but let's agree that it is better to buy Bitcoin today than
+          future, but let&apos;s agree that it is better to buy Bitcoin today than
           wait for inflation to reach 0%.
         </p>
         <p>
