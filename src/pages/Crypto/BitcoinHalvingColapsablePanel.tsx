@@ -5,7 +5,7 @@ import { IoClose } from "react-icons/io5";
 import { BackgroundBeams } from "@/utils/UI/background-beams";
 import BitcoinHalvingCountDown from "./utils/BitcoinHalvingCountDown";
 
-export function BitcoinHalvingCollapsiblePanel() {
+export default function BitcoinHalvingCollapsiblePanel() {
   const [isOpen, setIsOpen] = useState(true);
 
   const togglePanel = () => {

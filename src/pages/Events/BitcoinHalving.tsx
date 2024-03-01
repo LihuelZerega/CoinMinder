@@ -4,7 +4,7 @@ import Link from "next/link";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import { motion, useAnimation } from "framer-motion";
-import { HeroSection } from "./BitcoinHalving/HeroSection";
+import HeroSection from "./BitcoinHalving/HeroSection";
 import WhatisBitcoinHalving from "./BitcoinHalving/WhatisBitcoinHalving";
 import BitcoinMining from "./BitcoinHalving/BitcoinMining";
 import Howaffects from "./BitcoinHalving/Howaffects";

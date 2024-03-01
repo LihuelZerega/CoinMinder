@@ -10,7 +10,7 @@ interface CryptoData {
   current_price: number;
 }
 
-export function HeroSection() {
+export default function HeroSection() {
   const [cryptoData, setCryptoData] = useState<CryptoData[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [startIndex, setStartIndex] = useState(0);
