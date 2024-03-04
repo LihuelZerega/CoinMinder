@@ -10,7 +10,7 @@ const SolanaChart24hs: React.FC = () => {
 
   const fetchSolanaChart24hsData = async () => {
     try {
-      const response = await fetch('http://localhost:8080/api/crypto/solana/chart');
+      const response = await fetch('${process.env.API_BASE_URL}/api/crypto/solana/chart');
       if (!response.ok) {
         throw new Error('Failed to fetch Solana chart data');
       }

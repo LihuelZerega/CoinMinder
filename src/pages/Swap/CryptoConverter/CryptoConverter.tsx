@@ -20,7 +20,7 @@ function CryptoConverter() {
   useEffect(() => {
     async function fetchCryptos() {
       try {
-        const response = await fetch("http://localhost:8080/api/crypto/");
+        const response = await fetch("${process.env.API_BASE_URL}/api/crypto/");
         const data = await response.json();
         const first25Cryptos = data.slice(0, 25);
         setCryptos(first25Cryptos);

@@ -1,5 +1,6 @@
 import "@/components/globals.css";
 import { NextUIProvider } from "@nextui-org/react";
+require('dotenv').config();
 import type { AppProps } from "next/app";
 
 export default function App({ Component, pageProps }: AppProps) {

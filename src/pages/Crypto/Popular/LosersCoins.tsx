@@ -19,7 +19,7 @@ function LosersCoins() {
     const fetchTrendingCoins = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8080/api/crypto/toplosers"
+          "${process.env.API_BASE_URL}/api/crypto/toplosers"
         );
 
         if (response.data && Array.isArray(response.data)) {

@@ -11,7 +11,7 @@ const TetherChart: React.FC = () => {
 
   const fetchTetherChartData = async () => {
     try {
-      const response = await fetch('http://localhost:8080/api/crypto/tether/chart');
+      const response = await fetch('${process.env.API_BASE_URL}/api/crypto/tether/chart');
       if (!response.ok) {
         throw new Error('Failed to fetch Tether chart data');
       }

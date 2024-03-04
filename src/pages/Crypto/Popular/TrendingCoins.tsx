@@ -21,7 +21,7 @@ const Trending: React.FC = () => {
     const fetchTrendingCoins = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8080/api/crypto/market/trending"
+          "${process.env.API_BASE_URL}/api/crypto/market/trending"
         );
 
         if (response.data && Array.isArray(response.data)) {

@@ -79,7 +79,7 @@ const CryptoCurrencyDetails: React.FC = () => {
     const fetchCryptoCurrencyDetails = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8080/api/crypto/name/${name}`
+          `${process.env.API_BASE_URL}/name/${name}`
         );
 
         setCryptoCurrency(response.data);

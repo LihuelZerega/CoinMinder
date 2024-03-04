@@ -11,7 +11,7 @@ const BitcoinChart: React.FC = () => {
 
   const fetchBitcoinChartData = async () => {
     try {
-      const response = await fetch('http://localhost:8080/api/crypto/bitcoin/chart');
+      const response = await fetch('${process.env.API_BASE_URL}/api/crypto/bitcoin/chart');
       if (!response.ok) {
         throw new Error('Failed to fetch Bitcoin chart data');
       }

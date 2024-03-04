@@ -46,7 +46,7 @@ export default function CryptoPricesTable() {
   const fetchData = async () => {
     setIsLoading(true);
     try {
-      const res = await axios.get("http://localhost:8080/api/crypto");
+      const res = await axios.get("${process.env.API_BASE_URL}/api/crypto");
       setCryptoData((prevData) => [
         ...prevData,
         ...res.data.slice(startIndex, startIndex + itemsPerPage),

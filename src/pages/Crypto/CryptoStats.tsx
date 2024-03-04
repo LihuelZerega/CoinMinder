@@ -15,7 +15,7 @@ function CryptoStats() {
     const fetchCryptoStats = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8080/api/crypto/market"
+          "${process.env.API_BASE_URL}/api/crypto/market"
         );
 
         if (response.data) {
