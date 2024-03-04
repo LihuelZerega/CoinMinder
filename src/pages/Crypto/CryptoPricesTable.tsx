@@ -46,7 +46,7 @@ export default function CryptoPricesTable() {
   const fetchData = async () => {
     setIsLoading(true);
     try {
-      const res = await axios.get("http://coinminder-api-production.up.railway.app/api/crypto");
+      const res = await axios.get("https://coinminder-api.railway.internal.app/api/crypto");
       setCryptoData((prevData) => [
         ...prevData,
         ...res.data.slice(startIndex, startIndex + itemsPerPage),

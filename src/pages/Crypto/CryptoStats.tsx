@@ -15,7 +15,7 @@ function CryptoStats() {
     const fetchCryptoStats = async () => {
       try {
         const response = await axios.get(
-          "http://coinminder-api-production.up.railway.app/api/crypto/market"
+          "https://coinminder-api.railway.internal.app/api/crypto/market"
         );
 
         if (response.data) {

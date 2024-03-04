@@ -10,7 +10,7 @@ const SolanaChart24hs: React.FC = () => {
 
   const fetchSolanaChart24hsData = async () => {
     try {
-      const response = await fetch('http://coinminder-api-production.up.railway.app/api/crypto/solana/chart');
+      const response = await fetch('https://coinminder-api.railway.internal.app/api/crypto/solana/chart');
       if (!response.ok) {
         throw new Error('Failed to fetch Solana chart data');
       }

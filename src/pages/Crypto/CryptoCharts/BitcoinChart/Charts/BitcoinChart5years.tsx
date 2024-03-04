@@ -11,7 +11,7 @@ const BitcoinChart: React.FC = () => {
 
   const fetchBitcoinChartData = async () => {
     try {
-      const response = await fetch('http://coinminder-api-production.up.railway.app/api/crypto/bitcoin/chart');
+      const response = await fetch('https://coinminder-api.railway.internal.app/api/crypto/bitcoin/chart');
       if (!response.ok) {
         throw new Error('Failed to fetch Bitcoin chart data');
       }

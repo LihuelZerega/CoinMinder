@@ -11,7 +11,7 @@ const BnbChart: React.FC = () => {
 
   const fetchBnbChartData = async () => {
     try {
-      const response = await fetch('http://coinminder-api-production.up.railway.app/api/crypto/bnb/chart');
+      const response = await fetch('https://coinminder-api.railway.internal.app/api/crypto/bnb/chart');
       if (!response.ok) {
         throw new Error('Failed to fetch Bnb chart data');
       }

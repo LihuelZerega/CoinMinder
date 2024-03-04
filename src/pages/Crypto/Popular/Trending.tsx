@@ -23,7 +23,7 @@ const Trending: React.FC = () => {
     const fetchTrendingCoins = async () => {
       try {
         const response = await axios.get(
-          "http://coinminder-api-production.up.railway.app/api/crypto/market/trending"
+          "https://coinminder-api.railway.internal.app/api/crypto/market/trending"
         );
 
         if (response.data && Array.isArray(response.data)) {
