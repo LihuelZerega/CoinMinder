@@ -20,7 +20,7 @@ function CryptoConverter() {
   useEffect(() => {
     async function fetchCryptos() {
       try {
-        const response = await fetch("https://coinminder-api.railway.internal.app/api/crypto/");
+        const response = await fetch("https://coinminder-api-production.up.railway.app/api/crypto/");
         const data = await response.json();
         const first25Cryptos = data.slice(0, 25);
         setCryptos(first25Cryptos);

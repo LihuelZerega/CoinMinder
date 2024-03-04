@@ -31,7 +31,7 @@ function StockPrices() {
     try {
       const promises = symbols.map(async (symbol) => {
         const response = await axios.get(
-          `https://coinminder-api.railway.internal.app/api/stock/${symbol}/quote`
+          `https://coinminder-api-production.up.railway.app/api/stock/${symbol}/quote`
         );
         return {
           symbol,
