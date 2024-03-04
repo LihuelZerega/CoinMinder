@@ -141,7 +141,7 @@ function NavBar() {
                 </DropdownSection>
                 <DropdownSection title="Events">
                   <DropdownItem
-                    href="/events/bitcoin-halving"
+                    href="/crypto/events/bitcoin-halving"
                     key="terms"
                     startContent={
                       <MdOutlineQuestionAnswer className="text-xl font-bold text-[#38bdf8]" />

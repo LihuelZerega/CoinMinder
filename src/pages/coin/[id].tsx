@@ -60,7 +60,7 @@ interface CryptoCurrency {
 
 const CryptoCurrencyDetails: React.FC = () => {
   const router = useRouter();
-  const { name } = router.query;
+  const { id } = router.query;
   const [cryptoCurrency, setCryptoCurrency] = useState<CryptoCurrency | null>(
     null
   );
@@ -79,13 +79,13 @@ const CryptoCurrencyDetails: React.FC = () => {
     const fetchCryptoCurrencyDetails = async () => {
       try {
         const response = await axios.get(
-          `https://coinminder-api-production.up.railway.app/name/${name}`
+          `https://coinminder-api-production.up.railway.app/api/crypto/quote/${id}`
         );
 
         setCryptoCurrency(response.data);
 
-        if (response.data && response.data.name) {
-          document.title = `BullSwap | ${response.data.name}`;
+        if (response.data && response.data.id) {
+          document.title = `BullSwap | ${response.data.id}`;
         }
       } catch (error) {
         setError("Error al obtener detalles de la criptomoneda");
@@ -93,12 +93,12 @@ const CryptoCurrencyDetails: React.FC = () => {
       }
     };
 
-    if (name) {
+    if (id) {
       fetchCryptoCurrencyDetails();
     }
-  }, [name]);
+  }, [id]);
 
-  if (!name) {
+  if (!id) {
     return (
       <div>
         <LoadingPage />
@@ -156,7 +156,7 @@ const CryptoCurrencyDetails: React.FC = () => {
             <div className="block md:hidden py-4">
               <Breadcrumbs>
                 <BreadcrumbItem>
-                  <Link href="http://localhost:3000/crypto">
+                  <Link href="https://coinminder-api-production.up.railway.app/crypto">
                     Cryptocurrencies
                   </Link>
                 </BreadcrumbItem>
