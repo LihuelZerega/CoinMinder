@@ -25,7 +25,7 @@ export default function HeroSection() {
   const fetchData = async () => {
     setIsLoading(true);
     try {
-      const res = await axios.get("${process.env.API_BASE_URL}/api/crypto");
+      const res = await axios.get("http://coinminder-api-production.up.railway.app/api/crypto");
       if (res.data.length > 0) {
         setCryptoData([res.data[0]]);
       }

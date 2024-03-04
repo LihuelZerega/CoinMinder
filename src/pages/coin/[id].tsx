@@ -79,7 +79,7 @@ const CryptoCurrencyDetails: React.FC = () => {
     const fetchCryptoCurrencyDetails = async () => {
       try {
         const response = await axios.get(
-          `${process.env.API_BASE_URL}/name/${name}`
+          `http://coinminder-api-production.up.railway.app/name/${name}`
         );
 
         setCryptoCurrency(response.data);

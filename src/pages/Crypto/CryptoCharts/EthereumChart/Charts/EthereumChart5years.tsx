@@ -11,7 +11,7 @@ const EthereumChart: React.FC = () => {
 
   const fetchEthereumChartData = async () => {
     try {
-      const response = await fetch('${process.env.API_BASE_URL}/api/crypto/ethereum/chart');
+      const response = await fetch('http://coinminder-api-production.up.railway.app/api/crypto/ethereum/chart');
       if (!response.ok) {
         throw new Error('Failed to fetch Ethereum chart data');
       }

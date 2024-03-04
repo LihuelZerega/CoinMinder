@@ -12,7 +12,7 @@ function VolumeH() {
     const fetchVolumeData = async () => {
       try {
         const response = await axios.get(
-          "${process.env.API_BASE_URL}/api/crypto/market"
+          "http://coinminder-api-production.up.railway.app/api/crypto/market"
         );
         const totalVolumeUSD = JSON.parse(response.data.total_volume)["usd"];
         setVolumeData(totalVolumeUSD);

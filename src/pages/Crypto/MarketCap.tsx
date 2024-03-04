@@ -19,7 +19,7 @@ const MarketCap = () => {
     const fetchMarketCapData = async () => {
       try {
         const response = await axios.get(
-          "${process.env.API_BASE_URL}/api/crypto/market"
+          "http://coinminder-api-production.up.railway.app/api/crypto/market"
         );
 
         if (response.data && response.data.total_market_cap) {
